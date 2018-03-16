@@ -1,5 +1,5 @@
 <%--
-
+ 
     The contents of this file are subject to the license and copyright
     detailed in the LICENSE and NOTICE files at the root of the source
     tree and available online at
@@ -240,7 +240,8 @@
     <%-- HACK: marginwidth, marginheight: for non-CSS compliant Netscape browser --%>
     <body class="undernavigation">
 <a class="sr-only" href="#content">Skip navigation</a>
-<header class="navbar navbar-inverse navbar-fixed-top <%= navbar.equals("off")?navbar:navbar.substring(navbar.lastIndexOf("/") + 1, navbar.lastIndexOf(".")) %>">    
+<header class="navbar navbar-inverse navbar-fixed-top <%= navbar.equals("off")?navbar:navbar.substring(navbar.lastIndexOf("/") + 1, navbar.lastIndexOf(".")) %>">  
+<div id="new_top"></div>  
     <%
     if (!navbar.equals("off"))
     {
