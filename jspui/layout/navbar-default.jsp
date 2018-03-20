@@ -76,7 +76,104 @@
     Locale sessionLocale = UIUtil.getSessionLocale(request);
 %>
 
+	   <div id="new_top">
+	   	<!-- 登录-->
+	   	<div class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right">
+	         <li class="dropdown">
+	         <%
+	    if (user != null)
+	    {
+			%>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <fmt:message key="jsp.layout.navbar-default.loggedin">
+			      <fmt:param><%= StringUtils.abbreviate(navbarEmail, 20) %></fmt:param>
+			  </fmt:message> <b class="caret"></b></a>
+			<%
+	    } else {
+			%>
+	             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <fmt:message key="jsp.layout.navbar-default.sign"/> <b class="caret"></b></a>
+		<% } %>             
+	             <ul class="dropdown-menu">
+	               <li><a href="<%= request.getContextPath() %>/mydspace"><fmt:message key="jsp.layout.navbar-default.users"/></a></li>
+	               <li><a href="<%= request.getContextPath() %>/subscribe"><fmt:message key="jsp.layout.navbar-default.receive"/></a></li>
+	               <%-- 
+	               <li><a href="<%= request.getContextPath() %>/profile"><fmt:message key="jsp.layout.navbar-default.edit"/></a></li>
+	               --%>
 
+			<%
+			  if (isAdmin)
+			  {
+			%>
+				   <li class="divider"></li>  
+	               <li><a href="<%= request.getContextPath() %>/dspace-admin"><fmt:message key="jsp.administer"/></a></li>
+			<%
+			  }
+			  if (user != null) {
+			%>
+			<li><a href="<%= request.getContextPath() %>/logout"><span class="glyphicon glyphicon-log-out"></span> <fmt:message key="jsp.layout.navbar-default.logout"/></a></li>
+			<% } %>
+	             </ul>
+	           </li>
+	          </ul>
+	          
+		<%-- Search Box --%>
+		<%--weicf <form method="get" action="<%= request.getContextPath() %>/simple-search" class="navbar-form navbar-right">
+		    <div class="form-group">
+	          <input type="text" class="form-control" placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" name="query" id="tequery" size="25"/>
+	        </div>
+	        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+	<%--               <br/><a href="<%= request.getContextPath() %>/advanced-search"><fmt:message key="jsp.layout.navbar-default.advanced"/></a>
+	<%
+				if (ConfigurationManager.getBooleanProperty("webui.controlledvocabulary.enable"))
+				{
+	%>        
+	              <br/><a href="<%= request.getContextPath() %>/subject-search"><fmt:message key="jsp.layout.navbar-default.subjectsearch"/></a>
+	<%
+	            }
+	%> --%>
+		<%--weicf</form>--%>
+		
+		</div>
+	   	<!--中英文切换-->
+	   		<% if (supportedLocales != null && supportedLocales.length > 1)
+	     {
+	 %>
+	    <div class="nav navbar-nav navbar-right navbar-right-language">
+	    	<ul class="nav navbar-nav">
+      		<li class="">
+	 <%   for (int i = 0; i < supportedLocales.length; i++)
+	     {
+		 if(i!=0)out.print("|");
+	 %>
+	        <a style="display: inline-block;" onclick="changeLanguage('<%=supportedLocales[i].toString()%>')" href="javascript:void(0);">
+	         <%= supportedLocales[i].getDisplayLanguage(supportedLocales[i])%>
+	       </a>
+	 <%
+	     }
+	 %>
+	 		</li>
+	 		</ul>
+	 		<form method="get" name="repost" action="">
+		   		<input type="hidden" name="type" />
+		   		<input type="hidden" name="sort_by" />
+		   		<input type="hidden" name="order" />
+		   		<input type="hidden" name="rpp" />
+		   		<input type="hidden" name="etal" />	
+		   		<input type="hidden" name="null" />
+		   		<input type="hidden" name="offset" />
+		   		<input type="hidden" name="starts_with" />
+		   		<input type="hidden" name="value" />
+				<input type="hidden" name="locale" />
+				<input type="hidden" name="id" />
+				<input type="hidden" name="uid" />
+				<input type="hidden" name="fullname" />
+				<input type="hidden" name="action" />
+			</form>
+		  </div>
+		 <%
+		   }
+		 %>
+	   </div>  
        <div class="navbar-header">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
            <span class="icon-bar"></span>
@@ -121,99 +218,6 @@
           <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li>
        </ul>
  
-       <div class="nav navbar-nav navbar-right">
-		<ul class="nav navbar-nav navbar-right">
-         <li class="dropdown">
-         <%
-    if (user != null)
-    {
-		%>
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <fmt:message key="jsp.layout.navbar-default.loggedin">
-		      <fmt:param><%= StringUtils.abbreviate(navbarEmail, 20) %></fmt:param>
-		  </fmt:message> <b class="caret"></b></a>
-		<%
-    } else {
-		%>
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <fmt:message key="jsp.layout.navbar-default.sign"/> <b class="caret"></b></a>
-	<% } %>             
-             <ul class="dropdown-menu">
-               <li><a href="<%= request.getContextPath() %>/mydspace"><fmt:message key="jsp.layout.navbar-default.users"/></a></li>
-               <li><a href="<%= request.getContextPath() %>/subscribe"><fmt:message key="jsp.layout.navbar-default.receive"/></a></li>
-               <%-- 
-               <li><a href="<%= request.getContextPath() %>/profile"><fmt:message key="jsp.layout.navbar-default.edit"/></a></li>
-               --%>
-
-		<%
-		  if (isAdmin)
-		  {
-		%>
-			   <li class="divider"></li>  
-               <li><a href="<%= request.getContextPath() %>/dspace-admin"><fmt:message key="jsp.administer"/></a></li>
-		<%
-		  }
-		  if (user != null) {
-		%>
-		<li><a href="<%= request.getContextPath() %>/logout"><span class="glyphicon glyphicon-log-out"></span> <fmt:message key="jsp.layout.navbar-default.logout"/></a></li>
-		<% } %>
-             </ul>
-           </li>
-          </ul>
-          
-	<%-- Search Box --%>
-	<%--weicf <form method="get" action="<%= request.getContextPath() %>/simple-search" class="navbar-form navbar-right">
-	    <div class="form-group">
-          <input type="text" class="form-control" placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" name="query" id="tequery" size="25"/>
-        </div>
-        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-<%--               <br/><a href="<%= request.getContextPath() %>/advanced-search"><fmt:message key="jsp.layout.navbar-default.advanced"/></a>
-<%
-			if (ConfigurationManager.getBooleanProperty("webui.controlledvocabulary.enable"))
-			{
-%>        
-              <br/><a href="<%= request.getContextPath() %>/subject-search"><fmt:message key="jsp.layout.navbar-default.subjectsearch"/></a>
-<%
-            }
-%> --%>
-	<%--weicf</form>--%>
+       
 	
-	</div>
-	
-	<% if (supportedLocales != null && supportedLocales.length > 1)
-	     {
-	 %>
-	    <div class="nav navbar-nav navbar-right navbar-right-language">
-	    	<ul class="nav navbar-nav">
-      		<li class="">
-	 <%   for (int i = 0; i < supportedLocales.length; i++)
-	     {
-		 if(i!=0)out.print("|");
-	 %>
-	        <a style="display: inline-block;" onclick="changeLanguage('<%=supportedLocales[i].toString()%>')" href="javascript:void(0);">
-	         <%= supportedLocales[i].getDisplayLanguage(supportedLocales[i])%>
-	       </a>
-	 <%
-	     }
-	 %>
-	 		</li>
-	 		</ul>
-	 		<form method="get" name="repost" action="">
-		   		<input type="hidden" name="type" />
-		   		<input type="hidden" name="sort_by" />
-		   		<input type="hidden" name="order" />
-		   		<input type="hidden" name="rpp" />
-		   		<input type="hidden" name="etal" />	
-		   		<input type="hidden" name="null" />
-		   		<input type="hidden" name="offset" />
-		   		<input type="hidden" name="starts_with" />
-		   		<input type="hidden" name="value" />
-				<input type="hidden" name="locale" />
-				<input type="hidden" name="id" />
-				<input type="hidden" name="uid" />
-				<input type="hidden" name="fullname" />
-				<input type="hidden" name="action" />
-			</form>
-		  </div>
-		 <%
-		   }
-		 %>
     </nav>
