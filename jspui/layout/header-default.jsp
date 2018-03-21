@@ -241,25 +241,26 @@
     <body class="undernavigation">
 <a class="sr-only" href="#content">Skip navigation</a>
 <header class="navbar navbar-inverse navbar-fixed-top <%= navbar.equals("off")?navbar:navbar.substring(navbar.lastIndexOf("/") + 1, navbar.lastIndexOf(".")) %>">  
-<div id=""></div>  
-    <%
-    if (!navbar.equals("off"))
-    {
-%>
-            <div class="container">
-                <dspace:include page="<%= navbar %>" />
-            </div>
-<%
-    }
-    else
-    {
-    	%>
-        <div class="container">
-            <dspace:include page="/layout/navbar-minimal.jsp" />
-        </div>
-<%    	
-    }
-%>
+	<div id="header_bg">
+	    <%
+	    if (!navbar.equals("off"))
+	    {
+	%>
+	            <div class="container">
+	                <dspace:include page="<%= navbar %>" />
+	            </div>
+	<%
+	    }
+	    else
+	    {
+	    	%>
+	        <div class="container">
+	            <dspace:include page="/layout/navbar-minimal.jsp" />
+	        </div>
+	<%    	
+	    }
+	%>
+	</div>  
 </header>
 
 <main id="content" role="main">

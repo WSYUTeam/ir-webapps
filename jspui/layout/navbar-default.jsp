@@ -10,7 +10,6 @@
 <%--
   - Default navigation bar
 --%>
-
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
@@ -180,14 +179,14 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
-         <a href="<%=request.getContextPath() %>/" class="navbar-brand"><img height="69" alt="calis logo" src="<%=request.getContextPath() %>/calis/images/logo-title.png"></a>
+         <a href="<%=request.getContextPath() %>/" class="navbar-brand"><img height="73" width="449" alt="calis logo" src="<%=request.getContextPath() %>/calis/images/logo-title.png"></a>
        </div>
        <nav class="collapse navbar-collapse bs-navbar-collapse navbar-collapse-default" role="navigation">
          <ul class="nav navbar-nav">
 		   <li class="<%= currentPage.endsWith("/search")? "active" : "" %>"><a href="<%= request.getContextPath() %>/simple-search"><fmt:message key="nsfc.layout.navbar-default.search"/></a></li>
            <li><a class="<%= currentPage.endsWith("/researcher-list")? "active" : "" %>" href="<%= request.getContextPath() %>/researcher-list"><fmt:message key="jsp.layout.navbar-default.researchers" /></a></li>                
            <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="jsp.layout.navbar-default.browse"/> <b class="caret"></b></a>
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" onfocus="this.style.backgroundColor='#003C80'"  onblur="this.style.backgroundColor=''"><fmt:message key="jsp.layout.navbar-default.browse"/> <b class="caret"></b></a>
              <ul class="dropdown-menu">
                <li><a href="<%= request.getContextPath() %>/community-list"><fmt:message key="jsp.layout.navbar-default.communities-collections"/></a></li>
 				<li class="divider"></li>
@@ -217,7 +216,35 @@
           </li>
           <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li>
        </ul>
- 
-       
-	
+       <% 
+       String url = (request.getServletPath()).substring(7,15);
+       //out.print(url.equals("home.jsp"));
+       //out.print(request.getServletPath());
+       if(url.equals("home.jsp")) {
+       %>
+      
+       <form action="simple-search" method="get" style="padding-top: 10px;">
+			<input type="hidden" value=""
+				name="location" /> <input type="hidden"
+				value="" name="query" />
+			
+			<select id="filtername" name="filtername">
+				<option value="title">标题</option>
+				<option value="author">学者</option>
+				<option value="subject">成果</option>
+				<option value="publisher">期刊</option>
+			</select> 
+			<select id="filtertype" name="filtertype" style="display:none">
+				<option value="contains" selected>包含</option>
+			</select> 
+			<input type="text" id="filterquery" name="filterquery" size="18"
+				required="required" /> <input type="hidden" value="20"
+				name="rpp" /> <input type="hidden" value="score"
+				name="sort_by" /> <input type="hidden" value="desc"
+				name="order" /> <input style="color: #fff;margin-bottom: 5px;background-color:#003C80;" class="btn  btn-filter-add"
+				type="submit" value="检索"
+				onclick="return validateFilters()" />
+		</form>
+		<% }%>
     </nav>
+     
