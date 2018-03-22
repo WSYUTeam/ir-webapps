@@ -224,7 +224,129 @@
 
 <dspace:layout locbar="off" titlekey="jsp.home.title"
 	feedData="<%=feedData%>">
+	<div class="container row pic">
+		<!-- 轮播图 start -->
+		<DIV id=carousel-example-generic class="carousel slide"  data-ride="carousel">
+			<!-- 轮播图小圆点 -->
+			<OL class=carousel-indicators>
+				<!-- class="active"  被选中的状态 -->
+				<li class="active" data-target="#carousel-example-generic" data-slide-to="0"/></LI>
+				<LI  data-target="#carousel-example-generic" data-slide-to="1"></LI>
+				<LI  data-target="#carousel-example-generic" data-slide-to="2"></LI>
+				<LI  data-target="#carousel-example-generic" data-slide-to="3"></LI>
+			</OL>
+			<!-- 轮播图小圆点 -->
+			<!-- 轮播图部分 -->
+			<DIV class=carousel-inner role=listbox>
+				<DIV class="item active">
+					<A href="?#1" target=_blank><IMG  src="calis/images/index_two.png"> </A>
+					<!-- onerror="this.src='public/img/wu.jpg'" -->
+					<DIV class=carousel-caption>
+						<A style="COLOR: #ffffff" title="测试效果" href="?#1" target=_blank>测试效果 </A>
+					</DIV>
+				</DIV>
+				<DIV class=item>
+					<A href="?#2" target=_blank><IMG  src="calis/images/index_three.png"> </A>
+					<!-- onerror="this.src='public/img/wu.jpg'" -->
+					<DIV class=carousel-caption>
+						<A style="COLOR: #ffffff" title="Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS ..." href="?#2" target=_blank>Observation of </A>
+					</DIV>
+				</DIV>
+				<DIV class=item>
+					<A href="?#4" target=_blank><IMG  src="calis/images/index_four.png"> </A>
+					<!-- onerror="this.src='public/img/wu.jpg'" -->
+					<DIV class=carousel-caption>
+						<A style="COLOR: #ffffff" title="Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS ..." href="?#4" target=_blank>Observation of a new particle in  </A>
+					</DIV>
+				</DIV>
+				<DIV class="item">
+					<A href="?#3" target=_blank><IMG   src="calis/images/index_imgs.png" > </A>
+					<!-- onerror="this.src='public/img/wu.jpg'" -->
+					<DIV class=carousel-caption>
+						<A style="COLOR: #ffffff" title=中国山水画论笔墨说的形而上底蕴——以唐岱的天地观与笔墨说为考察核心 href="?#3" target=_blank>中国山水画论笔墨说的形而上底 </A>
+					</DIV>
+				</DIV>
+			</DIV>
+			<!-- 轮播图部分 -->
+		</DIV>
+	</div>
+	<!-- 轮播图 end -->
+	<!-- 热门成功能 start -->
+	<div class="container row popular">
+		<div id="feature_list" class="col-md-12">
+			<div
+				style="">
+				<div class="row-title-zh"><img src="calis\images\x.png"> &nbsp; 热门成果</div>
+				<div class=""></div>
+			</div>
+			<div class=""></div>
+			
+				<%
+				Map<String, String> map = new HashMap<String, String>();
+				String commStr = ConfigurationManager.getProperty("webui.home.hotview.slideshow.community");
+				String specialHandles = ConfigurationManager.getProperty("webui.home.hotview.slideshow.community.special");
+				Community[] specialComms = PKUUtils.getSpecialCommunities(context);
+				int threshold = ConfigurationManager.getIntProperty("webui.home.hotview.slideshow.community.show.count");
+				int count_of_show = threshold;
+				int count_of_show2 = threshold;
+				int current_of_show = 0;
+				int current_of_show2 = 0;
+				String[] commArray = commStr.split(";");
+				for(int i = 0; i < commArray.length; i++) {
+					String[] array = commArray[i].split("\\|");
+					map.put(array[0], array[1]);
+				}
 
+				if(specialComms != null && specialComms.length > 0) {
+					for(Community comm : specialComms) {
+						if(current_of_show > threshold) {
+							break;
+						}
+						if(comm == null) {
+							continue;
+						}
+						current_of_show++;
+				%>
+				<li id="<%=comm.getHandle().replace("/", "_") %>">
+				<a href="javascript:void(0);"><img class="img-responsive visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md"
+						src="<%=request.getContextPath()%>/calis/images/<%=map.get(comm.getName()) %>">
+						<h3 class="h3"><%=comm.getName() %></h3> <span><%=comm.getMetadata("short_description") %></span></a></li>
+				<%
+					}
+				}
+
+				if(communities != null && communities.length > 0) {
+					Community[] subcommunities = PKUUtils.getSubcommunities(UIUtil.obtainContext(request), communities[0].getID(), "DESC");
+
+					for(Community comm : subcommunities) {
+						if(current_of_show > threshold) {
+							break;
+						}
+						if(count_of_show <= 0) {
+							break;
+						}
+						if(specialHandles.contains(comm.getHandle())) {
+							count_of_show--;
+							continue;
+						}
+						count_of_show--;
+						current_of_show++;
+				%>
+				<li id="<%=comm.getHandle().replace("/", "_") %>">
+				<a href="javascript:void(0);">
+						<h3 class="h3"><%=comm.getName() %></h3> <span><%=comm.getMetadata("short_description") %></span></a></li>
+				<%
+					}
+				%>
+			</ul>
+				<%
+				}
+				%>
+			
+		</div>
+	</div>
+	<div style="clear: both"></div>
+	<!-- 热门成功能 end -->
 	<div class="container banner-home">
 	<div class="col-md-6">
 	<%
@@ -235,7 +357,7 @@
 					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(0)[0] %>&uid=<%=rList.get(0)[1] %>&fullname=<%=URLEncoder.encode(rList.get(0)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(0))[3] %></div></a>
 				</div>
 				<div class="col-md-3">
-					<div class="pic-home-text arrow-left-1">
+					<div class="pic-home-text arrow-left-1" style="min-width:100px ;">
 						<p>
 						<span class="title">
 				          	<%=rList.get(0)[4] %>
@@ -248,38 +370,16 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(0)[5] %>
+				          <%//=rList.get(0)[5] %>
 				        </span>
 				        </p>
 					</div>
 				</div>
-				<div class="col-md-3 visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md">
-					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(2)[0] %>&uid=<%=rList.get(2)[1] %>&fullname=<%=URLEncoder.encode(rList.get(2)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(2))[3] %></div></a>
+				<div class="col-md-3">
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(1)[0] %>&uid=<%=rList.get(1)[1] %>&fullname=<%=URLEncoder.encode(rList.get(1)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(1))[3] %></div></a>
 				</div>
-				<div class="col-md-3 visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md">
-					<div class="pic-home-text arrow-left-2">
-						<p>
-						<span class="title">
-				          	<%=rList.get(2)[4] %>
-				        </span>
-				        </p>
-				        <p>
-				        <span class="name">
-				          <%=rList.get(2)[2] %>
-				        </span>
-				        </p>
-				        <p>
-				        <span class="unit">
-				          <%=rList.get(2)[5] %>
-				        </span>
-				        </p>
-					</div>
-				</div>
-		</div>
-
-		<div class="row">
-				<div class="col-md-3 visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md">
-					<div class="pic-home-text arrow-right-1">
+				<div class="col-md-3">
+					<div class="pic-home-text arrow-left-1">
 						<p>
 						<span class="title">
 				          	<%=rList.get(1)[4] %>
@@ -292,35 +392,32 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(1)[5] %>
+				          <%//=rList.get(1)[5] %>
 				        </span>
 				        </p>
 					</div>
 				</div>
-				<div class="col-md-3 visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md">
-					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(1)[0] %>&uid=<%=rList.get(1)[1] %>&fullname=<%=URLEncoder.encode(rList.get(1)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(1))[3] %></div></a>
+				<div class="col-md-3">
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(2)[0] %>&uid=<%=rList.get(2)[1] %>&fullname=<%=URLEncoder.encode(rList.get(2)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(2))[3] %></div></a>
 				</div>
-				<div class="col-md-3 visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md">
-					<div class="pic-home-text arrow-right-2">
+				<div class="col-md-3">
+					<div class="pic-home-text arrow-left-1">
 						<p>
 						<span class="title">
-				          	<%=rList.get(3)[4] %>
+				          	<%=rList.get(2)[4] %>
 				        </span>
 				        </p>
 				        <p>
 				        <span class="name">
-				          <%=rList.get(3)[2] %>
+				          <%=rList.get(2)[2] %>
 				        </span>
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(3)[5] %>
+				          <%//=rList.get(2)[5] %>
 				        </span>
 				        </p>
 					</div>
-				</div>
-				<div class="col-md-3 visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md">
-					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(3)[0] %>&uid=<%=rList.get(3)[1] %>&fullname=<%=URLEncoder.encode(rList.get(3)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(3))[3] %></div></a>
 				</div>
 		</div>
 		<%
@@ -328,7 +425,7 @@
 		%>
 	</div>
 
-	<div class="col-md-6">
+	<div class="col-md-6 xy">
 		<div class="row">
 			<div class="about-text">
 				<fmt:message key="jsp.home.about" />
@@ -414,120 +511,7 @@
 		</div>
 	</div>
 
-	<div class="container row popular">
-		<div id="feature_list" class="col-md-12">
-			<div
-				style="border-bottom: 3px solid #949c9c; display: inline-block; padding-bottom: 25px; margin-top: 90px;">
-				<div class="row-title-zh">热门</div>
-				<div class="row-title-en">POPULAR</div>
-			</div>
-			<div class="right-line"></div>
-			<ul id="tabs">
-				<%
-				Map<String, String> map = new HashMap<String, String>();
-				String commStr = ConfigurationManager.getProperty("webui.home.hotview.slideshow.community");
-				String specialHandles = ConfigurationManager.getProperty("webui.home.hotview.slideshow.community.special");
-				Community[] specialComms = PKUUtils.getSpecialCommunities(context);
-				int threshold = ConfigurationManager.getIntProperty("webui.home.hotview.slideshow.community.show.count");
-				int count_of_show = threshold;
-				int count_of_show2 = threshold;
-				int current_of_show = 0;
-				int current_of_show2 = 0;
-				String[] commArray = commStr.split(";");
-				for(int i = 0; i < commArray.length; i++) {
-					String[] array = commArray[i].split("\\|");
-					map.put(array[0], array[1]);
-				}
-
-				if(specialComms != null && specialComms.length > 0) {
-					for(Community comm : specialComms) {
-						if(current_of_show > threshold) {
-							break;
-						}
-						if(comm == null) {
-							continue;
-						}
-						current_of_show++;
-				%>
-				<li id="<%=comm.getHandle().replace("/", "_") %>">
-				<a href="javascript:void(0);"><img class="img-responsive visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md"
-						src="<%=request.getContextPath()%>/calis/images/<%=map.get(comm.getName()) %>">
-						<h3 class="h3"><%=comm.getName() %></h3> <span><%=comm.getMetadata("short_description") %></span></a></li>
-				<%
-					}
-				}
-
-				if(communities != null && communities.length > 0) {
-					Community[] subcommunities = PKUUtils.getSubcommunities(UIUtil.obtainContext(request), communities[0].getID(), "DESC");
-
-					for(Community comm : subcommunities) {
-						if(current_of_show > threshold) {
-							break;
-						}
-						if(count_of_show <= 0) {
-							break;
-						}
-						if(specialHandles.contains(comm.getHandle())) {
-							count_of_show--;
-							continue;
-						}
-						count_of_show--;
-						current_of_show++;
-				%>
-				<li id="<%=comm.getHandle().replace("/", "_") %>">
-				<a href="javascript:void(0);">
-						<h3 class="h3"><%=comm.getName() %></h3> <span><%=comm.getMetadata("short_description") %></span></a></li>
-				<%
-					}
-				%>
-			</ul>
-			<ul id="output">
-				<%
-
-				if(specialComms != null && specialComms.length > 0) {
-					for(Community comm : specialComms) {
-						if(current_of_show2 > threshold) {
-							break;
-						}
-						if(comm == null) {
-							continue;
-						}
-						current_of_show2++;
-				%>
-				<li id="<%=comm.getHandle().replace("/", "_") %>_hotview">
-					<div class="loading">
-					<img width="200" src="<%=request.getContextPath() %>/calis/images/loading_final.gif" />
-					</div>
-				</li>
-				<%
-					}
-				}
-					for(Community comm : subcommunities) {
-						if(current_of_show2 > threshold) {
-							break;
-						}
-						if(count_of_show2 <= 0) {
-							break;
-						}
-						if(specialHandles.contains(comm.getHandle())) {
-							count_of_show2--;
-							continue;
-						}
-						count_of_show2--;
-						current_of_show2++;
-				%>
-				<li id="<%=comm.getHandle().replace("/", "_") %>_hotview">
-					<div class="loading">
-					<img width="200" src="<%=request.getContextPath() %>/calis/images/loading_final.gif" />
-					</div>
-				</li>
-				<%
-					}
-				}
-				%>
-			</ul>
-		</div>
-	</div>
+	
 
 
 	<div class="container row statistics">

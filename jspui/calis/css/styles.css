@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 #content {
 	background-image: linear-gradient(to bottom, #eee 0px, #fff 1%);
 	min-height: 400px;
-	padding-top: 40px;
+	padding-top: 30px;
 }
 
 .navbar-toggle {
@@ -133,9 +133,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .banner-home .row .col-md-3 {
-	min-width: 136px;
+	width: 120px;
 }
-
+.banner-home .row .col-md-3 .pic-home-text {
+	width: 100px;
+}
 .banner-home .row .pic-home {
 	position: relative;
 }
@@ -147,7 +149,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	margin-left: -15px;
 	position: relative;
 	overflow: hidden;
-	width: 140px;
+	width: 120px;
 	vertical-align: text-top;
 	z-index: 1;
 }
@@ -312,7 +314,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 div#feature_list {
-	height: 850px;
+	height: 237px;
 	overflow: hidden;
 	position: relative;
 }
@@ -455,10 +457,12 @@ ul#output .loading {
 }
 
 .row-title-zh {
-	color: #5dca88;
+	color: #003C80;
+	
 	font-family: "微软雅黑","verdana","Arial","Helvetica",sans-serif;
 	font-size: 30px;
 	font-weight: bold;
+	padding-left: 5px;
 }
 
 .row-title-en {
