@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	width: 120px;
 }
 .banner-home .row .col-md-3 .pic-home-text {
-	width: 100px;
+	width: 70px;
 }
 .banner-home .row .pic-home {
 	position: relative;
@@ -460,11 +460,18 @@ ul#output .loading {
 	color: #003C80;
 	
 	font-family: "微软雅黑","verdana","Arial","Helvetica",sans-serif;
-	font-size: 30px;
+	font-size: 24px; 
 	font-weight: bold;
-	padding-left: 5px;
+	padding-left: 0px;
 }
-
+.row-title-zh.xztj {
+	width: 720px;
+	float: left;
+}
+.row-title-zh.yxdh{
+	width: 435px;
+	float: right;
+}
 .row-title-en {
 	color: #5dca88;
 	font-family: "微软雅黑","verdana","Arial","Helvetica",sans-serif;
@@ -698,6 +705,9 @@ ul#output .loading {
 
 #masonry #container {
 	padding-left: 100px;
+}
+.container.banner-home ,.container.row.popular{
+	padding: 0;/*,.container.row.popular .col-md-12     ,.container.row.pic*/
 }
 
 #masonry .left {
