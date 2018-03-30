@@ -74,7 +74,7 @@
 	List<String[]> rList = null;
 
 	if (cache.get("calis_home_researchers_random") == null) {
-		Researcher[] researchers = Researcher.getRandomResearchers(context, 6, 2);
+		Researcher[] researchers = Researcher.getRandomResearchers(context, 10, 2);
 		rList = new ArrayList<String[]>();
 		for(int i = 0; i < researchers.length; i++){
 			int id = researchers[i].getID();
@@ -108,7 +108,6 @@
 
 
 %>
-<%//=rList.get(5)[2] %>
 <SCRIPT type="text/javascript"
 	src="<%=request.getContextPath()%>/calis/js/jquery.featureList-1.0.0.js"></SCRIPT>
 <SCRIPT type="text/javascript"
@@ -302,7 +301,7 @@
 		<div style="clear: both"></div>
 	<div class="col-md-6" style="width:795px">
 	<%
-		if(rList.size() >= 6) {
+		if(rList.size() >= 10) {
 	%>
 		<div class="row" style="margin-top: 30px;padding-left:30px">
 				<div class="col-md-3">
@@ -444,67 +443,67 @@
 		<div style="clear: both"></div>
 		<div class="row" style="margin-top: 30px;padding-left:30px">
 				<div class="col-md-3">
-					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(3)[0] %>&uid=<%=rList.get(3)[1] %>&fullname=<%=URLEncoder.encode(rList.get(3)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(3))[3] %></div></a>
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(6)[0] %>&uid=<%=rList.get(6)[1] %>&fullname=<%=URLEncoder.encode(rList.get(6)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(6))[3] %></div></a>
 				</div>
 				<div class="col-md-3 text_w" style= "width:80px;">
 					<div class="pic-home-text arrow-left-1">
 						<p>
 						<span class="title">
-				          	<%//=rList.get(3)[4] %>
+				          	<%//=rList.get(6)[4] %>
 				        </span>
 				        </p>
 				        <p>
 				        <span class="name">
-				          <%=rList.get(3)[2] %>
+				          <%=rList.get(6)[2] %>
 				        </span>
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(3)[6] %>
+				          <%=rList.get(6)[6] %>
 				        </span>
 				        </p>
 					</div>
 				</div>
 				<div class="col-md-3">
-					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(1)[0] %>&uid=<%=rList.get(1)[1] %>&fullname=<%=URLEncoder.encode(rList.get(1)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(1))[3] %></div></a>
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(7)[0] %>&uid=<%=rList.get(7)[1] %>&fullname=<%=URLEncoder.encode(rList.get(7)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(7))[3] %></div></a>
 				</div>
 				<div class="col-md-3 text_w" style= "width:80px;">
 					<div class="pic-home-text arrow-left-1">
 						<p>
 						<span class="title">
-				          	<%//=rList.get(1)[4] %>
+				          	<%//=rList.get(7)[4] %>
 				        </span>
 				        </p>
 				        <p>
 				        <span class="name">
-				          <%=rList.get(1)[2] %>
+				          <%=rList.get(7)[2] %>
 				        </span>
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(1)[6] %>
+				          <%=rList.get(7)[6] %>
 				        </span>
 				        </p>
 					</div>
 				</div>
 				<div class="col-md-3">
-					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(2)[0] %>&uid=<%=rList.get(2)[1] %>&fullname=<%=URLEncoder.encode(rList.get(2)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(2))[3] %></div></a>
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(8)[0] %>&uid=<%=rList.get(8)[1] %>&fullname=<%=URLEncoder.encode(rList.get(8)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(8))[3] %></div></a>
 				</div>
 				<div class="col-md-3 text_w" style= "width:80px;">
 					<div class="pic-home-text arrow-left-1">
 						<p>
 						<span class="title">
-				          	<%//=rList.get(2)[4] %>
+				          	<%//=rList.get(8)[4] %>
 				        </span>
 				        </p>
 				        <p>
 				        <span class="name">
-				          <%=rList.get(2)[2] %>
+				          <%=rList.get(8)[2] %>
 				        </span>
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(2)[6] %>
+				          <%=rList.get(8)[6] %>
 				        </span>
 				        </p>
 					</div>
