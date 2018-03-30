@@ -74,7 +74,7 @@
 	List<String[]> rList = null;
 
 	if (cache.get("calis_home_researchers_random") == null) {
-		Researcher[] researchers = Researcher.getRandomResearchers(context, 4, 2);
+		Researcher[] researchers = Researcher.getRandomResearchers(context, 6, 2);
 		rList = new ArrayList<String[]>();
 		for(int i = 0; i < researchers.length; i++){
 			int id = researchers[i].getID();
@@ -104,8 +104,11 @@
 		cache.put(e);
 	}
 	rList = (List<String[]>) cache.get("calis_home_researchers_random").getObjectValue();
-%>
+	// out.print(rList);
 
+
+%>
+<%//=rList.get(5)[2] %>
 <SCRIPT type="text/javascript"
 	src="<%=request.getContextPath()%>/calis/js/jquery.featureList-1.0.0.js"></SCRIPT>
 <SCRIPT type="text/javascript"
@@ -274,93 +277,42 @@
 	<!-- 热门成功能 start -->
 	<div class="container row popular">
 		<div id="feature_list" class="col-md-12">
-			<div
-				style="">
-				<div class="row-title-zh"><img src="calis\images\x.png"> &nbsp; 热门成果</div>
-				<div class=""></div>
+			<div class="row-title-zh"><img src="calis\images\x.png"> &nbsp; 热门成果
+				<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
+					<a href="simple-search?query=" target="_blank" class="more">更多&gt;&gt;</a>
+				</span>
 			</div>
-			<div class=""></div>
-			
-				<%
-				Map<String, String> map = new HashMap<String, String>();
-				String commStr = ConfigurationManager.getProperty("webui.home.hotview.slideshow.community");
-				String specialHandles = ConfigurationManager.getProperty("webui.home.hotview.slideshow.community.special");
-				Community[] specialComms = PKUUtils.getSpecialCommunities(context);
-				int threshold = ConfigurationManager.getIntProperty("webui.home.hotview.slideshow.community.show.count");
-				int count_of_show = threshold;
-				int count_of_show2 = threshold;
-				int current_of_show = 0;
-				int current_of_show2 = 0;
-				String[] commArray = commStr.split(";");
-				for(int i = 0; i < commArray.length; i++) {
-					String[] array = commArray[i].split("\\|");
-					map.put(array[0], array[1]);
-				}
-
-				if(specialComms != null && specialComms.length > 0) {
-					for(Community comm : specialComms) {
-						if(current_of_show > threshold) {
-							break;
-						}
-						if(comm == null) {
-							continue;
-						}
-						current_of_show++;
-				%>
-				<li id="<%=comm.getHandle().replace("/", "_") %>">
-				<a href="javascript:void(0);"><img class="img-responsive visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md"
-						src="<%=request.getContextPath()%>/calis/images/<%=map.get(comm.getName()) %>">
-						<h3 class="h3"><%=comm.getName() %></h3> <span><%=comm.getMetadata("short_description") %></span></a></li>
-				<%
-					}
-				}
-
-				if(communities != null && communities.length > 0) {
-					Community[] subcommunities = PKUUtils.getSubcommunities(UIUtil.obtainContext(request), communities[0].getID(), "DESC");
-
-					for(Community comm : subcommunities) {
-						if(current_of_show > threshold) {
-							break;
-						}
-						if(count_of_show <= 0) {
-							break;
-						}
-						if(specialHandles.contains(comm.getHandle())) {
-							count_of_show--;
-							continue;
-						}
-						count_of_show--;
-						current_of_show++;
-				%>
-				<li id="<%=comm.getHandle().replace("/", "_") %>">
-				<a href="javascript:void(0);">
-						<h3 class="h3"><%=comm.getName() %></h3> <span><%=comm.getMetadata("short_description") %></span></a></li>
-				<%
-					}
-				%>
-			</ul>
-				<%
-				}
-				%>
-			
+			<div id="470302_1_hotview">
+				
+			</div>
 		</div>
 	</div>
 	<div style="clear: both"></div>
 	<!-- 热门成功能 end -->
 	<div class="container banner-home">
-	<div class="col-md-6">
+		<div class="row-title-zh xztj"><img src="calis\images\c.png"> &nbsp; 学者推荐
+			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
+				<a href="/researcher-list" target="_blank" class="more">更多&gt;&gt;</a>
+			</span>
+		</div>
+		<div class="row-title-zh yxdh"><img src="calis\images\v.png"> &nbsp; 院系导航
+			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
+				<a href="/community-list" target="_blank" class="more">更多&gt;&gt;</a>
+			</span></div>
+		<div style="clear: both"></div>
+	<div class="col-md-6" style="width:795px">
 	<%
-		if(rList.size() >= 4) {
+		if(rList.size() >= 6) {
 	%>
-		<div class="row">
+		<div class="row" style="margin-top: 30px;padding-left:30px">
 				<div class="col-md-3">
 					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(0)[0] %>&uid=<%=rList.get(0)[1] %>&fullname=<%=URLEncoder.encode(rList.get(0)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(0))[3] %></div></a>
 				</div>
-				<div class="col-md-3">
-					<div class="pic-home-text arrow-left-1" style="min-width:100px ;">
+				<div class="col-md-3 text_w" style= "width:80px;" style= "width:80px;">
+					<div class="pic-home-text arrow-left-1" >
 						<p>
 						<span class="title">
-				          	<%=rList.get(0)[4] %>
+				          	<%//=rList.get(0)[4] %>
 				        </span>
 				        </p>
 				        <p>
@@ -370,7 +322,7 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%//=rList.get(0)[5] %>
+				          <%=rList.get(0)[6] %>
 				        </span>
 				        </p>
 					</div>
@@ -378,11 +330,11 @@
 				<div class="col-md-3">
 					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(1)[0] %>&uid=<%=rList.get(1)[1] %>&fullname=<%=URLEncoder.encode(rList.get(1)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(1))[3] %></div></a>
 				</div>
-				<div class="col-md-3">
-					<div class="pic-home-text arrow-left-1">
+				<div class="col-md-3 text_w" style= "width:80px;">
+					<div class="pic-home-text arrow-left-1" >
 						<p>
 						<span class="title">
-				          	<%=rList.get(1)[4] %>
+				          	<%//=rList.get(1)[4] %>
 				        </span>
 				        </p>
 				        <p>
@@ -392,7 +344,7 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%//=rList.get(1)[5] %>
+				          <%=rList.get(1)[6] %>
 				        </span>
 				        </p>
 					</div>
@@ -400,11 +352,11 @@
 				<div class="col-md-3">
 					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(2)[0] %>&uid=<%=rList.get(2)[1] %>&fullname=<%=URLEncoder.encode(rList.get(2)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(2))[3] %></div></a>
 				</div>
-				<div class="col-md-3">
-					<div class="pic-home-text arrow-left-1">
+				<div class="col-md-3 text_w" style= "width:80px;">
+					<div class="pic-home-text arrow-left-1" >
 						<p>
 						<span class="title">
-				          	<%=rList.get(2)[4] %>
+				          	<%//=rList.get(2)[4] %>
 				        </span>
 				        </p>
 				        <p>
@@ -414,12 +366,151 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%//=rList.get(2)[5] %>
+				          <%=rList.get(2)[6] %>
 				        </span>
 				        </p>
 					</div>
 				</div>
 		</div>
+		<div style="clear: both"></div>
+		<div class="row" style="margin-top: 30px;padding-left:30px">
+				<div class="col-md-3">
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(3)[0] %>&uid=<%=rList.get(3)[1] %>&fullname=<%=URLEncoder.encode(rList.get(3)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(3))[3] %></div></a>
+				</div>
+				<div class="col-md-3 text_w" style= "width:80px;">
+					<div class="pic-home-text arrow-left-1" >
+						<p>
+						<span class="title">
+				          	<%//=rList.get(3)[4] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="name">
+				          <%=rList.get(3)[2] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="unit">
+				          <%=rList.get(3)[6] %>
+				        </span>
+				        </p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(4)[0] %>&uid=<%=rList.get(4)[1] %>&fullname=<%=URLEncoder.encode(rList.get(4)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(4))[3] %></div></a>
+				</div>
+				<div class="col-md-3 text_w" style= "width:80px;">
+					<div class="pic-home-text arrow-left-1">
+						<p>
+						<span class="title">
+				          	<%//=rList.get(4)[4] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="name">
+				          <%=rList.get(4)[2] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="unit">
+				          <%=rList.get(4)[6] %>
+				        </span>
+				        </p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(5)[0] %>&uid=<%=rList.get(5)[1] %>&fullname=<%=URLEncoder.encode(rList.get(5)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(5))[3] %></div></a>
+				</div>
+				<div class="col-md-3 text_w" style= "width:80px;">
+					<div class="pic-home-text arrow-left-1">
+						<p>
+						<span class="title">
+				          	<%//=rList.get(5)[4] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="name">
+				          <%=rList.get(5)[2] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="unit">
+				          <%=rList.get(5)[6] %>
+				        </span>
+				        </p>
+					</div>
+				</div>
+		</div>
+		<div style="clear: both"></div>
+		<div class="row" style="margin-top: 30px;padding-left:30px">
+				<div class="col-md-3">
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(3)[0] %>&uid=<%=rList.get(3)[1] %>&fullname=<%=URLEncoder.encode(rList.get(3)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(3))[3] %></div></a>
+				</div>
+				<div class="col-md-3 text_w" style= "width:80px;">
+					<div class="pic-home-text arrow-left-1">
+						<p>
+						<span class="title">
+				          	<%//=rList.get(3)[4] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="name">
+				          <%=rList.get(3)[2] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="unit">
+				          <%=rList.get(3)[6] %>
+				        </span>
+				        </p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(1)[0] %>&uid=<%=rList.get(1)[1] %>&fullname=<%=URLEncoder.encode(rList.get(1)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(1))[3] %></div></a>
+				</div>
+				<div class="col-md-3 text_w" style= "width:80px;">
+					<div class="pic-home-text arrow-left-1">
+						<p>
+						<span class="title">
+				          	<%//=rList.get(1)[4] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="name">
+				          <%=rList.get(1)[2] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="unit">
+				          <%=rList.get(1)[6] %>
+				        </span>
+				        </p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(2)[0] %>&uid=<%=rList.get(2)[1] %>&fullname=<%=URLEncoder.encode(rList.get(2)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(2))[3] %></div></a>
+				</div>
+				<div class="col-md-3 text_w" style= "width:80px;">
+					<div class="pic-home-text arrow-left-1">
+						<p>
+						<span class="title">
+				          	<%//=rList.get(2)[4] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="name">
+				          <%=rList.get(2)[2] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="unit">
+				          <%=rList.get(2)[6] %>
+				        </span>
+				        </p>
+					</div>
+				</div>
+		</div>
+				
 		<%
 			}
 		%>
@@ -427,30 +518,11 @@
 
 	<div class="col-md-6 xy">
 		<div class="row">
-			<div class="about-text">
-				<fmt:message key="jsp.home.about" />
+			<div class="">
 			</div>
 		</div>
 		<div class="row">
-			<%-- Search Box --%>
-			<div class="simple-search-form">
-			<form method="get" action="<%= request.getContextPath() %>/simple-search" >
-			<input class="form-control search-query-box" type="text" size="50"
-							id="tquery" name="query"
-							placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" />
-							<input type="submit" id="main-query-submit" class="btn btn-primary"
-							value="<fmt:message key="jsp.general.go"/>" />
-		<%--               <br/><a href="<%= request.getContextPath() %>/advanced-search"><fmt:message key="jsp.layout.navbar-default.advanced"/></a>
-		<%
-					if (ConfigurationManager.getBooleanProperty("webui.controlledvocabulary.enable"))
-					{
-		%>
-		              <br/><a href="<%= request.getContextPath() %>/subject-search"><fmt:message key="jsp.layout.navbar-default.subjectsearch"/></a>
-		<%
-		            }
-		%> --%>
-			</form>
-			</div>
+rqweqewqwe			
 		</div>
 	</div>
 

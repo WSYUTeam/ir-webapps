@@ -60,26 +60,27 @@
 		    	    html += "<a href='" + url + "' title='" + colLabels[i] + "' target='_blank'>" + (getSub(colLabels[i], 60)===undefined?getSub(colLabels[i], 59):getSub(colLabels[i], 60)) + "</a>";
 		    	    html += "</div>";
 		    	    var douhao_flag = (aps[i][1] && aps[i][1]!="" && aps[i][1]!="null") && (aps[i][2] &&aps[i][2]!="" && aps[i][2]!="null");
+		    	    //出版社
 		    	    if(douhao_flag) {
-		    	    	html += "<div class='publisher'>" + aps[i][1] + ", " + aps[i][2] + "</div>";
+		    	    	// html += "<div class='publisher'>" + aps[i][1] + ", " + aps[i][2] + "</div>";
 		    	    } else {
 		    	    	if(aps[i][1] || aps[i][2]) {
 			    	    	if(!aps[i][1] || aps[i][1]=="" || aps[i][1]=="null") {
-			    	    		html += "<div class='publisher'>" + aps[i][2] + "</div>";
+			    	    		// html += "<div class='publisher'>" + aps[i][2] + "</div>";
 			    	    	} else if(!aps[i][2] || aps[i][2]=="" && aps[i][2]=="null") {
-			    	    		html += "<div class='publisher'>" + aps[i][1] + "</div>";
+			    	    		// html += "<div class='publisher'>" + aps[i][1] + "</div>";
 			    	    	}
 		    	    	} else {
-		    	    		html += "<div class='publisher'> </div>";
+		    	    		// html += "<div class='publisher'> </div>";
 		    	    	}
 		    	    }
 		    	    html += "<div>";
 		    	    if(aps[i][0] && aps[i][0]!="" && aps[i][0]!="null") {
-		    	    	html += "<div class='author'>" + aps[i][0] + "</div>";
+		    	    	html += "<div class='author'><span class=\"a1\">作者：</span>" + aps[i][0] + "</div>";
 		    	    } else {
 		    	    	html += "<div class='author'> </div>";
 		    	    }
-					html += "<div class='views'>" + matrix[0][i] + " " + hot_views + "</div>";
+					html += "<div class='views'>" + matrix[0][i] + " " + hot_views + " &nbsp; &nbsp; <span class=\"a2 a1\">ISSN：</span></div>";
 					html += "<div style='clear: both;'></div>"
 		    	    html += "</div>";
 		    	    html += "</div>";
@@ -93,15 +94,19 @@
 		    }
 		    $("#"+handle+"_hotview").append(html);
 		}
-		
+		slide();
 		function slide(nr) {
+			
 			if (typeof nr == "undefined") {
 				nr = visible_item + 1;
 				nr = nr >= total_items ? 0 : nr;
 			}
 			
-			var handle = tabs.filter(":eq(" + nr + ")").parent().attr("id");  
+			//var handle = tabs.filter(":eq(" + nr + ")").parent().attr("id");  
+			var handle = '470302_1';
 			var hotview_url = context + '/hotview?handle=' + encodeURI(handle.replace("_", "/"));
+			//var hotview_url = context + '/hotview?handle=470302/1');
+			//alert(hotview_url)
 		    if(localCache.exist(hotview_url)){
 		    	showhotview(localCache.get(hotview_url), handle);
 		    } else {
@@ -112,6 +117,7 @@
 			    	    dataType:'json',    
 			    	    success:function(data) {    
 			    	        if(data.aps != null ){  
+			    	        	// alert(JSON.stringify(data));
 			    	        	showhotview(data, handle);
 			    	        	//localCache.set(hotview_url, data);
 			    	        }  

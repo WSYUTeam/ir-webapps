@@ -181,9 +181,8 @@
          </button>
          <a href="<%=request.getContextPath() %>/" class="navbar-brand"><img height="73" width="449" alt="calis logo" src="<%=request.getContextPath() %>/calis/images/logo-title.png"></a>
        </div>
-       <nav class="collapse navbar-collapse bs-navbar-collapse navbar-collapse-default" role="navigation">
+       <nav class="collapse navbar-collapse bs-navbar-collapse navbar-collapse-default" role="navigation" style="width:1185px">
          <ul class="nav navbar-nav">
-		   <li class="<%= currentPage.endsWith("/search")? "active" : "" %>"><a href="<%= request.getContextPath() %>/simple-search"><fmt:message key="nsfc.layout.navbar-default.search"/></a></li>
            <li><a class="<%= currentPage.endsWith("/researcher-list")? "active" : "" %>" href="<%= request.getContextPath() %>/researcher-list"><fmt:message key="jsp.layout.navbar-default.researchers" /></a></li>                
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown" onfocus="this.style.backgroundColor='#003C80'"  onblur="this.style.backgroundColor=''"><fmt:message key="jsp.layout.navbar-default.browse"/> <b class="caret"></b></a>
@@ -215,15 +214,28 @@
             </ul>
           </li>
           <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li>
+          <li class="<%= currentPage.endsWith("/search")? "active" : "" %>"><a href="<%= request.getContextPath() %>/simple-search"><fmt:message key="nsfc.layout.navbar-default.search"/></a></li>
+          <li>         	
+       <div class="row">
+			<%-- Search Box --%>
+			<div class="simple-search-form">
+      		<form method="get" action="<%= request.getContextPath() %>/simple-search" style="width:300px;">
+			<input class="form-control search-query-box" type="text" size="18" style="float:left;width:230px;"
+							id="tquery" name="query"
+							placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" /><input type="submit" id="main-query-submit" class="btn btn-primary" style="width:60px;float:right;color: #fff;background-color:#003C80;"  
+							value="<fmt:message key="jsp.general.go"/>" />
+			</form>
+			</div>
+		</div>
+          </li>
        </ul>
        <% 
-       String url = (request.getServletPath()).substring(7,15);
+       //String url = (request.getServletPath()).substring(7,15);
        //out.print(url.equals("home.jsp"));
        //out.print(request.getServletPath());
-       if(url.equals("home.jsp")) {
+       //if(url.equals("home.jsp")) {
        %>
-      
-       <form action="simple-search" method="get" style="padding-top: 10px;">
+<!--        <form action="simple-search" method="get" style="padding-top: 10px;">
 			<input type="hidden" value=""
 				name="location" /> <input type="hidden"
 				value="" name="query" />
@@ -245,6 +257,7 @@
 				type="submit" value="检索"
 				onclick="return validateFilters()" />
 		</form>
-		<% }%>
+ -->		<% //}%>
+ <div style='clear: both;'></div>
     </nav>
      
