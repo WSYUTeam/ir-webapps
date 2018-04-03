@@ -591,6 +591,17 @@
 
 	</div>
 
+	<div class="container banner-home" style="margin-top:30px">
+		<div class="row-title-zh xztj"><img src="calis\images\a.png"> &nbsp; 成果分类
+			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
+			</span>
+		</div>
+		<div class="row-title-zh yxdh"><img src="calis\images\b.png"> &nbsp; 被收录情况
+			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
+			</span>
+		</div>
+		<div style="clear: both"></div>
+	</div>
 	<div class="container row" style="margin-top: 70px;">
 		<div id="glanceshow_bg" class="visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md"></div>
 		<div class="glance">

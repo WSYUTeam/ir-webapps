@@ -22,7 +22,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .navbar-default {
     background-color: #fff;
-    background-image: none; /*url("../images/banner_back_2.png");*/
+    background-image: url("../images/index_bg_topBar.jpg");
+    background-position: -30% 150%; 
     border: none;
     box-shadow: none;
     filter: none\9;
