@@ -48,12 +48,13 @@
 			var aps = data.aps;
 		    var html = "";
 		    var flag = true;
+		    html += "<div class='row item'>";
 		    for(var i = 0; i < aps.length; i++) {
 		    	if(aps[i] != null && aps[i] != "" && aps[i].length > 0) {
 		        	var url = colLabelsAttrs[i].url;
 		        	
 		        	if(i%2==0) {
-		        		html += "<div class='row item'>";
+		        		//html += "<div class='row item'>";
 		        	} 
 		        	html += "<div class='col-md-6'>";
 		    	    html += "<div class='title'>";
@@ -85,13 +86,14 @@
 		    	    html += "</div>";
 		    	    html += "</div>";
 		    	    if((i%2==1)) {
-		    	    	html += "</div>";
+		    	    	//html += "</div>";
 		    	    }
 
 		    	} else {
-		    		html += "</div>";
+		    		//html += "</div>";
 		    	}
 		    }
+		    html += "</div>";
 		    $("#"+handle+"_hotview").append(html);
 		}
 		slide();

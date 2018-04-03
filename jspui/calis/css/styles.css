@@ -287,7 +287,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .navbar-bottom {
-    background: #2d312f none repeat scroll 0 0;
+    background: #003C80 none repeat scroll 0 0;
     border: medium none;
     border-radius: 0;
     box-shadow: none;
@@ -305,18 +305,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 #footerPan {
-    margin: 55px auto 35px;
+    margin: 20px auto;
     position: relative;
 }
 
 #footerPan div.copyright {
-    color: #999;
+    color: #fff;
     margin: 25px 0 auto;
     text-align: center;
 }
 
 #footerPan div.copyright a {
-    color: #999;
+    color: #fff;
 }
 
 #footerPan div.copyright a:HOVER {
@@ -330,7 +330,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 div#feature_list {
-    height: 237px;
+    height: 300px;
     overflow: hidden;
     position: relative;
 }

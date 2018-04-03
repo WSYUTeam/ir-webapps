@@ -47,11 +47,35 @@
 <%@ page import="org.dspace.core.Context"%>
 <%@ page import="edu.calis.ir.pku.components.Researcher" %>
 <%@ page import="edu.calis.ir.pku.util.PKUUtils" %>
+<!-- start -->
+<%@page import="org.apache.commons.lang.StringUtils"%>
+
+    
+<%@ page import="org.dspace.app.webui.servlet.admin.EditCommunitiesServlet" %>
+<%@ page import="org.dspace.app.webui.util.UIUtil" %>
+<%@ page import="org.dspace.browse.ItemCountException" %>
+<%@ page import="org.dspace.content.Collection" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.util.Map" %>
+
+
 
 <%
 	Community[] communities = (Community[]) request.getAttribute("communities");
 
     Locale sessionLocale = UIUtil.getSessionLocale(request);
+
+    //院系导航 start
+    Map collectionMap = (Map) request.getAttribute("collections.map");
+    Map subcommunityMap = (Map) request.getAttribute("subcommunities.map");
+    Boolean admin_b = (Boolean)request.getAttribute("admin_button");
+    boolean admin_button = (admin_b == null ? false : admin_b.booleanValue());
+    // ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
+    
+    Community[] subCommunity = null;
+    //院系导航 end
+
     Config.set(request.getSession(), Config.FMT_LOCALE, sessionLocale);
     String topNews = NewsManager.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news.top.html"));
     String sideNews = NewsManager.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news.side.html"));
@@ -107,6 +131,31 @@
 	// out.print(rList);
 
 
+%>
+<%!
+//院系导航 start
+    void showCommunity(Community c, JspWriter out, HttpServletRequest request, ItemCounter ic,
+            Map collectionMap, Map subcommunityMap) throws ItemCountException, IOException, SQLException
+    {
+        out.println( "<li> " );
+        //out.println( "<div class=\"media-body\"><div class=\"col-md-12\"><h4 class=\"media-heading\"><a id=" + c.getID() + " href=\"" + request.getContextPath() + "/handle/" 
+        //    + c.getHandle() + "\">" + c.getMetadata("name") + "</a>");
+        out.println( "<div ><h4><a id=" + c.getID() + " href=\"" + request.getContextPath() + "/handle/" 
+            + c.getHandle() + "\">" + c.getMetadata("name") + "</a>");
+        if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))
+        {
+            out.println(" <span class=\"\" style=\"height:25px;width:80px;font-weight:bold;text-align:center;line-height:25px;font-size:16px;color:#fff;background-color:#003C80;float:right\">" + ic.getCount(c) + "</span>");
+        }
+        //out.println("</h4>");
+        
+        //out.println("</div>");
+        // Get the collections in this community
+
+        
+        out.println("</h4></div>");
+        out.println("</li><hr>");
+    }
+//院系导航 END
 %>
 <SCRIPT type="text/javascript"
 	src="<%=request.getContextPath()%>/calis/js/jquery.featureList-1.0.0.js"></SCRIPT>
@@ -521,7 +570,22 @@
 			</div>
 		</div>
 		<div class="row">
-rqweqewqwe			
+			<% if (communities.length != 0)
+			{
+			    subCommunity = PKUUtils.getSubcommunities(UIUtil.obtainContext(request), communities[0].getID(), "ASC");
+			%>
+			<div id="community_list">
+			    <ul style="padding-left:10px;padding-top:25px">
+			<%			        
+			        for (int i = 0; i < subCommunity.length; i++)
+			        {
+			            showCommunity(subCommunity[i], out, request, ic, collectionMap, subcommunityMap);
+			        }
+			%>
+			    </ul>
+			</div>
+			<% }
+			%>		
 		</div>
 	</div>
 
