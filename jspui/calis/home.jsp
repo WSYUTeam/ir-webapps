@@ -269,7 +269,19 @@
 			});
 		});
 	}
-
+	//获取各类型成果
+    function getArticles(obj, type) {
+        var organId = "996";
+        $.ajax({
+            url: "#3",
+            data: { q: type, objecttype: "article", globalOrganId: organId},
+            success: function (data) {
+                $("#article_list").html(data);
+                $(obj).siblings().removeClass("current");
+                $(obj).addClass("current");
+            }
+        });
+    }
 </SCRIPT>
 
 
@@ -592,75 +604,38 @@
 	</div>
 
 	<div class="container banner-home" style="margin-top:30px">
-		<div class="row-title-zh xztj"><img src="calis\images\a.png"> &nbsp; 成果分类
+		<div class="row-title-zh xztj" style="width:592px"><img src="calis\images\a.png"> &nbsp; 成果分类
 			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
 			</span>
 		</div>
-		<div class="row-title-zh yxdh"><img src="calis\images\b.png"> &nbsp; 被收录情况
+		<div class="row-title-zh yxdh" style="width:592px"><img src="calis\images\b.png"> &nbsp; 被收录情况
 			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
 			</span>
 		</div>
 		<div style="clear: both"></div>
+		<div class="cnt clear" style="float: left">
+            <div class="word">
+                <a class="current" href="javascript:void(0)" onclick="getArticles(this,1)">教师著作</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles(this,2)">学位论文</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles(this,3)">期刊论文</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles(this,6)">会议论文</a>
+            </div>
+            <div style="clear: both"></div>
+            <!-- <div id="article_list"><ul><li><a target="_blank" href="/996/articles/9091900/article_detail.aspx" title="非英语专业大学生自主性英语学习能力调查与分析">非英语专业大学生自主性英语学习能力调查与</a></li><li><a target="_blank" href="/996/articles/2505391/article_detail.aspx" title="中国恶性肿瘤死亡率20年变化趋势和近期预测分析">中国恶性肿瘤死亡率20年变化趋势和近期预</a></li><li><a target="_blank" href="/996/articles/10981610/article_detail.aspx" title="非英语专业大学生学习动机的内在结构">非英语专业大学生学习动机的内在结构</a></li><li><a target="_blank" href="/996/articles/9083358/article_detail.aspx" title="中国胃癌死亡率20年变化情况分析及其发展趋势预测">中国胃癌死亡率20年变化情况分析及其发展</a></li><li><a target="_blank" href="/996/articles/16049701/article_detail.aspx" title="中国成年人代谢综合征的患病率">中国成年人代谢综合征的患病率</a></li><li><a target="_blank" href="/996/articles/5077478/article_detail.aspx" title="是“育人”非“制器”——再谈人文教育的基础地位">是“育人”非“制器”——再谈人文教育的基</a></li><li><a target="_blank" href="/996/articles/5477732/article_detail.aspx" title="分布式发电及其对电力系统的影响">分布式发电及其对电力系统的影响</a></li></ul><ul><li><a target="_blank" href="/996/articles/27153944/article_detail.aspx" title="政府干预、政治关联与地方国有企业并购">政府干预、政治关联与地方国有企业并购</a></li><li><a target="_blank" href="/996/articles/10262228/article_detail.aspx" title="国内外“学习者自主”研究述评">国内外“学习者自主”研究述评</a></li><li><a target="_blank" href="/996/articles/15227545/article_detail.aspx" title="中国的工业生产力革命——用随机前沿生产模型对中国大中型工业企业全要素生产率增长的分解及分析">中国的工业生产力革命——用随机前沿生产模</a></li><li><a target="_blank" href="/996/articles/3077831/article_detail.aspx" title="综合评价的方法,问题及其研究趋势">综合评价的方法,问题及其研究趋势</a></li><li><a target="_blank" href="/996/articles/3055601/article_detail.aspx" title="关联规则的增量式更新算法">关联规则的增量式更新算法</a></li><li><a target="_blank" href="/996/articles/4283299/article_detail.aspx" title="论高校学科建设">论高校学科建设</a></li><li><a target="_blank" href="/996/articles/4475717/article_detail.aspx" title="GM（1,1）模型的适用范围">GM（1,1）模型的适用范围</a></li></ul></div> -->
+        </div>
+        <div class="cnt clear" style="float: right">
+            <div class="word">
+                <a class="current" href="javascript:void(0)" onclick="getArticles(this,1)"></a>
+                <a class="" href="javascript:void(0)" onclick="getArticles(this,2)"></a>
+                <a class="" href="javascript:void(0)" onclick="getArticles(this,3)"></a>
+                <a class="" href="javascript:void(0)" onclick="getArticles(this,6)"></a>
+            </div>
+            <div style="clear: both"></div>
+            
+        </div>
 	</div>
-	<div class="container row" style="margin-top: 70px;">
-		<div id="glanceshow_bg" class="visible-xs-block hidden-xs visible-sm-block hidden-sm visible-md-block hidden-md"></div>
-		<div class="glance">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="icon">
-						<img src="<%=request.getContextPath()%>/calis/images/IR-3_19.png" />
-					</div>
-					<div id="metadata" class="">
-						<div class="name">
-							<fmt:message key="jsp.home.glance.metadata" />
-						</div>
-						<div class="number"><img src="<%=request.getContextPath() %>/calis/images/loading.gif" /></div>
-					</div>
-				</div>
-
-				<div class="col-md-3">
-					<div class="icon">
-						<img src="<%=request.getContextPath()%>/calis/images/IR-3_27.png" />
-					</div>
-					<div id="fulltext" class="">
-						<div class="name">
-							<fmt:message key="jsp.home.glance.fulltext" />
-						</div>
-						<div class="number"><img src="<%=request.getContextPath() %>/calis/images/loading.gif" /></div>
-					</div>
-				</div>
-
-				<div class="col-md-3">
-					<div class="icon">
-						<img src="<%=request.getContextPath()%>/calis/images/IR-3_32.png" />
-					</div>
-					<div id="views" class="">
-						<div class="name">
-							<fmt:message key="jsp.home.glance.views" />
-						</div>
-						<div class="number"><img src="<%=request.getContextPath() %>/calis/images/loading.gif" /></div>
-					</div>
-				</div>
-
-				<div class="col-md-3">
-					<div class="icon">
-						<img src="<%=request.getContextPath()%>/calis/images/IR-3_33.png" />
-					</div>
-					<div id="downloads" class="">
-						<div class="name">
-							<fmt:message key="jsp.home.glance.downloads" />
-						</div>
-						<div class="number"><img src="<%=request.getContextPath() %>/calis/images/loading.gif" /></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	
-
-
-	<div class="container row statistics">
+	<div style="clear: both"></div>
+	<!-- <div class="container row statistics">
 		<div
 				style="border-bottom: 3px solid #949c9c; display: inline-block; padding-bottom: 25px; margin-bottom: 30px;">
 				<div class="row-title-zh">统计</div>
@@ -672,10 +647,10 @@
 				int discovery_facet_list = 4;
 		%>
 		<%@ include file="../discovery/static-sidebar-facet.jsp"%>
-	</div>
+	</div> -->
 
 	<div class="row">
-		<%@ include file="../discovery/static-tagcloud-facet.jsp"%>
+		
 	</div>
 
 	</div>
