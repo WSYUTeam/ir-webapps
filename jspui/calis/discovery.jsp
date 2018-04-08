@@ -1,3 +1,5 @@
+<!-- 是否为成果分类的显示，不是则为搜索的显示界面  -->
+<%  if(request.getParameter("cgfl")==null) { %>
 <%--
 
     The contents of this file are subject to the license and copyright
@@ -55,7 +57,6 @@
 <%@page import="org.dspace.content.DSpaceObject"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -1035,3 +1036,74 @@
 
 	</div>
 </div>
+<%  } else{ %>
+	<!--成果分类 start -->
+	<style  type="text/css">
+	#article_list ul, #article_list ul li {
+		padding-left: 0px;
+		margin-left:  12px;
+	}
+	</style>
+	<%@page import="org.dspace.core.Utils"%><%@page import="com.coverity.security.Escape"%><%@page import="org.dspace.core.Constants"%><%@page import="org.dspace.content.Bundle"%><%@page import="org.dspace.content.Metadatum" %><%@page import="org.dspace.discovery.configuration.DiscoverySearchFilterFacet"%><%@page import="org.dspace.app.webui.util.UIUtil"%><%@page import="java.util.HashMap"%><%@page import="java.util.ArrayList"%><%@page import="org.dspace.discovery.DiscoverFacetField"%><%@page import="org.dspace.discovery.configuration.DiscoverySearchFilter"%><%@page import="org.dspace.discovery.DiscoverFilterQuery"%><%@page import="org.dspace.discovery.DiscoverQuery"%><%@page import="org.apache.commons.lang.StringUtils"%><%@page import="java.util.Map"%><%@page import="org.dspace.discovery.DiscoverResult.FacetResult"%><%@page import="org.dspace.discovery.DiscoverResult"%><%@page import="org.dspace.content.DSpaceObject"%><%@page import="java.util.List"%><%@ page contentType="text/html;charset=UTF-8"%><%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%><%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%><%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace"%><%@ page import="java.net.URLEncoder"%><%@ page import="org.dspace.content.Community"%><%@ page import="org.dspace.content.Collection"%><%@ page import="org.dspace.content.Item"%><%@ page import="org.dspace.search.QueryResults"%><%@ page import="org.dspace.sort.SortOption"%><%@ page import="java.util.Enumeration"%><%@ page import="java.util.Set"%><%@ page import="org.dspace.browse.BrowseIndex"%><%@ page import="org.dspace.browse.CrossLinks"%><%@ page import="org.dspace.content.authority.MetadataAuthorityManager"%><%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %><%
+	// Get the attributes
+    DSpaceObject scope = (DSpaceObject) request.getAttribute("scope" );
+    List<String> sortOptions = (List<String>) request.getAttribute("sortOptions");
+    String query = (String) request.getAttribute("query");
+	if (query == null)
+	{
+	    query = "";
+	}
+    Boolean error_b = (Boolean)request.getAttribute("search.error");
+    boolean error = (error_b == null ? false : error_b.booleanValue());
+//<h1>Search Results</h1> 
+		DiscoverResult qResults = (DiscoverResult)request.getAttribute("queryresults");
+	Item      [] items       = (Item[]      )request.getAttribute("items");
+	if( error )
+	{
+	%>
+	<!-- <p align="center" class="submitFormWarn">
+		<fmt:message key="jsp.search.error.discovery" />
+	</p> -->
+	<%
+		}
+	else if( qResults != null && qResults.getTotalSearchResults() == 0 )
+	{
+	%>
+	<%-- <p align="center">Search produced no results.</p> --%>
+	<!-- <p align="center">
+		无检索结果
+		<fmt:message key="jsp.search.general.noresults" />
+	</p> -->
+	<%
+		}
+	else if( qResults != null)
+	{
+			if (items.length > 0) {
+				%>
+				<ul>
+				<% 
+				for(Item item : items) {
+			    		Bundle[] bundles = item.getBundles(Constants.DEFAULT_BUNDLE_NAME);		    		
+			    		boolean filesExist = false;
+					for (Bundle bnd : bundles) {
+						filesExist = bnd.getBitstreams().length > 0;
+						if (filesExist) {
+							break;
+						}
+					}
+					if(item.isWithdrawn()) {
+					%>
+					<!-- <%=Utils.addEntities(item.getName())%> -->
+					<%
+					} else {
+					%><li><a href="<%=request.getContextPath()%>/handle/<%=item.getHandle()%>" target="_blank"> <%=Utils.addEntities(item.getName())%></a></li><%
+					}
+				}
+				%>
+				</ul>
+				<%
+			}
+		}
+	%>
+	<!--成果分类 end -->
+<%  } %>

@@ -58,8 +58,17 @@
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.util.Map" %>
-
-
+<!-- 成果分类 start -->
+<%@page import="org.dspace.core.Constants"%>
+<%@page import="org.dspace.content.Bundle"%>
+<%@page import="org.dspace.content.DSpaceObject"%>
+<%@page import="java.util.List"%>
+<%@page import="org.dspace.discovery.DiscoverResult.FacetResult"%>
+<%@page import="org.dspace.discovery.DiscoverResult"%>
+<%@ page import="org.dspace.content.Item"%>
+<%@ page import="org.dspace.search.QueryResults"%>
+<%@ page import="org.dspace.sort.SortOption"%>
+<!-- 成果分类 end -->
 
 <%
 	Community[] communities = (Community[]) request.getAttribute("communities");
@@ -157,6 +166,20 @@
     }
 //院系导航 END
 %>
+<!-- 成果分类 start -->
+<%
+	// Get the attributes
+    DSpaceObject scope = (DSpaceObject) request.getAttribute("scope" );
+    List<String> sortOptions = (List<String>) request.getAttribute("sortOptions");
+    String query = (String) request.getAttribute("query");
+	if (query == null)
+	{
+	    query = "";
+	}
+    Boolean error_b = (Boolean)request.getAttribute("search.error");
+    boolean error = (error_b == null ? false : error_b.booleanValue());
+%>
+<!-- 成果分类 end -->
 <SCRIPT type="text/javascript"
 	src="<%=request.getContextPath()%>/calis/js/jquery.featureList-1.0.0.js"></SCRIPT>
 <SCRIPT type="text/javascript"
@@ -270,11 +293,23 @@
 		});
 	}
 	//获取各类型成果
-    function getArticles(obj, type) {
-        var organId = "996";
+    function getArticles(obj, types) {
+        filterquery = "";
+        if(types == 'Conference') {
+        	//会议论文
+			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Conference&filtertype=equals&cgfl=1";
+		} else if(types == 'Book') {
+			//专著 
+			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Book&filtertype=equals&cgfl=1";
+		} else if(types == 'Journal') {
+			//期刊论文
+			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Journal&filtertype=equals&cgfl=1";
+		} else if(types == 'Thesis') {
+			//学位论文
+			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Thesis&filtertype=equals&cgfl=1";
+		}
         $.ajax({
-            url: "#3",
-            data: { q: type, objecttype: "article", globalOrganId: organId},
+            url: "<%=request.getContextPath()%>/"+filterquery,
             success: function (data) {
                 $("#article_list").html(data);
                 $(obj).siblings().removeClass("current");
@@ -282,6 +317,7 @@
             }
         });
     }
+    getArticles('','Book');
 </SCRIPT>
 
 
@@ -338,7 +374,7 @@
 	<div class="container row popular">
 		<div id="feature_list" class="col-md-12">
 			<div class="row-title-zh"><img src="calis\images\x.png"> &nbsp; 热门成果
-				<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
+				<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:45px">
 					<a href="simple-search?query=" target="_blank" class="more">更多&gt;&gt;</a>
 				</span>
 			</div>
@@ -351,12 +387,12 @@
 	<!-- 热门成功能 end -->
 	<div class="container banner-home">
 		<div class="row-title-zh xztj"><img src="calis\images\c.png"> &nbsp; 学者推荐
-			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
+			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:45px">
 				<a href="/researcher-list" target="_blank" class="more">更多&gt;&gt;</a>
 			</span>
 		</div>
 		<div class="row-title-zh yxdh"><img src="calis\images\v.png"> &nbsp; 院系导航
-			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
+			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:45px">
 				<a href="/community-list" target="_blank" class="more">更多&gt;&gt;</a>
 			</span></div>
 		<div style="clear: both"></div>
@@ -587,7 +623,7 @@
 			    subCommunity = PKUUtils.getSubcommunities(UIUtil.obtainContext(request), communities[0].getID(), "ASC");
 			%>
 			<div id="community_list">
-			    <ul style="padding-left:10px;padding-top:25px">
+			    <ul style="padding-left:10px;padding-right:7px;padding-top:25px">
 			<%			        
 			        for (int i = 0; i < subCommunity.length; i++)
 			        {
@@ -615,13 +651,17 @@
 		<div style="clear: both"></div>
 		<div class="cnt clear" style="float: left">
             <div class="word">
-                <a class="current" href="javascript:void(0)" onclick="getArticles(this,1)">教师著作</a>
-                <a class="" href="javascript:void(0)" onclick="getArticles(this,2)">学位论文</a>
-                <a class="" href="javascript:void(0)" onclick="getArticles(this,3)">期刊论文</a>
-                <a class="" href="javascript:void(0)" onclick="getArticles(this,6)">会议论文</a>
+                <a class="current" href="javascript:void(0)" onclick="getArticles(this,'Book')">教师著作</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles(this,'Thesis')">学位论文</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles(this,'Journal')">期刊论文</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles(this,'Conference')">会议论文</a>
             </div>
             <div style="clear: both"></div>
-            <!-- <div id="article_list"><ul><li><a target="_blank" href="/996/articles/9091900/article_detail.aspx" title="非英语专业大学生自主性英语学习能力调查与分析">非英语专业大学生自主性英语学习能力调查与</a></li><li><a target="_blank" href="/996/articles/2505391/article_detail.aspx" title="中国恶性肿瘤死亡率20年变化趋势和近期预测分析">中国恶性肿瘤死亡率20年变化趋势和近期预</a></li><li><a target="_blank" href="/996/articles/10981610/article_detail.aspx" title="非英语专业大学生学习动机的内在结构">非英语专业大学生学习动机的内在结构</a></li><li><a target="_blank" href="/996/articles/9083358/article_detail.aspx" title="中国胃癌死亡率20年变化情况分析及其发展趋势预测">中国胃癌死亡率20年变化情况分析及其发展</a></li><li><a target="_blank" href="/996/articles/16049701/article_detail.aspx" title="中国成年人代谢综合征的患病率">中国成年人代谢综合征的患病率</a></li><li><a target="_blank" href="/996/articles/5077478/article_detail.aspx" title="是“育人”非“制器”——再谈人文教育的基础地位">是“育人”非“制器”——再谈人文教育的基</a></li><li><a target="_blank" href="/996/articles/5477732/article_detail.aspx" title="分布式发电及其对电力系统的影响">分布式发电及其对电力系统的影响</a></li></ul><ul><li><a target="_blank" href="/996/articles/27153944/article_detail.aspx" title="政府干预、政治关联与地方国有企业并购">政府干预、政治关联与地方国有企业并购</a></li><li><a target="_blank" href="/996/articles/10262228/article_detail.aspx" title="国内外“学习者自主”研究述评">国内外“学习者自主”研究述评</a></li><li><a target="_blank" href="/996/articles/15227545/article_detail.aspx" title="中国的工业生产力革命——用随机前沿生产模型对中国大中型工业企业全要素生产率增长的分解及分析">中国的工业生产力革命——用随机前沿生产模</a></li><li><a target="_blank" href="/996/articles/3077831/article_detail.aspx" title="综合评价的方法,问题及其研究趋势">综合评价的方法,问题及其研究趋势</a></li><li><a target="_blank" href="/996/articles/3055601/article_detail.aspx" title="关联规则的增量式更新算法">关联规则的增量式更新算法</a></li><li><a target="_blank" href="/996/articles/4283299/article_detail.aspx" title="论高校学科建设">论高校学科建设</a></li><li><a target="_blank" href="/996/articles/4475717/article_detail.aspx" title="GM（1,1）模型的适用范围">GM（1,1）模型的适用范围</a></li></ul></div> -->
+            <!-- 成果分类  start -->
+            <div id="article_list">
+            </div>
+            <!-- 成果分类  end -->
+            
         </div>
         <div class="cnt clear" style="float: right">
             <div class="word">
