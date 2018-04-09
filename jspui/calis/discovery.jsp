@@ -1039,7 +1039,7 @@
 <%  } else{ %>
 	<!--成果分类 start -->
 	<style  type="text/css">
-	#article_list ul, #article_list ul li {
+	#article_list ul, #article_list ul li, #article_list_sl ul, #article_list_sl ul li {
 		padding-left: 0px;
 		margin-left:  12px;
 	}

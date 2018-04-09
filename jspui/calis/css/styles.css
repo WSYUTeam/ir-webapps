@@ -1907,7 +1907,7 @@ div.panel-primary div.panel-heading a {
     margin-bottom:30px;
     text-decoration:none;
 }
-.cnt.clear .word a.current   {
+.cnt.clear .word a.current , .cnt.clear .word a.current_sl  {
     display: block;
     margin-left:5px;
     text-align:center;

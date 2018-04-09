@@ -318,6 +318,32 @@
         });
     }
     getArticles('','Book');
+    //获取被收录情况
+    function getArticles_sl(obj, types) {
+        filterquery_sl = "";
+        if(types == 'SCI-E') {
+        	//会议论文
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=SCI-E&filtertype=equals&cgfl=1";
+		} else if(types == 'SCI') {
+			//专著 
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=SCI&filtertype=equals&cgfl=1";
+		} else if(types == 'CPCI') {
+			//期刊论文
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CPCI&filtertype=equals&cgfl=1";
+		} else if(types == 'CSCD') {
+			//学位论文
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CSCD&filtertype=equals&cgfl=1";
+		}
+        $.ajax({
+            url: "<%=request.getContextPath()%>/"+filterquery_sl,
+            success: function (data) {
+                $("#article_list_sl").html(data);
+                $(obj).siblings().removeClass("current_sl");
+                $(obj).addClass("current_sl");
+            }
+        });
+    }
+    getArticles_sl('','SCI-E');
 </SCRIPT>
 
 
@@ -665,13 +691,16 @@
         </div>
         <div class="cnt clear" style="float: right">
             <div class="word">
-                <a class="current" href="javascript:void(0)" onclick="getArticles(this,1)"></a>
-                <a class="" href="javascript:void(0)" onclick="getArticles(this,2)"></a>
-                <a class="" href="javascript:void(0)" onclick="getArticles(this,3)"></a>
-                <a class="" href="javascript:void(0)" onclick="getArticles(this,6)"></a>
+                <a class="current_sl" href="javascript:void(0)" onclick="getArticles_sl(this,'SCI-E')">SCI-E</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'SCI')">SCI</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'CPCI')">CPCI</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'CSCD')">CSCD</a>
             </div>
             <div style="clear: both"></div>
-            
+             <!-- 被收录情况  start -->
+            <div id="article_list_sl">
+            </div>
+            <!-- 被收录情况  end -->
         </div>
 	</div>
 	<div style="clear: both"></div>
