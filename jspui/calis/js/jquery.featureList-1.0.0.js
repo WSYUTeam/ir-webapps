@@ -41,7 +41,9 @@
 			}
 		
 		function showhotview(data, handle) {
-			$("#"+handle+"_hotview").empty();
+			//$("#"+handle+"_hotview").empty();
+			// alert(JSON.stringify(data));
+			$("#hot_view").empty();
 			var matrix = data.matrix;
 			var colLabels = data.colLabels;
 			var colLabelsAttrs = data.colLabelsAttrs;
@@ -81,7 +83,8 @@
 		    	    } else {
 		    	    	html += "<div class='author'> </div>";
 		    	    }
-					html += "<div class='views'>" + matrix[0][i] + " " + hot_views + " &nbsp; &nbsp; <span class=\"a2 a1\">ISSN：</span></div>";
+					//html += "<div class='views'>" + matrix[0][i] + " " + hot_views + " &nbsp; &nbsp; <span class=\"a2 a1\">ISSN：</span></div>";
+					html += "<div class='views'><span class=\"a1\">期刊：</span>" + aps[i][1] + " " + hot_views + " &nbsp; &nbsp; <span class=\"a2 a1\">ISSN：</span></div>";
 					html += "<div style='clear: both;'></div>"
 		    	    html += "</div>";
 		    	    html += "</div>";
@@ -94,7 +97,8 @@
 		    	}
 		    }
 		    html += "</div>";
-		    $("#"+handle+"_hotview").append(html);
+		    //$("#"+handle+"_hotview").append(html);
+		    $("#hot_view").append(html);
 		}
 		slide();
 		function slide(nr) {

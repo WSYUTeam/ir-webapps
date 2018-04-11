@@ -482,11 +482,11 @@ ul#output .loading {
     padding-left: 0px;
 }
 .row-title-zh.xztj {
-    width: 795px;
+    width: 775px;
     float: left;
 }
 .row-title-zh.yxdh{
-    width: 390px;
+    width: 410px;
     float: right;
 }
 .row-title-en {
@@ -1907,11 +1907,25 @@ div.panel-primary div.panel-heading a {
     margin-bottom:30px;
     text-decoration:none;
 }
-.cnt.clear .word a.current , .cnt.clear .word a.current_sl  {
+.cnt.clear .word_sl a {
     display: block;
     margin-left:5px;
     text-align:center;
-    width:100px;
+    width:97px;
+    height: 30px;
+    line-height:30px;
+    color:#fff;
+    font-weight:bold;
+    margin-right:15px;
+    background-color:#003C80 ;
+    float:left;
+    margin-bottom:30px;
+    text-decoration:none;
+}
+.cnt.clear .word a.current , .cnt.clear .word_sl a.current_sl  {
+    display: block;
+    margin-left:5px;
+    text-align:center;
     height: 30px;
     line-height:30px;
     color:#fff;

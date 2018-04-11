@@ -1042,6 +1042,10 @@
 	#article_list ul, #article_list ul li, #article_list_sl ul, #article_list_sl ul li {
 		padding-left: 0px;
 		margin-left:  12px;
+		color:#65A3E8;
+	}
+	#article_list ul, #article_list ul li a, #article_list_sl ul, #article_list_sl ul li a {
+		color:#000;
 	}
 	</style>
 	<%@page import="org.dspace.core.Utils"%><%@page import="com.coverity.security.Escape"%><%@page import="org.dspace.core.Constants"%><%@page import="org.dspace.content.Bundle"%><%@page import="org.dspace.content.Metadatum" %><%@page import="org.dspace.discovery.configuration.DiscoverySearchFilterFacet"%><%@page import="org.dspace.app.webui.util.UIUtil"%><%@page import="java.util.HashMap"%><%@page import="java.util.ArrayList"%><%@page import="org.dspace.discovery.DiscoverFacetField"%><%@page import="org.dspace.discovery.configuration.DiscoverySearchFilter"%><%@page import="org.dspace.discovery.DiscoverFilterQuery"%><%@page import="org.dspace.discovery.DiscoverQuery"%><%@page import="org.apache.commons.lang.StringUtils"%><%@page import="java.util.Map"%><%@page import="org.dspace.discovery.DiscoverResult.FacetResult"%><%@page import="org.dspace.discovery.DiscoverResult"%><%@page import="org.dspace.content.DSpaceObject"%><%@page import="java.util.List"%><%@ page contentType="text/html;charset=UTF-8"%><%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%><%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%><%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace"%><%@ page import="java.net.URLEncoder"%><%@ page import="org.dspace.content.Community"%><%@ page import="org.dspace.content.Collection"%><%@ page import="org.dspace.content.Item"%><%@ page import="org.dspace.search.QueryResults"%><%@ page import="org.dspace.sort.SortOption"%><%@ page import="java.util.Enumeration"%><%@ page import="java.util.Set"%><%@ page import="org.dspace.browse.BrowseIndex"%><%@ page import="org.dspace.browse.CrossLinks"%><%@ page import="org.dspace.content.authority.MetadataAuthorityManager"%><%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %><%

@@ -69,6 +69,7 @@
 <%@ page import="org.dspace.search.QueryResults"%>
 <%@ page import="org.dspace.sort.SortOption"%>
 <!-- 成果分类 end -->
+<%@ page import="org.dspace.handle.HandleManager" %>
 
 <%
 	Community[] communities = (Community[]) request.getAttribute("communities");
@@ -327,9 +328,15 @@
 		} else if(types == 'SCI') {
 			//专著 
 			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=SCI&filtertype=equals&cgfl=1";
-		} else if(types == 'CPCI') {
+		} else if(types == 'EI') {
 			//期刊论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CPCI&filtertype=equals&cgfl=1";
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=EI&filtertype=equals&cgfl=1";	
+		} else if(types == 'CPCI-S') {
+			//期刊论文
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CPCI-S&filtertype=equals&cgfl=1";
+		} else if(types == 'CPCI-SSH') {
+			//期刊论文
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CPCI-SSH&filtertype=equals&cgfl=1";	
 		} else if(types == 'CSCD') {
 			//学位论文
 			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CSCD&filtertype=equals&cgfl=1";
@@ -343,7 +350,7 @@
             }
         });
     }
-    getArticles_sl('','SCI-E');
+    getArticles_sl('','SCI');
 </SCRIPT>
 
 
@@ -358,7 +365,7 @@
 				<li class="active" data-target="#carousel-example-generic" data-slide-to="0"/></LI>
 				<LI  data-target="#carousel-example-generic" data-slide-to="1"></LI>
 				<LI  data-target="#carousel-example-generic" data-slide-to="2"></LI>
-				<LI  data-target="#carousel-example-generic" data-slide-to="3"></LI>
+				<!-- <LI  data-target="#carousel-example-generic" data-slide-to="3"></LI> -->
 			</OL>
 			<!-- 轮播图小圆点 -->
 			<!-- 轮播图部分 -->
@@ -384,27 +391,26 @@
 						<A style="COLOR: #ffffff" title="Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS ..." href="?#4" target=_blank>Observation of a new particle in  </A>
 					</DIV>
 				</DIV>
-				<DIV class="item">
+				<!-- <DIV class="item">
 					<A href="?#3" target=_blank><IMG   src="calis/images/index_imgs.png" > </A>
-					<!-- onerror="this.src='public/img/wu.jpg'" -->
 					<DIV class=carousel-caption>
 						<A style="COLOR: #ffffff" title=中国山水画论笔墨说的形而上底蕴——以唐岱的天地观与笔墨说为考察核心 href="?#3" target=_blank>中国山水画论笔墨说的形而上底 </A>
 					</DIV>
-				</DIV>
+				</DIV> -->
 			</DIV>
 			<!-- 轮播图部分 -->
 		</DIV>
 	</div>
 	<!-- 轮播图 end -->
 	<!-- 热门成功能 start -->
-	<div class="container row popular">
-		<div id="feature_list" class="col-md-12">
-			<div class="row-title-zh"><img src="calis\images\x.png"> &nbsp; 热门成果
+	<div class="container row popular" >
+		<div id="feature_list" class="col-md-12" >
+			<div class="row-title-zh" ><img src="calis\images\x.png"> &nbsp; 热门成果
 				<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:45px">
 					<a href="simple-search?query=" target="_blank" class="more">更多&gt;&gt;</a>
 				</span>
 			</div>
-			<div id="470302_1_hotview">
+			<div id="hot_view">
 				
 			</div>
 		</div>
@@ -422,11 +428,11 @@
 				<a href="/community-list" target="_blank" class="more">更多&gt;&gt;</a>
 			</span></div>
 		<div style="clear: both"></div>
-	<div class="col-md-6" style="width:795px">
+	<div class="col-md-6" style="width:775px">
 	<%
 		if(rList.size() >= 10) {
 	%>
-		<div class="row" style="margin-top: 30px;padding-left:30px">
+		<div class="row" style="margin-top: 30px;padding-left:20px">
 				<div class="col-md-3">
 					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(0)[0] %>&uid=<%=rList.get(0)[1] %>&fullname=<%=URLEncoder.encode(rList.get(0)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(0))[3] %></div></a>
 				</div>
@@ -495,7 +501,7 @@
 				</div>
 		</div>
 		<div style="clear: both"></div>
-		<div class="row" style="margin-top: 30px;padding-left:30px">
+		<div class="row" style="margin-top: 30px;padding-left:20px">
 				<div class="col-md-3">
 					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(3)[0] %>&uid=<%=rList.get(3)[1] %>&fullname=<%=URLEncoder.encode(rList.get(3)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(3))[3] %></div></a>
 				</div>
@@ -564,7 +570,7 @@
 				</div>
 		</div>
 		<div style="clear: both"></div>
-		<div class="row" style="margin-top: 30px;padding-left:30px">
+		<div class="row" style="margin-top: 30px;padding-left:20px">
 				<div class="col-md-3">
 					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(6)[0] %>&uid=<%=rList.get(6)[1] %>&fullname=<%=URLEncoder.encode(rList.get(6)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(6))[3] %></div></a>
 				</div>
@@ -690,10 +696,12 @@
             
         </div>
         <div class="cnt clear" style="float: right">
-            <div class="word">
-                <a class="current_sl" href="javascript:void(0)" onclick="getArticles_sl(this,'SCI-E')">SCI-E</a>
-                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'SCI')">SCI</a>
-                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'CPCI')">CPCI</a>
+            <div class="word_sl">
+                <a class="current_sl" href="javascript:void(0)" onclick="getArticles_sl(this,'SCI')">SCI</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'SCI-E')">SCI-E</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'EI')">EI</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'CPCI-S')">CPCI-S</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'CPCI-SSH')">CPCI-SSH</a>
                 <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'CSCD')">CSCD</a>
             </div>
             <div style="clear: both"></div>
