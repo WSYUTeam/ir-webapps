@@ -1043,6 +1043,7 @@
 		padding-left: 0px;
 		margin-left:  12px;
 		color:#65A3E8;
+		padding-bottom:10px;
 	}
 	#article_list ul, #article_list ul li a, #article_list_sl ul, #article_list_sl ul li a {
 		color:#000;
