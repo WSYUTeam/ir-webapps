@@ -84,7 +84,7 @@
 		    	    	html += "<div class='author'> </div>";
 		    	    }
 					//html += "<div class='views'>" + matrix[0][i] + " " + hot_views + " &nbsp; &nbsp; <span class=\"a2 a1\">ISSN：</span></div>";
-					html += "<div class='views'><span class=\"a1\">期刊：</span>" + aps[i][1] + " " + hot_views + " &nbsp; &nbsp; <span class=\"a2 a1\">ISSN：</span></div>";
+					html += "<div class='views'><span class=\"a1\">期刊：</span>" + aps[i][1] + " " + hot_views + " &nbsp; &nbsp; <span class=\"a2 a1\"></span></div>";//ISSN：
 					html += "<div style='clear: both;'></div>"
 		    	    html += "</div>";
 		    	    html += "</div>";
