@@ -450,7 +450,14 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(0)[6] %>
+				          <% 
+				          	if(rList.get(0)[6].length() > 36) {
+				          		out.print(rList.get(0)[6].substring(0,36));
+				          		out.print("...");
+				          	} else {
+				          		out.print(rList.get(0)[6]);
+				          }
+				          %>
 				        </span>
 				        </p>
 					</div>
@@ -472,7 +479,14 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(1)[6] %>
+				          <% 
+				          	if(rList.get(1)[6].length() > 36) {
+				          		out.print(rList.get(1)[6].substring(0,36));
+				          		out.print("...");
+				          	} else {
+				          		out.print(rList.get(1)[6]);
+				          }
+				          %>
 				        </span>
 				        </p>
 					</div>
@@ -494,7 +508,14 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(2)[6] %>
+				          <% 
+				          	if(rList.get(2)[6].length() > 36) {
+				          		out.print(rList.get(2)[6].substring(0,36));
+				          		out.print("...");
+				          	} else {
+				          		out.print(rList.get(2)[6]);
+				          }
+				          %>
 				        </span>
 				        </p>
 					</div>
@@ -519,7 +540,14 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(3)[6] %>
+				          <% 
+				          	if(rList.get(3)[6].length() > 36) {
+				          		out.print(rList.get(3)[6].substring(0,36));
+				          		out.print("...");
+				          	} else {
+				          		out.print(rList.get(3)[6]);
+				          }
+				          %>
 				        </span>
 				        </p>
 					</div>
@@ -541,7 +569,14 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(4)[6] %>
+				          <% 
+				          	if(rList.get(4)[6].length() > 36) {
+				          		out.print(rList.get(4)[6].substring(0,36));
+				          		out.print("...");
+				          	} else {
+				          		out.print(rList.get(4)[6]);
+				          }
+				          %>
 				        </span>
 				        </p>
 					</div>
@@ -563,7 +598,14 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(5)[6] %>
+				          <% 
+				          	if(rList.get(5)[6].length() > 50) {
+				          		out.print(rList.get(5)[6].substring(0,36));
+				          		out.print("...");
+				          	} else {
+				          		out.print(rList.get(5)[6]);
+				          }
+				          %>
 				        </span>
 				        </p>
 					</div>
@@ -588,7 +630,14 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(6)[6] %>
+				          <% 
+				          	if(rList.get(6)[6].length() > 36) {
+				          		out.print(rList.get(6)[6].substring(0,36));
+				          		out.print("...");
+				          	} else {
+				          		out.print(rList.get(6)[6]);
+				          }
+				          %>
 				        </span>
 				        </p>
 					</div>
@@ -610,7 +659,14 @@
 				        </p>
 				        <p>
 				        <span class="unit">
-				          <%=rList.get(7)[6] %>
+				          <% 
+				          	if(rList.get(7)[6].length() > 36) {
+				          		out.print(rList.get(7)[6].substring(0,36));
+				          		out.print("...");
+				          	} else {
+				          		out.print(rList.get(7)[6]);
+				          }
+				          %>
 				        </span>
 				        </p>
 					</div>
@@ -632,6 +688,14 @@
 				        </p>
 				        <p>
 				        <span class="unit">
+				          <% 
+				          	if(rList.get(8)[6].length() > 36) {
+				          		out.print(rList.get(8)[6].substring(0,36));
+				          		out.print("...");
+				          	} else {
+				          		out.print(rList.get(8)[6]);
+				          }
+				          %>
 				          <%=rList.get(8)[6] %>
 				        </span>
 				        </p>
