@@ -405,7 +405,7 @@
 	<!-- 热门成功能 start -->
 	<div class="container row popular" >
 		<div id="feature_list" class="col-md-12" >
-			<div class="row-title-zh" ><img src="calis\images\x.png"> &nbsp; 热门成果
+			<div class="row-title-zh" ><img src="calis\images\x.png"> &nbsp; 最新成果
 				<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:45px">
 					<a href="simple-search?query=" target="_blank" class="more">更多&gt;&gt;</a>
 				</span>
@@ -430,10 +430,57 @@
 		<div style="clear: both"></div>
 	<div class="col-md-6" style="width:775px">
 	<%
-		if(rList.size() >= 10) {
+		if(rList.size() >= 9) {
 	%>
-		<div class="row" style="margin-top: 30px;padding-left:20px">
-				<div class="col-md-3">
+			<%
+			for(int xz = 0; xz < 9; xz = xz+1) {
+				if(xz%3==0) {
+				//out.print(xz%3);
+			%>
+				<div class="row" style="margin-top: 30px;padding-left:25px">
+			<%
+				}
+			%>	
+				<div class="col-md-3 text_w" >
+					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(xz)[0] %>&uid=<%=rList.get(xz)[1] %>&fullname=<%=URLEncoder.encode(rList.get(xz)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(xz))[3] %></div></a>
+				<!-- </div>
+				<div class="col-md-3 text_w"  style= "width:80px;"> -->
+					<div class="pic-home-text arrow-left-1" style= "padding-left:100px;width:180px;" >
+						<p>
+						<span class="title">
+				          	<%//=rList.get(xz)[4] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="name">
+				          <%=rList.get(xz)[2] %>
+				        </span>
+				        </p>
+				        <p>
+				        <span class="unit">
+				          <% 
+				          	if(rList.get(xz)[6].length() > 36) {
+				          		out.print(rList.get(xz)[6].substring(0,36));
+				          		out.print("...");
+				          	} else {
+				          		out.print(rList.get(xz)[6]);
+				          }
+				          %>
+				        </span>
+				        </p>
+					</div>
+				</div>
+				<%
+					if(xz%3==2) {
+					//out.print(xz%3);
+				%>
+						</div>
+						<div style="clear: both"></div>
+			<%
+					}
+				}
+			%>
+				<!-- <div class="col-md-3">
 					<a href="<%=request.getContextPath() %>/researcher?id=<%=rList.get(0)[0] %>&uid=<%=rList.get(0)[1] %>&fullname=<%=URLEncoder.encode(rList.get(0)[2]) %>" target="_blank"><div class="pic-home-wrap"><%=(rList.get(0))[3] %></div></a>
 				</div>
 				<div class="col-md-3 text_w" style= "width:80px;" style= "width:80px;">
@@ -702,7 +749,7 @@
 					</div>
 				</div>
 		</div>
-				
+				 -->
 		<%
 			}
 		%>
@@ -735,7 +782,7 @@
 
 	</div>
 
-	<div class="container banner-home" style="margin-top:30px">
+	<div class="container banner-home" style="margin-top:0px">
 		<div class="row-title-zh xztj" style="width:592px"><img src="calis\images\a.png"> &nbsp; 成果分类
 			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:70px">
 			</span>

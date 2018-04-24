@@ -157,12 +157,14 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 .banner-home .row .pic-home {
     position: relative;
+    width:100px;
+    height:150px;
 }
 
 .banner-home .row .pic-home-wrap {
     clear: both;
     float: left;
-    height: 172px;
+    height: 150px;
     margin-left: -15px;
     position: relative;
     overflow: hidden;
@@ -212,14 +214,14 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .banner-home .row .arrow-left-1::before {
-    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #5dca88;
+    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #003C80;
     border-style: solid;
     border-width: 0 15px 15px 0;
     bottom: 0;
     content: "";
     height: 0;
     position: absolute;
-    left: -21px;
+    left: 80px;
     top: 25px;
     transform: rotate(-135deg);
     width: 0;
@@ -484,6 +486,7 @@ ul#output .loading {
 .row-title-zh.xztj {
     width: 775px;
     float: left;
+    padding-left:10px;
 }
 .row-title-zh.yxdh{
     width: 410px;
