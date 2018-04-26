@@ -234,7 +234,7 @@ $(document).ready(function () {
 
 	$('#baiduLink').attr('href', "http://xueshu.baidu.com/s?=&=&wd=" + encodeURI('"' + $('.dc-title').html() + '"') + "&tn=SE_baiduxueshu_c1gjeupa&bs=&ie=utf-8&sc_f_para=sc_tasktype%3D%7BfirstAdvancedSearch%7D&sc_from=&sc_as_para=");
 	$('#cnkiLink').attr('href', "http://kns.cnki.net/kns/brief/Default_Result.aspx?code=SCDB&kw=" + encodeURI('' + $('.dc-title').html() + '') + "");//&korder=0&sel=1
-	$('#chaoxingLink').attr('href', "http://qikan.chaoxing.com/searchjour?sw=" + encodeURI('' + $('.dc-title').html() + '') + "");
+	$('#chaoxingLink').attr('href', "http://www.sslibrary.com/book/search?sw=" + encodeURI('' + $('.dc-title').html() + '') + "");
 	$('.dc-title').append('<a href="javascript:void(0);" onclick=\'iLikeIt("<%=handle%>")\'><img width="32" src="<%=request.getContextPath() %>/calis/images/like.png"></a><span class="likes">[<%=likes %>]</span>');
 	
 	var views = <%=visits %>;

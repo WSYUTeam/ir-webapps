@@ -56,7 +56,7 @@
 			</div>
 			<ul>
 				<li><a
-					href="<%=request.getContextPath()%>/help/PKU_IR_license_agreement.pdf"
+					href="<%=request.getContextPath()%>/help/WSYU_IR_license_agreement.pdf"
 					target="_blank"><fmt:message key="jsp.help.guide.license" /> </a>
 				</li>
 			</ul>

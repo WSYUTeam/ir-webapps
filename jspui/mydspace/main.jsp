@@ -90,8 +90,9 @@
     boolean displayGroupMembership = (displayMembership == null ? false : displayMembership.booleanValue());
     
     Researcher researcher = Researcher.findByUid(UIUtil.obtainContext(request), user.getNetid());
+    String userType = (String) request.getSession().getAttribute("researcher.user.type");
     boolean isNeed2CreateResearcher = false;
-    if(researcher == null) {
+    if(StringUtils.isNotEmpty(userType) && ConfigurationManager.getProperty("webui.researcher.user.type").contains(userType) && researcher == null) {
     	isNeed2CreateResearcher = true;	
     }
 %>
@@ -122,7 +123,8 @@ if((hasCollection && hasEmail) || isAdmin){
                 <%
 				if(isNeed2CreateResearcher) {
 				%>
-				<a class="btn btn-success" href="<%=request.getContextPath() %>/researcher?action=preadd"><fmt:message key="jsp.mydspace.main.researcher.view" /></a>
+                <!-- 查看我的学术成果 -->
+				<!-- <a class="btn btn-success" href="<%=request.getContextPath() %>/researcher?action=preadd"><fmt:message key="jsp.mydspace.main.researcher.view" /></a> -->
 				
 				<%
 					} else {
@@ -137,7 +139,8 @@ if((hasCollection && hasEmail) || isAdmin){
 								e.printStackTrace();
 							}
 				%>
-				<a class="btn btn-success" href="<%=request.getContextPath() %>/researcher?id=<%=r.getID() %>&uid=<%=uid %>&fullname=<%=fullname %>"><fmt:message key="jsp.mydspace.main.researcher.view" /></a>
+                <!-- 查看我的学术成果 -->
+				<!-- <a class="btn btn-success" href="<%=request.getContextPath() %>/researcher?id=<%=r.getID() %>&uid=<%=uid %>&fullname=<%=fullname %>"><fmt:message key="jsp.mydspace.main.researcher.view" /></a> -->
 				<%
 						}
 					}

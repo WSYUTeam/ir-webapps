@@ -50,7 +50,7 @@
 	<div class="col-md-3">
                     <%= sidebar %>
     </div>
-    </div>
+    </div>       
 <%
     }
 %>
@@ -59,12 +59,12 @@
             <%-- Page footer --%>
 	<footer class="navbar navbar-inverse navbar-bottom">
     <div id="footerPan" class="container">
-
+		
 		<div class="col-md-12 nav-footer">
 		<ul class="nav navbar-nav">
 		   <li class=""><a href="<%= request.getContextPath() %>/"><fmt:message key="jsp.layout.navbar-default.home"/></a></li>
            <li class=""><a href="<%= request.getContextPath() %>/simple-search"><fmt:message key="nsfc.layout.navbar-default.search"/></a></li>
-           <li><a class="" href="<%= request.getContextPath() %>/researcher-list"><fmt:message key="jsp.layout.navbar-default.researchers" /></a></li>
+           <li><a class="" href="<%= request.getContextPath() %>/researcher-list"><fmt:message key="jsp.layout.navbar-default.researchers" /></a></li>     
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="jsp.layout.navbar-default.browse"/> <b class="caret"></b></a>
              <ul class="dropdown-menu dropup-menu">
@@ -72,7 +72,7 @@
 				<li class="divider"></li>
         <li class="dropdown-header"><fmt:message key="jsp.layout.navbar-default.browseitemsby"/></li>
 				<%-- Insert the dynamic browse indices here --%>
-
+				
 				<%
 					for (int i = 0; i < bis.length; i++)
 					{
@@ -80,21 +80,21 @@
 						String key = "browse.menu." + bix.getName();
 					%>
 				      			<li><a href="<%= request.getContextPath() %>/browse?type=<%= bix.getName() %>"><fmt:message key="<%= key %>"/></a></li>
-					<%
+					<%	
 					}
 				%>
-
+				    
 				<%-- End of dynamic browse indices --%>
 
             </ul>
           </li>
           <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li>
-          <li class=""><a href="mailto: tsuibin@qq.com"><fmt:message key="nsfc.layout.navbar-default.contact"/></a></li>
+          <li class=""><a href="mailto: chair@calis.edu.cn"><fmt:message key="nsfc.layout.navbar-default.contact"/></a></li>
        </ul>
 		</div>
-
+    
     	<div style="clear: both;"></div>
-
+    
 		<div class="col-md-12 copyright">
 			<fmt:message key="jsp.layout.footer-default.text" >
 				<fmt:param>
@@ -104,31 +104,11 @@
 					out.print(year);
 				%>
 				 </fmt:param>
-			</fmt:message>
+			</fmt:message> 
 			| <a href="<%= request.getContextPath() %>/feedback"><fmt:message key="jsp.layout.footer-default.feedback"/></a></a>
                                 <a href="<%= request.getContextPath() %>/htmlmap"></a>
 		</div>
 	</div>
-
-
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-  _paq.push(["setCookieDomain", "*.ir.wsyu.edu.cn"]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//stats.wsyu.edu.cn/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', '4']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Piwik Code -->
-
     </footer>
 
     </body>

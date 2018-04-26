@@ -159,8 +159,8 @@
 		   				$('#claim_status_'+resourceID).css('color', 'green');
 		   				$('#claim_action_'+resourceID).attr('value', '<fmt:message key="jsp.researcher.profile.claim.cancel"/>');
 	   				} else {
-	   					$('#claim_status_'+resourceID).html('<fmt:message key="jsp.researcher.profile.claim.pending"/>');
-		   				$('#claim_status_'+resourceID).css('color', 'red');
+	   					//$('#claim_status_'+resourceID).html('<fmt:message key="jsp.researcher.profile.claim.pending"/>');
+		   				//$('#claim_status_'+resourceID).css('color', 'red');
 		   				$('#claim_action_'+resourceID).attr('value', '<fmt:message key="jsp.researcher.profile.claim"/>');
 	   				}
 	   			}
@@ -469,7 +469,7 @@
 								<%
 										} else {
 								%>
-									<sup id="claim_status_<%=item.getID() %>" style="color: red;"><fmt:message key="jsp.researcher.profile.claim.pending"/></sup>
+									<!-- <sup id="claim_status_<%=item.getID() %>" style="color: red;"><fmt:message key="jsp.researcher.profile.claim.pending"/></sup> -->
 								<%
 										}
 								%>
