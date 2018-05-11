@@ -150,16 +150,16 @@
 <%
     }
 %>
-	<h1><fmt:message key="jsp.community-list.title"/></h1>
-	<p><fmt:message key="jsp.community-list.text1"/></p>
+	<h1 class="yx_font"><fmt:message key="jsp.community-list.title"/></h1>
+	<p class="yx_font"><fmt:message key="jsp.community-list.text1"/></p>
 
 <% if (communities.length != 0)
 {
 	subCommunity = PKUUtils.getSubcommunities(UIUtil.obtainContext(request), communities[0].getID(), "ASC");
 %>
 
-<div id="community_list">
-    <ul class="media-list">
+<div id="community_list" class="yx_font">
+    <ul class="media-list yx_font">
 <%
 		
         for (int i = 0; i < subCommunity.length; i++)

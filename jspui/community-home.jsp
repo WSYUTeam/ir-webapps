@@ -75,14 +75,19 @@
 <%@page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
 <dspace:layout locbar="off" title="<%= name %>" feedData="<%= feedData %>">
 <div>
-<div class="row">
+<div class="row yx_font">
+  <%  if (logo != null) { %>
+     <div class="col-md-4">
+      <img class="img-responsive" alt="Logo" src="<%= request.getContextPath() %>/retrieve/<%= logo.getID() %>" />
+     </div> 
+  <% } %>
 	<div class="col-md-8">
         <h2><%= name %>
         <%
             if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))
             {
 %>
-                [<%= ic.getCount(community) %>]
+              <!--  [<%= ic.getCount(community) %>]-->
 <%
             }
 %>
@@ -90,23 +95,18 @@
 		</h2>
 		<span><%=community.getMetadata("short_description") %></span>
 	</div>
-<%  if (logo != null) { %>
-     <div class="col-md-4">
-     	<img class="img-responsive" alt="Logo" src="<%= request.getContextPath() %>/retrieve/<%= logo.getID() %>" />
-     </div> 
-<% } %>
  </div>
 
 <% if (StringUtils.isNotBlank(intro)) { %>
   <%= intro %>
 <% } %>
 </div>
-<p class="copyrightText"><%= copyright %></p>
+<p class="copyrightText"><%//= copyright %></p>
 	<div class="row">
 <%
 	if (rs != null)
 	{ %>
-	<div class="col-md-8">
+	<div class="col-md-8" style="display: none">
         <div class="panel panel-primary">        
         <div id="recent-submissions-carousel" class="panel-heading carousel slide">
         <%-- Recently Submitted items --%>
@@ -152,7 +152,7 @@
 </div>	
 
 <div class="row">
-<div class="col-md-12"><h3 class="facets"><fmt:message key="jsp.search.facet.refine" /></h3></div>
+<div class="col-md-12" style="margin-top: 50px"><h3 class="facets"><fmt:message key="jsp.search.facet.refine" /></h3></div>
 
     <%
     	int discovery_panel_cols = 12;

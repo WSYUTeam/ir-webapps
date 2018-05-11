@@ -410,6 +410,19 @@ if (displayAll)
 	<dspace:item-preview item="<%= item %>" />
    	<dspace:item item="<%= item %>" collections="<%= collections %>" style="<%= displayStyle %>" />
 </div>
+<div class="media baidu" style="padding:10px;margin-top: 0;">
+	<!-- <div class="media-body text-center" id="baiduCitedResult"> -->
+		<h4>&nbsp; &nbsp;<b>原文查看</b></h4>
+	<!-- </div> -->
+	<div class="" style="text-indent : 40px;"><!-- text-center -->
+		<span class="metric-counter"><h4 class="media-heading"><a id="baiduLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details"><!-- 百度学术™<fmt:message key="jsp.display-item.baidu"/> --><img src="../../calis/images/bd1.png"></a></h4></span>
+		<p>
+		<span class="metric-counter"><h4 class="media-heading"><a id="cnkiLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details"><img src="../../calis/images/cnki1.png"><!-- CNKI™查看 --></a></h4></span>
+		<p>
+		<span class="metric-counter"><h4 class="media-heading"><a id="chaoxingLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details"><img src="../../calis/images/cx1.png"><!-- 超星™查看 --></a></h4></span>
+	</div>
+</div>
+<br/>
 <%
 if (displayAll)
 {
@@ -485,20 +498,7 @@ if(!doi.equals("")) {
 <%
 }
 %>
-<div class="media baidu">
-	<div class="media-body text-center" id="baiduCitedResult">
-		
-	</div>
-	<br/>
-	<div class="text-center">
-		<span class="metric-counter"><h4 class="media-heading"><a id="baiduLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details">百度学术™<fmt:message key="jsp.display-item.baidu"/></a></h4></span>
-		<p>
-		<span class="metric-counter"><h4 class="media-heading"><a id="cnkiLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details">CNKI™查看</a></h4></span>
-		<p>
-		<span class="metric-counter"><h4 class="media-heading"><a id="chaoxingLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details">超星™查看</a></h4></span>
-	</div>
-</div>
-<br/>
+
 <br/>
 <div class="container row item-operators" <%=displayAll?"style='text-align:unset;'":"" %>>
 <%

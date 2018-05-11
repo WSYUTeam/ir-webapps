@@ -482,7 +482,25 @@
 						%>
 					</div>
 					<div class="doc-display-type">
-						<div class="type"><%=(item.getMetadata("dc.type")==null?"":item.getMetadata("dc.type"))%></div>
+						<div class="type">
+							<%//=(item.getMetadata("dc.type")==null?"":item.getMetadata("dc.type"))%>
+							<%
+								if(item.getMetadata("dc.type")==null) {
+									
+								} else {
+									if(item.getMetadata("dc.type").equals("Book")) { 
+										out.print("教师著作");
+									} else if(item.getMetadata("dc.type").equals("Journal")) { 
+										out.print("期刊论文");
+									} else if(item.getMetadata("dc.type").equals("Conference")) { 
+										out.print("会议论文");
+									} else if(item.getMetadata("dc.type").equals("Thesis")) { 
+										out.print("学位论文");
+									}
+									//out.print(item.getMetadata("dc.type"));
+								}
+							%>
+							</div>
 						<%
 							if(filesExist){
 						%>

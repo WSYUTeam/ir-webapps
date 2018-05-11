@@ -124,7 +124,7 @@ if((hasCollection && hasEmail) || isAdmin){
 				if(isNeed2CreateResearcher) {
 				%>
                 <!-- 查看我的学术成果 -->
-				<!-- <a class="btn btn-success" href="<%=request.getContextPath() %>/researcher?action=preadd"><fmt:message key="jsp.mydspace.main.researcher.view" /></a> -->
+				<a class="btn btn-success" href="<%=request.getContextPath() %>/researcher?action=preadd"><fmt:message key="jsp.mydspace.main.researcher.view" /></a>
 				
 				<%
 					} else {
@@ -140,7 +140,7 @@ if((hasCollection && hasEmail) || isAdmin){
 							}
 				%>
                 <!-- 查看我的学术成果 -->
-				<!-- <a class="btn btn-success" href="<%=request.getContextPath() %>/researcher?id=<%=r.getID() %>&uid=<%=uid %>&fullname=<%=fullname %>"><fmt:message key="jsp.mydspace.main.researcher.view" /></a> -->
+				<a class="btn btn-success" href="<%=request.getContextPath() %>/researcher?id=<%=r.getID() %>&uid=<%=uid %>&fullname=<%=fullname %>"><fmt:message key="jsp.mydspace.main.researcher.view" /></a> 
 				<%
 						}
 					}

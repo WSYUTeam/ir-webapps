@@ -13,6 +13,11 @@
   -
   - Attributes to be passed in:
   -    researchers         - array of researchers
+  // 学者的css调节
+	.col2
+   	.col2 img
+  	.col2 img.no-picture 
+
   --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -50,7 +55,7 @@
   });
   
   function getResearcher(uid, name, unitId, pageSize, startRow) {
-  	pageSize = pageSize%10 == 0 ? pageSize : 10 * Math.floor(pageSize/10);
+  	pageSize = pageSize%12 == 0 ? pageSize : 12 * Math.floor(pageSize/12);
   	if(unitId != '') {
   		$('#unit_id')[0].value = unitId;
   	}
@@ -66,12 +71,12 @@
    				/*html += '<div class="box col' + Math.floor(Math.random()*3+1) + '">';*/
    				html += '<div class="box col2">';
    				html += '<p><a id="' + list[i].researcherId + '" href="<%=request.getContextPath()%>/researcher?id=' + list[i].researcherId + '&uid=' + list[i].uid + '&fullname=' + encodeURI(list[i].name) + '" target="_blank">' + list[i].image + '</a></p>';
-   				html += '<br/>';
+   				//html += '<br/>';
    				html += '<div class="text">'
    				html += '<p><a id="' + list[i].researcherId + '" href="<%=request.getContextPath()%>/researcher?id=' + list[i].researcherId + '&uid=' + list[i].uid + '&fullname=' + encodeURI(list[i].name) + '" target="_blank">' + list[i].name + '</a> ' + list[i].title + '</p>';
    				html += '<p>' + unitMap[list[i].unitId] + '</p>';
-   				var more = list[i].field.toLowerCase().replace(/<br\/>/g, '<br>');
-      			html += '<p>' + more.split('<br>')[0] + '</p>';
+   				// var more = list[i].field.toLowerCase().replace(/<br\/>/g, '<br>');
+      	// 		html += '<p>' + more.split('<br>')[0] + '</p>';
       			html += '<p class="click"><fmt:message key="jsp.researcher.profile.click"/>：' + list[i].visit + '</p>';
       			html += '</div>';
       			html += '</div>';
@@ -199,7 +204,7 @@
 				if(i%4 == 0) {
 					sss += '<div class="row">';
 				}
-				sss += '<div class="col-md-3 unit-item"><a href="javascript:void(0);" onclick=\'javascript:$(".btn-slide").click();getResearcher("", "' + $("#researcher_name").val() + '", "' + key + '", 10, 0)\'>' + unitMap[key] + '</a></div>';
+				sss += '<div class="col-md-3 unit-item"><a href="javascript:void(0);" onclick=\'javascript:$(".btn-slide").click();getResearcher("", "' + $("#researcher_name").val() + '", "' + key + '", 12, 0)\'>' + unitMap[key] + '</a></div>';
 				if(i%4 == 3) {
 					sss += '</div>';
 				}
@@ -214,7 +219,7 @@
 				$("#unit_name_select").html(unitMap[$("#unit_id").val()] + " X");
 				$("#unit_name_select").click(function(){
 					$("#unit_id").val("");
-					getResearcher("", $("#researcher_name").val(), "", 10, 0);
+					getResearcher("", $("#researcher_name").val(), "", 12, 0);
 				});
 				$("#unit_name_select").css("display", "block");
 			} else {
@@ -238,7 +243,7 @@
 	  }
 	  
 	  var name = $("#researcher_name").val();
-	  getResearcher("", name, $('#unit_id').val(), 10, 0);
+	  getResearcher("", name, $('#unit_id').val(), 12, 0);
   }
   
   function visitResearcher(a_ctrl, uid, name) {
@@ -260,7 +265,7 @@
 		<div class="search-form">
 			<input type="text" class="form-control researcher-query-box" placeholder='<fmt:message key="jsp.home.researcher.browse.search.input"/>' id="researcher_name" onkeypress="if(event.keyCode==13) {findResearcherByName();return false;}" /> 
 			<input type="button" class="btn btn-primary btn-resarcher-search" onclick="findResearcherByName()" value='<fmt:message key="jsp.home.researcher.browse.search.button"/>' /> 
-			<input type="button" class="btn btn-primary btn-resarcher-search" onclick='javascript:$("#researcher_name").val("");getResearcher("", "", $("#unit_id").val(), 10, 0);' value='<fmt:message key="jsp.home.researcher.browse.clear"/>' />
+			<input type="button" class="btn btn-primary btn-resarcher-search" onclick='javascript:$("#researcher_name").val("");getResearcher("", "", $("#unit_id").val(), 12, 0);' value='<fmt:message key="jsp.home.researcher.browse.clear"/>' />
 		</div>
 	</div>
 	<div>
@@ -276,9 +281,9 @@
 	
 <script type="text/javascript">
 	if (document.all && document.body.readyState == "complete") {
-		getResearcher("", "", "", 10, 0);
+		getResearcher("", "", "", 12, 0);
 	} else {
-		getResearcher("", "", "", 10, 0);
+		getResearcher("", "", "", 12, 0);
 	}
 	$("#panel").slideToggle("slow");
 	$(".btn-slide").toggleClass("active");

@@ -30,10 +30,10 @@
 
 <dspace:layout locbar="off" titlekey="jsp.layout.navbar-default.about" nocache="true">
 		<div
-			style="font-size: 16px;padding: 0 20px;line-height: 20px;">
+			style="font-size: 16px;padding: 0 20px;line-height: 28px;">&nbsp; &nbsp; &nbsp;
 			<fmt:message key="jsp.home.about" />
 		</div>
-		<h1>
+		<h1 class="yx_font">
 			<fmt:message key="jsp.help.guide.title" />
 		</h1>
 		<div id="guide" style="margin-top: 25px;">
@@ -45,15 +45,15 @@
 			<div style="margin-left: 40px;">
 				<fmt:message key="jsp.help.guide.manual.txt" />
 			</div>
-			<ul>
+			<!-- <ul>
 				<li><a
-					href="<%=request.getContextPath()%>/help/PKU_IR_policy_trial.pdf"
+					href="<%=request.getContextPath()%>/help/WSYU_IR_policy_trial.pdf"
 					target="_blank"><fmt:message key="jsp.help.guide.open.policy" />
 				</a></li>
 			</ul>
 			<div style="margin-left: 40px;">
 				<fmt:message key="jsp.help.guide.open.policy.txt" />
-			</div>
+			</div> -->
 			<ul>
 				<li><a
 					href="<%=request.getContextPath()%>/help/WSYU_IR_license_agreement.pdf"
@@ -65,25 +65,25 @@
 			</div>
 			<ul>
 				<li><a
-					href="<%=request.getContextPath()%>/help/PKU_IR_power_attorney.pdf"
+					href="<%=request.getContextPath()%>/help/WSYU_IR_power_attorney.pdf"
 					target="_blank"><fmt:message key="jsp.help.guide.attorney" />
 				</a></li>
 			</ul>
 			<div style="margin-left: 40px;">
 				<fmt:message key="jsp.help.guide.attorney.txt" />
 			</div>
-			<ul>
+			<!-- <ul>
 				<li><a
-					href="<%=request.getContextPath()%>/help/PKU_IR_submission.pdf"
+					href="<%=request.getContextPath()%>/help/WSYU_IR_submission.pdf"
 					target="_blank"><fmt:message
 							key="jsp.help.guide.process.submission" /> </a></li>
 			</ul>
 			<div style="margin-left: 40px;">
 				<fmt:message key="jsp.help.guide.process.submission.txt" />
-			</div>
+			</div> -->
 			<ul>
 				<li><a
-					href="<%=request.getContextPath()%>/help/PKU_IR_format_recommended.pdf"
+					href="<%=request.getContextPath()%>/help/WSYU_IR_format_recommended.pdf"
 					target="_blank"><fmt:message
 							key="jsp.help.guide.format.recommended" /> </a></li>
 			</ul>
@@ -92,7 +92,7 @@
 			</div>
 			<ul>
 				<li><a
-					href="<%=request.getContextPath()%>/help/PKU_IR_withdraw.pdf"
+					href="<%=request.getContextPath()%>/help/WSYU_IR_withdraw.pdf"
 					target="_blank"><fmt:message
 							key="jsp.help.guide.process.withdraw" /> </a></li>
 			</ul>

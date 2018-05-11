@@ -189,7 +189,7 @@
 
 <SCRIPT type="text/javascript">
 	var context = "<%=request.getContextPath() %>";
-	var hot_views = '<fmt:message key="jsp.home.hotview.views"/>';
+	var hot_views = '';//<fmt:message key="jsp.home.hotview.views"/>
 
 	var localCache = {
 		    /**
@@ -293,25 +293,38 @@
 			});
 		});
 	}
+	//获取最近收录
+    function getArticles_zjsl() {
+		filterquery_zjsl = "browse?type=dateissued&sort_by=2&order=DESC&rpp=10";
+        $.ajax({
+            url: "<%=request.getContextPath()%>/"+filterquery_zjsl+"&zjsl=1",
+            success: function (data) {
+            	document.getElementById("cgfl_more_zjsl").href = filterquery_zjsl;
+                $("#article_list_zjsl").html(data);
+            }
+        });
+    }
+    getArticles_zjsl();
 	//获取各类型成果
     function getArticles(obj, types) {
         filterquery = "";
         if(types == 'Conference') {
         	//会议论文
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Conference&filtertype=equals&cgfl=1";
+			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Conference&filtertype=equals";
 		} else if(types == 'Book') {
 			//专著 
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Book&filtertype=equals&cgfl=1";
+			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Book&filtertype=equals";
 		} else if(types == 'Journal') {
 			//期刊论文
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Journal&filtertype=equals&cgfl=1";
+			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Journal&filtertype=equals";
 		} else if(types == 'Thesis') {
 			//学位论文
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Thesis&filtertype=equals&cgfl=1";
+			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Thesis&filtertype=equals";
 		}
         $.ajax({
-            url: "<%=request.getContextPath()%>/"+filterquery,
+            url: "<%=request.getContextPath()%>/"+filterquery+"&cgfl=1",
             success: function (data) {
+            	document.getElementById("cgfl_more").href = filterquery;
                 $("#article_list").html(data);
                 $(obj).siblings().removeClass("current");
                 $(obj).addClass("current");
@@ -324,33 +337,34 @@
         filterquery_sl = "";
         if(types == 'SCI-E') {
         	//会议论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=SCI-E&filtertype=equals&cgfl=1";
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=SCI-E&filtertype=equals";
 		} else if(types == 'SCI') {
 			//专著 
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=SCI&filtertype=equals&cgfl=1";
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=SCI&filtertype=equals";
 		} else if(types == 'EI') {
 			//期刊论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=EI&filtertype=equals&cgfl=1";	
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=EI&filtertype=equals";	
 		} else if(types == 'CPCI-S') {
 			//期刊论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CPCI-S&filtertype=equals&cgfl=1";
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CPCI-S&filtertype=equals";
 		} else if(types == 'CPCI-SSH') {
 			//期刊论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CPCI-SSH&filtertype=equals&cgfl=1";	
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CPCI-SSH&filtertype=equals";	
 		} else if(types == 'CSCD') {
 			//学位论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CSCD&filtertype=equals&cgfl=1";
+			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CSCD&filtertype=equals";
 		}
         $.ajax({
-            url: "<%=request.getContextPath()%>/"+filterquery_sl,
+            url: "<%=request.getContextPath()%>/"+filterquery_sl+"&cgfl=1",
             success: function (data) {
+            	document.getElementById("cgfl_more_sl").href = filterquery_sl;
                 $("#article_list_sl").html(data);
                 $(obj).siblings().removeClass("current_sl");
                 $(obj).addClass("current_sl");
             }
         });
     }
-    getArticles_sl('','SCI');
+    getArticles_sl('','CPCI-S');
 </SCRIPT>
 
 
@@ -371,24 +385,22 @@
 			<!-- 轮播图部分 -->
 			<DIV class=carousel-inner role=listbox>
 				<DIV class="item active">
-					<A href="?#1" target=_blank><IMG  src="calis/images/index_two.png"> </A>
+					<A href="http://www.wsyu.edu.cn/sxgh/jkcg/40854.htm" target=_blank><IMG  src="calis/images/index_two.png"> </A>
 					<!-- onerror="this.src='public/img/wu.jpg'" -->
 					<DIV class=carousel-caption>
-						<A style="COLOR: #ffffff" title="测试效果" href="?#1" target=_blank>测试效果 </A>
+						<A style="COLOR: #ffffff" title="学校荣获湖北省科技进步二等奖" href="http://www.wsyu.edu.cn/sxgh/jkcg/40854.htm" target=_blank>学校荣获湖北省科技进步二等奖</A>
 					</DIV>
 				</DIV>
 				<DIV class=item>
-					<A href="?#2" target=_blank><IMG  src="calis/images/index_three.png"> </A>
-					<!-- onerror="this.src='public/img/wu.jpg'" -->
+					<A href="http://www.wsyu.edu.cn/sxgh/jkcg/45811.htm" target=_blank><IMG  src="calis/images/index_three.png"> </A>
 					<DIV class=carousel-caption>
-						<A style="COLOR: #ffffff" title="Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS ..." href="?#2" target=_blank>Observation of </A>
+						<A style="COLOR: #ffffff" title="学校荣获湖北省科技进步三等奖" href="http://www.wsyu.edu.cn/sxgh/jkcg/45811.htm" target=_blank>学校荣获湖北省科技进步三等奖</A>
 					</DIV>
 				</DIV>
 				<DIV class=item>
-					<A href="?#4" target=_blank><IMG  src="calis/images/index_four.png"> </A>
-					<!-- onerror="this.src='public/img/wu.jpg'" -->
+					<A href="http://www.wsyu.edu.cn/sxgh/jkcg/43589.htm" target=_blank><IMG  src="calis/images/index_four.png"> </A>
 					<DIV class=carousel-caption>
-						<A style="COLOR: #ffffff" title="Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS ..." href="?#4" target=_blank>Observation of a new particle in  </A>
+						<A style="COLOR: #ffffff" title="学校首次获批教育部人文社科研究专项项目一项" href="http://www.wsyu.edu.cn/sxgh/jkcg/43589.htm" target=_blank>学校首次获批教育部人文社科研究专项项目一项</A>
 					</DIV>
 				</DIV>
 				<!-- <DIV class="item">
@@ -405,19 +417,23 @@
 	<!-- 热门成功能 start -->
 	<div class="container row popular" >
 		<div id="feature_list" class="col-md-12" >
-			<div class="row-title-zh" ><img src="calis\images\x.png"> &nbsp; 最新成果
+			<div class="row-title-zh" ><img src="calis\images\x.png"> &nbsp; 最近收录
 				<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:45px">
-					<a href="simple-search?query=" target="_blank" class="more">更多&gt;&gt;</a>
+					<a id="cgfl_more_zjsl" href="" target="_blank" class="more">更多&gt;&gt;</a>
 				</span>
 			</div>
-			<div id="hot_view">
+			<!-- <div id="hot_view">
 				
-			</div>
+			</div> -->
+			<!-- 最近收录  start -->
+            <div id="article_list_zjsl">
+            </div>
+            <!-- 最近收录  end -->
 		</div>
 	</div>
 	<div style="clear: both"></div>
 	<!-- 热门成功能 end -->
-	<div class="container banner-home">
+	<div class="container banner-home" style="height:520px;overflow: hidden;">
 		<div class="row-title-zh xztj"><img src="calis\images\c.png"> &nbsp; 学者推荐
 			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:45px">
 				<a href="/researcher-list" target="_blank" class="more">更多&gt;&gt;</a>
@@ -437,7 +453,7 @@
 				if(xz%3==0) {
 				//out.print(xz%3);
 			%>
-				<div class="row" style="margin-top: 30px;padding-left:25px">
+				<div class="row" style="margin-top: 20px;padding-left:25px">
 			<%
 				}
 			%>	
@@ -760,17 +776,18 @@
 			<div class="">
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="height:485px;overflow: ;">
 			<% if (communities.length != 0)
 			{
 			    subCommunity = PKUUtils.getSubcommunities(UIUtil.obtainContext(request), communities[0].getID(), "ASC");
 			%>
 			<div id="community_list">
 			    <ul style="padding-left:10px;padding-right:7px;padding-top:25px">
-			<%			        
+			<%			   
 			        for (int i = 0; i < subCommunity.length; i++)
 			        {
 			            showCommunity(subCommunity[i], out, request, ic, collectionMap, subcommunityMap);
+			            if(i == 9) {break;} 
 			        }
 			%>
 			    </ul>
@@ -803,15 +820,18 @@
             <!-- 成果分类  start -->
             <div id="article_list">
             </div>
+            <span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:115px">
+				<a id="cgfl_more" href="" target="_blank" class="more">更多&gt;&gt;</a>
+			</span>
             <!-- 成果分类  end -->
             
         </div>
         <div class="cnt clear" style="float: right">
             <div class="word_sl">
-                <a class="current_sl" href="javascript:void(0)" onclick="getArticles_sl(this,'SCI')">SCI</a>
+                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'SCI')">SCI</a>
                 <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'SCI-E')">SCI-E</a>
                 <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'EI')">EI</a>
-                <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'CPCI-S')">CPCI-S</a>
+                <a class="current_sl" href="javascript:void(0)" onclick="getArticles_sl(this,'CPCI-S')">CPCI-S</a>
                 <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'CPCI-SSH')">CPCI-SSH</a>
                 <a class="" href="javascript:void(0)" onclick="getArticles_sl(this,'CSCD')">CSCD</a>
             </div>
@@ -819,6 +839,9 @@
              <!-- 被收录情况  start -->
             <div id="article_list_sl">
             </div>
+            <span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:15px">
+				<a id="cgfl_more_sl" href="" target="_blank" class="more">更多&gt;&gt;</a>
+			</span>
             <!-- 被收录情况  end -->
         </div>
 	</div>

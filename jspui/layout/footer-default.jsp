@@ -89,7 +89,7 @@
             </ul>
           </li>
           <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li>
-          <li class=""><a href="mailto: chair@calis.edu.cn"><fmt:message key="nsfc.layout.navbar-default.contact"/></a></li>
+          <li class=""><a href="mailto: dspace-help@wsyu.edu.cn"><fmt:message key="nsfc.layout.navbar-default.contact"/></a></li>
        </ul>
 		</div>
     
@@ -105,7 +105,8 @@
 				%>
 				 </fmt:param>
 			</fmt:message> 
-			| <a href="<%= request.getContextPath() %>/feedback"><fmt:message key="jsp.layout.footer-default.feedback"/></a></a>
+			<!-- href="<%= request.getContextPath() %>/feedback" -->
+			| <a href="mailto: dspace-help@wsyu.edu.cn"><fmt:message key="jsp.layout.footer-default.feedback"/></a></a>
                                 <a href="<%= request.getContextPath() %>/htmlmap"></a>
 		</div>
 	</div>

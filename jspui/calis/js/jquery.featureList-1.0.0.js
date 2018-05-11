@@ -60,7 +60,8 @@
 		        	} 
 		        	html += "<div class='col-md-6'>";
 		    	    html += "<div class='title'>";
-		    	    html += "<a href='" + url + "' title='" + colLabels[i] + "' target='_blank'>" + (getSub(colLabels[i], 60)===undefined?getSub(colLabels[i], 59):getSub(colLabels[i], 60)) + "</a>";
+		    	    html += "<a href='" + url + "' title='" + colLabels[i] + "' target='_blank'>" + (getSub(colLabels[i], 30)===undefined?getSub(colLabels[i], 39):getSub(colLabels[i], 30)) + "</a>";
+		    	    html += " &nbsp;  <span class=\"a1\">作者：</span>" + aps[i][0] + " &nbsp;  <span class=\"a1\">出版者：</span>" + getSub(aps[i][1], 30);
 		    	    html += "</div>";
 		    	    var douhao_flag = (aps[i][1] && aps[i][1]!="" && aps[i][1]!="null") && (aps[i][2] &&aps[i][2]!="" && aps[i][2]!="null");
 		    	    //出版社
@@ -79,12 +80,12 @@
 		    	    }
 		    	    html += "<div>";
 		    	    if(aps[i][0] && aps[i][0]!="" && aps[i][0]!="null") {
-		    	    	html += "<div class='author'><span class=\"a1\">作者：</span>" + aps[i][0] + "</div>";
+		    	    	//html += "<div class='author'><span class=\"a1\">作者：</span>" + aps[i][0] + "</div>";
 		    	    } else {
-		    	    	html += "<div class='author'> </div>";
+		    	    	//html += "<div class='author'> </div>";
 		    	    }
 					//html += "<div class='views'>" + matrix[0][i] + " " + hot_views + " &nbsp; &nbsp; <span class=\"a2 a1\">ISSN：</span></div>";
-					html += "<div class='views'><span class=\"a1\">期刊：</span>" + aps[i][1] + " " + hot_views + " &nbsp; &nbsp; <span class=\"a2 a1\"></span></div>";//ISSN：
+					//html += "<div class='views'><span class=\"a1\">作者：</span>" + aps[i][0] + " &nbsp;  &nbsp; <span class=\"a1\">期刊：</span>" + aps[i][1] + " " + hot_views + " &nbsp; &nbsp; <span class=\"a2 a1\"></span></div>";//ISSN：
 					html += "<div style='clear: both;'></div>"
 		    	    html += "</div>";
 		    	    html += "</div>";

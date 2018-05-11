@@ -10,13 +10,9 @@
 <%--
   - Display the results of browsing a full hit list
   --%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
-
 <%@ page import="org.dspace.browse.BrowseInfo" %>
 <%@ page import="org.dspace.sort.SortOption" %>
 <%@ page import="org.dspace.content.Collection" %>
@@ -27,10 +23,9 @@
 <%@ page import="org.dspace.content.DCDate" %>
 <%@ page import="org.dspace.core.I18nUtil" %>
 <%@ page import="org.dspace.app.webui.util.UIUtil" %>
-
+<%@ page import="java.util.Set"%>
 <%
     request.setAttribute("LanguageSwitch", "hide");
-
     String urlFragment = "browse";
     String layoutNavbar = "default";
     boolean withdrawn = false;
@@ -47,7 +42,6 @@
         urlFragment = "dspace-admin/privateitems";
         privateitems = true;
     }
-
 	// First, get the browse info object
 	BrowseInfo bi = (BrowseInfo) request.getAttribute("browse.info");
 	BrowseIndex bix = bi.getBrowseIndex();
@@ -171,20 +165,21 @@
     boolean admin_button = (admin_b == null ? false : admin_b.booleanValue());
     typeKey += " " + value;
 %>
-
+<!-- 是否为首页按照 发表日期 浏览的显示，不是则为按照 发表日期 浏览的显示界面  -->
+<%  if(request.getParameter("zjsl")==null) { %>
 <%-- OK, so here we start to develop the various components we will use in the UI --%>
 
-<%@page import="java.util.Set"%>
+
 <dspace:layout locbar="off" titlekey="browse.page-title" navbar="<%=layoutNavbar %>">
 
 	<%-- Build the header (careful use of spacing) --%>
-	<h2>
+	<h2 class="yx_font">
 		<fmt:message key="browse.full.header"><fmt:param value="<%= scope %>"/> <fmt:param value="<%= typeKey %>"/> </fmt:message>
 	</h2>
 
 	<%-- Include the main navigation for all the browse pages --%>
 	<%-- This first part is where we render the standard bits required by both possibly navigations --%>
-	<div id="browse_navigation" class="well text-center">
+	<div id="browse_navigation" class="well text-center" style="padding-bottom:0;margin-bottom: 0 "> 
 	<form method="get" action="<%= formaction %>">
 			<input type="hidden" name="type" value="<%= bix.getName() %>"/>
 			<input type="hidden" name="sort_by" value="<%= so.getNumber() %>"/>
@@ -258,6 +253,7 @@
 <%
 	    }
 %><br/>
+
 <%-- by weicf
 	    					<span><fmt:message key="browse.nav.enter"/></span>
 	    					<input type="text" class="form-control-fixed" name="starts_with"/>&nbsp;<input type="submit" class="btn btn-default" value="<fmt:message key="browse.nav.go"/>" />
@@ -270,7 +266,7 @@
 	<%-- End of Navigation Headers --%>
 
 	<%-- Include a component for modifying sort by, order, results per page, and et-al limit --%>
-	<div id="browse_controls" class="well text-center">
+	<div id="browse_controls" class="well text-center" style="padding-bottom:0;margin-bottom: 0 ">
 	<form method="get" action="<%= formaction %>">
 		<input type="hidden" name="type" value="<%= bix.getName() %>"/>
 <%
@@ -487,3 +483,61 @@
 	--%>
 
 </dspace:layout>
+<% } else { %>
+	<style type="text/css"> 
+    	#t1,#t2,#t3 {
+    		display: none
+    	}
+    	.evenRowEvenCol {
+    		white-space: nowrap;/*文本不进行换行*/
+
+    	}
+    	#article_list_zjsl .table {
+    		font-family: "微软雅黑";
+    		width:635px;
+    	}
+    	.table tr td:first-child {
+		    background: url('calis/images/i.png') no-repeat 5px;
+		    padding-left: 22px;
+		    text-align: left;
+		    font-weight:normal;
+		    /*background-color:yellow;*/
+		}
+		.table tr td:first-child strong {
+		    font-weight:normal;
+		    /*background-color:yellow;*/
+		}
+		.table tr td:first-child + td{
+			max-width:400px;
+			width:420px;
+		    overflow: hidden;/*内容超出后隐藏*/
+			text-overflow: ellipsis;/* 超出内容显示为省略号*/
+			white-space: nowrap;/*文本不进行换行*/
+		    /*background-color:yellow;*/
+		}
+		.table tr td {  
+			white-space: nowrap; 
+		}
+	</style>
+    <%-- output the results using the browselist tag --%>
+    <%
+    	if (bix.isMetadataIndex())
+    	{
+    %>
+	<dspace:browselist browseInfo="<%= bi %>" emphcolumn="<%= bix.getMetadata() %>" />
+    <%
+        }
+        else if (withdrawn || privateitems)
+        {
+    %>
+    <dspace:browselist browseInfo="<%= bi %>" emphcolumn="<%= bix.getSortOption().getMetadata() %>" linkToEdit="true" disableCrossLinks="true" />
+	<%
+    	}
+    	else
+    	{
+	%>
+	<dspace:browselist browseInfo="<%= bi %>" emphcolumn="<%= bix.getSortOption().getMetadata() %>" />
+	<%
+    	}
+	%>
+<% }%>

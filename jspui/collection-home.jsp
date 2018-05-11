@@ -106,7 +106,7 @@
 <%@page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
 <dspace:layout locbar="off" title="<%= name %>" feedData="<%= feedData %>">
     <div class="well">
-    <div class="row"><div class="col-md-8"><h2><a href="<%=communityLink %>"><%=community.getName() %></a> > <%= name %>
+    <div class="row"><div class="col-md-8" style="width:100%"><h2 class="yx_font"><a href="<%=communityLink %>"><%=community.getName() %></a> > <%= name %>
 <%
             if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))
             {
@@ -173,7 +173,7 @@
     	       width = 36;
     	    }
 %>
-    <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/<%= collection.getHandle() %>"><img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" /></a>
+    <!-- <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/<%= collection.getHandle() %>"><img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" /></a> -->
 <%
     	} %>
     	</span><%
