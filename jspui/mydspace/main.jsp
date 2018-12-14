@@ -117,7 +117,22 @@ if((hasCollection && hasEmail) || isAdmin){
 		<div class="panel-body">
 		    <form action="<%= request.getContextPath() %>/mydspace" method="post">
 		        <input type="hidden" name="step" value="<%= MyDSpaceServlet.MAIN_PAGE %>" />
-                <input class="btn btn-success" type="submit" name="submit_new" value="<fmt:message key="jsp.mydspace.main.start.button"/>" />
+                <%
+                //以下为管理员，是管理员的才可以操作"提交新的作品"的按钮
+                //if (user.getEmail() != null) {
+                    String navbarEmail = user.getEmail();//登录用户名 
+                    if(navbarEmail.equals("1811002@wsyu.edu.cn") || navbarEmail.equals("1105002@wsyu.edu.cn") || navbarEmail.equals("0605001@wsyu.edu.cn") || navbarEmail.equals("1711004@wsyu.edu.cn") || navbarEmail.equals("1712002@wsyu.edu.cn") || navbarEmail.equals("1812001@wsyu.edu.cn")) {
+                        //out.print(navbarEmail);
+                        %>
+                        <input class="btn btn-success" type="submit" name="submit_new" value="<fmt:message key="jsp.mydspace.main.start.button"/>" />
+                <%
+                    } else {
+                //} 
+                    %>
+                        <input class="btn btn-success" type="button"  value="<fmt:message key="jsp.mydspace.main.start.button"/>" onclick="alert('暂未开通此权限！')"/>
+                <%
+                    }
+                %>
                 <input class="btn btn-info" type="submit" name="submit_own" value="<fmt:message key="jsp.mydspace.main.view.button"/>" />
                 
                 <%
