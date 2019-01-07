@@ -105,8 +105,7 @@
 				%>
 				 </fmt:param>
 			</fmt:message> 
-			<!-- href="<%= request.getContextPath() %>/feedback" -->
-			| <a href="mailto: dspace-help@wsyu.edu.cn"><fmt:message key="jsp.layout.footer-default.feedback"/></a></a>
+			| <a  href="<%= request.getContextPath() %>/feedback" ><fmt:message key="jsp.layout.footer-default.feedback"/></a>
                                 <a href="<%= request.getContextPath() %>/htmlmap"></a>
 		</div>
 	</div>

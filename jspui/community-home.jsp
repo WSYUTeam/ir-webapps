@@ -81,7 +81,17 @@
       <img class="img-responsive" alt="Logo" src="<%= request.getContextPath() %>/retrieve/<%= logo.getID() %>" />
      </div> 
   <% } %>
-	<div class="col-md-8">
+  <%
+    if(editor_button || add_button) {
+      %>
+      <div class="col-md-8" style="margin-left:24px">
+      <%
+    } else {
+  %>
+	    <div class="col-md-8">
+  <%
+}
+%>
         <h2><%= name %>
         <%
             if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))

@@ -99,6 +99,15 @@
 			<div style="margin-left: 40px;">
 				<fmt:message key="jsp.help.guide.process.withdraw.txt" />
 			</div>
+			<ul>
+				<li><a
+					href="<%=request.getContextPath()%>/help/WSYU_application_form.xlsx"
+					target="_blank"><fmt:message
+							key="jsp.help.guide.process.add.modify.withdraw.application.form" /> </a></li>
+			</ul>
+			<div style="margin-left: 40px;">
+				<fmt:message key="jsp.help.guide.process.add.modify.withdraw.application.form.txt" />
+			</div>
 		</div>
 		<br />
 	</div>

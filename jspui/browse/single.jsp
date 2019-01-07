@@ -120,7 +120,7 @@
 <dspace:layout locbar="off" titlekey="browse.page-title">
 
 	<%-- Build the header (careful use of spacing) --%>
-	<h2>
+	<h2 class="yx_font">
 		<fmt:message key="browse.single.header"><fmt:param value="<%= scope %>"/> <fmt:param value="<%= typeKey %>"/> </fmt:message>
 	</h2>
 	
@@ -130,7 +130,7 @@
 %>
 	<%-- Include the main navigation for all the browse pages --%>
 	<%-- This first part is where we render the standard bits required by both possibly navigations --%>
-	<div id="browse_navigation" class="well text-center">
+	<div id="browse_navigation" class="well text-center"  style="padding-bottom:0;margin-bottom: 0;padding-top:10px ">
 	<form method="get" action="<%= formaction %>">
 			<input type="hidden" name="type" value="<%= bix.getName() %>"/>
 			<input type="hidden" name="order" value="<%= direction %>"/>
@@ -182,17 +182,17 @@
 	else
 	{
 %>	
-		<span><fmt:message key="browse.nav.jump"/></span>
-        <a class="label label-default" href="<%= sharedLink %>&amp;starts_with=0">0-9</a>
+		<!-- <span><fmt:message key="browse.nav.jump"/></span> -->
+        <!-- <a class="label label-default" href="<%= sharedLink %>&amp;starts_with=0">0-9</a> -->
 <%
 	    for (char c = 'A'; c <= 'Z'; c++)
 	    {
 %>
-        <a href="<%= sharedLink %>&amp;starts_with=<%= c %>"><%= c %></a>
+        <!-- <a href="<%= sharedLink %>&amp;starts_with=<%= c %>"><%= c %></a> -->
 <%
 	    }
 %>
-		<br/>
+		<!-- <br/> -->
 		<label for="starts_with"><fmt:message key="browse.nav.enter"/></label>
 		<input type="text" class="form-control-fixed" name="starts_with"/>
 		<input type="submit" class="btn btn-default btn-filter-add" value="<fmt:message key="browse.nav.go"/>" />
@@ -204,7 +204,7 @@
 	<%-- End of Navigation Headers --%>
 
 	<%-- Include a component for modifying sort by, order and results per page --%>
-	<div id="browse_controls" class="well text-center">
+	<div id="browse_controls" class="well text-center"  style="padding-bottom:0;margin-bottom: 0 ">
 	<form method="get" action="<%= formaction %>">
 		<input type="hidden" name="type" value="<%= bix.getName() %>"/>
 		

@@ -132,12 +132,12 @@
   
 <%  if (submit_button)
     { %>
-          <form class="form-group" action="<%= request.getContextPath() %>/submit" method="post">
+          <!-- <form class="form-group" action="<%= request.getContextPath() %>/submit" method="post">
             <input type="hidden" name="collection" value="<%= collection.getID() %>" />
 			<input class="btn btn-success col-md-12" type="submit" name="submit" value="<fmt:message key="jsp.collection-home.submit.button"/>" />
-          </form>
+          </form> -->
 <%  } %>
-        <form class="well" method="get" action="">
+        <form class="well" method="get" action="" style="padding:0;">
 <%  if (loggedIn && subscribed)
     { %>
                 <small><fmt:message key="jsp.collection-home.subscribed"/> <a href="<%= request.getContextPath() %>/subscribe"><fmt:message key="jsp.collection-home.info"/></a></small>

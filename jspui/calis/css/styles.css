@@ -1920,7 +1920,7 @@ div.panel-primary div.panel-heading a {
     display: block;
     margin-left:5px;
     text-align:center;
-    width:100px;
+    width:125px;
     height: 30px;
     line-height:30px;
     color:#fff;
@@ -1946,21 +1946,25 @@ div.panel-primary div.panel-heading a {
     margin-bottom:20px;
     text-decoration:none;
 }
-.cnt.clear .word a.current , .cnt.clear .word_sl a.current_sl  {
-    display: block;
-    margin-left:5px;
+.cnt.clear .word a.current {
+    display: block;   
     text-align:center;
-    height: 40px;
-    line-height:30px;
-    color:#fff;
-    font-weight:;
-    margin-right:15px;
+    height: 40px;  
     /*background-color:#65A3E8 ;*/
     background-color:#fff ;
     background-image: url("../images/a_over.jpg") ;
     background-repeat: no-repeat;
     background-position:center;
-    float:left;
     margin-bottom:20px;
-    text-decoration:none;
+}
+.cnt.clear .word_sl a.current_sl  {
+    display: block;   
+    text-align:center;
+    height: 40px;  
+    /*background-color:#65A3E8 ;*/
+    background-color:#fff ;
+    background-image: url("../images/a_over_sl.jpg") ;
+    background-repeat: no-repeat;
+    background-position:center;
+    margin-bottom:20px;
 }

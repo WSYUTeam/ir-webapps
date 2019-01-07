@@ -320,9 +320,9 @@
 		} else if(types == 'Thesis') {
 			//学位论文
 			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Thesis&filtertype=equals";
-		} else if(types == 'kyxm') {
+		} else if(types == 'Animation') {
 			//科研项目
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=kyxm&filtertype=equals";
+			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Animation&filtertype=equals";
 		} 
 		/*else if(types == 'Patent X') {
 			//专利
@@ -334,8 +334,8 @@
             success: function (data) {
             	document.getElementById("cgfl_more").href = filterquery;
                 $("#article_list").html(data);
-                $(obj).siblings().removeClass("current_sl");
-                $(obj).addClass("current_sl");
+                $(obj).siblings().removeClass("current");
+                $(obj).addClass("current");
             }
         });
     }
@@ -827,10 +827,9 @@
 		</div>
 		<div style="clear: both"></div>
 		<div class="cnt clear" style="float: left">
-            <div class="word_sl">
-            	<a class="" href="javascript:void(0)" onclick="getArticles(this,'kyxm')"><!-- 科研项目 --><fmt:message
-							key="jsp.home.project.research" /></a>
-                <a class="current_sl" href="javascript:void(0)" onclick="getArticles(this,'Book')"><!-- 教师著作 --><fmt:message
+            <div class="word">
+            	<!-- <a class="" href="javascript:void(0)" onclick="getArticles(this,'Animation')">科研项目</a> -->
+                <a class="current" href="javascript:void(0)" onclick="getArticles(this,'Book')"><!-- 教师著作 --><fmt:message
 							key="jsp.home.teacher.books" /></a>
                 <a class="" href="javascript:void(0)" onclick="getArticles(this,'Thesis')"><!-- 学位论文 --><fmt:message
 							key="jsp.home.dissertations" /></a>
@@ -838,6 +837,7 @@
 							key="jsp.home.journal.papers" /></a>
                 <a class="" href="javascript:void(0)" onclick="getArticles(this,'Conference')"><!-- 会议论文 --><fmt:message
 							key="jsp.home.conference.papers" /></a>
+				<!-- <a class="" href="javascript:void(0)" onclick="getArticles(this,'Patent X')">专利</a> -->
             </div>
             <div style="clear: both"></div>
             <!-- 成果分类  start -->

@@ -283,10 +283,10 @@
 							}
 									if (StringUtils.isNotEmpty(r.getPhone())) {
 						%>
-						<div class="profile-phone"><fmt:message
+						<!-- <div class="profile-phone"><fmt:message
 									key="jsp.dspace-admin.researcher.form.phone" /><br/>
-							<span><%=r.getPhone()%></span>
-						</div>
+							 <span> <%=r.getPhone()%> </span>
+						</div> -->
 						<%
 							}
 									if (StringUtils.isNotEmpty(r.getEmail())) {

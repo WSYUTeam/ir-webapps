@@ -218,7 +218,7 @@
           <li>         	
        <div class="row">
 			<%-- Search Box --%>
-			<div class="simple-search-form">
+			<div class="simple-search-form" style="visibility:hidden;">
       		<form method="get" action="<%= request.getContextPath() %>/simple-search" style="width:300px;">
 			<input class="form-control search-query-box" type="text" size="18" style="float:left;width:230px;"
 							id="tquery" name="query"

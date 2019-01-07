@@ -66,7 +66,13 @@
         		+ c.getHandle() + "\"><img class=\"media-object img-responsive\" src=\"" + 
         		request.getContextPath() + "/retrieve/" + logo.getID() + "\" alt=\"community logo\"></a>");
         }
-        out.println( "<div class=\"media-body\"><div class=\"col-md-12\"><h3 class=\"media-heading\"><a id=" + c.getID() + " href=\"" + request.getContextPath() + "/handle/" 
+        Boolean admin_b = (Boolean)request.getAttribute("admin_button");
+        boolean admin_button = (admin_b == null ? false : admin_b.booleanValue());
+        String col_md12_style = " ";
+        if (admin_button) {
+            col_md12_style = "style = \"margin-left: 140px;width: 540px;\"";
+        }
+        out.println( "<div class=\"media-body\"><div class=\"col-md-12\" "+col_md12_style+"><h3 class=\"media-heading\"><a id=" + c.getID() + " href=\"" + request.getContextPath() + "/handle/" 
         	+ c.getHandle() + "\">" + c.getMetadata("name") + "</a>");
         if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))
         {
@@ -82,7 +88,11 @@
         Collection[] cols = (Collection[]) collectionMap.get(c.getID());
         if (cols != null && cols.length > 0)
         {
-            out.println("<ul class=\"media-list\">");
+            String media_list_style = " ";
+            if (admin_button) {
+                media_list_style = "style = \"margin-left: 140px;\"";
+            }
+            out.println("<ul class=\"media-list\" "+media_list_style+">");
             for (int j = 0; j < cols.length; j++)
             {
                 out.println("<li class=\"media well col-md-4\">");

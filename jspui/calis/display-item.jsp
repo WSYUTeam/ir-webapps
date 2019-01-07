@@ -234,7 +234,7 @@ $(document).ready(function () {
 
 	$('#baiduLink').attr('href', "http://xueshu.baidu.com/s?=&=&wd=" + encodeURI('"' + $('.dc-title').html() + '"') + "&tn=SE_baiduxueshu_c1gjeupa&bs=&ie=utf-8&sc_f_para=sc_tasktype%3D%7BfirstAdvancedSearch%7D&sc_from=&sc_as_para=");
 	$('#cnkiLink').attr('href', "http://kns.cnki.net/kns/brief/Default_Result.aspx?code=SCDB&kw=" + encodeURI('' + $('.dc-title').html() + '') + "");//&korder=0&sel=1
-	$('#chaoxingLink').attr('href', "http://www.sslibrary.com/book/search?sw=" + encodeURI('' + $('.dc-title').html() + '') + "");
+	$('#chaoxingLink').attr('href', "http://jour.duxiu.com/searchJour?sw=" + encodeURI('' + $('.dc-title').html() + '') + "&channel=searchJour&bCon=&ecode=utf-8&searchtype=&Field=1");
 	$('.dc-title').append('<a href="javascript:void(0);" onclick=\'iLikeIt("<%=handle%>")\'><img width="32" src="<%=request.getContextPath() %>/calis/images/like.png"></a><span class="likes">[<%=likes %>]</span>');
 	
 	var views = <%=visits %>;
@@ -412,14 +412,15 @@ if (displayAll)
 </div>
 <div class="media baidu" style="padding:10px;margin-top: 0;">
 	<!-- <div class="media-body text-center" id="baiduCitedResult"> -->
-		<h4>&nbsp; &nbsp;<b>原文查看</b></h4>
+		<h4>&nbsp; &nbsp;<b><!-- 参考搜索 --><fmt:message key="jsp.display-item.baidu"/></b></h4>
 	<!-- </div> -->
 	<div class="" style="text-indent : 40px;"><!-- text-center -->
-		<span class="metric-counter"><h4 class="media-heading"><a id="baiduLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details"><!-- 百度学术™<fmt:message key="jsp.display-item.baidu"/> --><img src="../../calis/images/bd1.png"></a></h4></span>
+		<span class="metric-counter"><h4 class="media-heading"><a id="cnkiLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details"><img src="../../calis/images/cnki1.png" style="width: 90px;" ><!-- CNKI™查看 --></a></h4></span>
 		<p>
-		<span class="metric-counter"><h4 class="media-heading"><a id="cnkiLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details"><img src="../../calis/images/cnki1.png"><!-- CNKI™查看 --></a></h4></span>
+		<span class="metric-counter"><h4 class="media-heading"><a id="chaoxingLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details"><img src="../../calis/images/cx1.png" style="width: 90px;" ><!-- 超星™查看 --></a></h4></span>
 		<p>
-		<span class="metric-counter"><h4 class="media-heading"><a id="chaoxingLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details"><img src="../../calis/images/cx1.png"><!-- 超星™查看 --></a></h4></span>
+		<span class="metric-counter"><h4 class="media-heading"><a id="baiduLink" href="" title="See more details" target="_blank" data-toggle="tooltip" data-original-title="See more details"><!-- 百度学术™<fmt:message key="jsp.display-item.baidu"/> --><img src="../../calis/images/bd1.png" style="width: 90px;" ></a></h4></span>
+
 	</div>
 </div>
 <br/>
