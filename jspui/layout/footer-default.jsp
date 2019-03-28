@@ -105,11 +105,27 @@
 				%>
 				 </fmt:param>
 			</fmt:message> 
-			| <a  href="<%= request.getContextPath() %>/feedback" ><fmt:message key="jsp.layout.footer-default.feedback"/></a>
+			<!-- href="<%= request.getContextPath() %>/feedback" -->
+			| <a href="mailto: dspace-help@wsyu.edu.cn"><fmt:message key="jsp.layout.footer-default.feedback"/></a></a>
                                 <a href="<%= request.getContextPath() %>/htmlmap"></a>
 		</div>
 	</div>
     </footer>
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//stats.wsyu.edu.cn/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code 追踪代码加到机构知识库的--> 
 
     </body>
 </html>
