@@ -469,7 +469,7 @@
 								<%
 										} else {
 								%>
-									<sup id="claim_status_<%=item.getID() %>" style="color: red;"><fmt:message key="jsp.researcher.profile.claim.pending"/></sup>
+									<sup id="claim_status_<%=item.getID() %>" style="display:none;color: red;"><fmt:message key="jsp.researcher.profile.claim.pending"/></sup>
 								<%
 										}
 								%>
