@@ -828,7 +828,8 @@
 		<div style="clear: both"></div>
 		<div class="cnt clear" style="float: left">
             <div class="word_sl">
-            	<a class="" href="javascript:void(0)" onclick="getArticles(this,'kyxm')">科研项目</a>
+            	<a class="" href="javascript:void(0)" onclick="getArticles(this,'kyxm')"><!-- 科研项目 --><fmt:message
+							key="jsp.home.project.research" /></a>
                 <a class="current_sl" href="javascript:void(0)" onclick="getArticles(this,'Book')"><!-- 教师著作 --><fmt:message
 							key="jsp.home.teacher.books" /></a>
                 <a class="" href="javascript:void(0)" onclick="getArticles(this,'Thesis')"><!-- 学位论文 --><fmt:message
