@@ -295,7 +295,7 @@
 	}
 	//获取最近收录
     function getArticles_zjsl() {
-		filterquery_zjsl = "browse?type=dateissued&sort_by=2&order=DESC&rpp=10";
+		filterquery_zjsl = "browse?type=dateissued&sort_by=3&order=DESC&rpp=10";
         $.ajax({
             url: "<%=request.getContextPath()%>/"+filterquery_zjsl+"&zjsl=1",
             success: function (data) {
