@@ -125,6 +125,7 @@
         </div>
     </div>
     </footer>
+<!-- 访问脚本 start -->    
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
 function getip () {
@@ -139,7 +140,7 @@ function getip () {
                     // window.location.href="http://ir.wsyu.edu.cn/" ;
                 }
                 else{
-                    window.location.href="http://yc.wsyu.edu.cn/login" ;
+                    window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
                 }
             }
             else if(myip.indexOf("219.140.64.")==0){
@@ -151,7 +152,7 @@ function getip () {
                     // window.location.href="http://ir.wsyu.edu.cn/" ;
                 }
                 else{
-                    window.location.href="http://yc.wsyu.edu.cn/login" ;
+                    window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
                 }
             }
             else if(myip.indexOf("59.68.")==0){
@@ -163,7 +164,7 @@ function getip () {
                     // window.location.href="http://ir.wsyu.edu.cn/" ;
                 }
                 else{
-                    window.location.href="http://yc.wsyu.edu.cn/login" ;
+                    window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
                 }
             }
             else if(myip.indexOf("115.156.")==0){
@@ -175,7 +176,7 @@ function getip () {
                     // window.location.href="http://ir.wsyu.edu.cn/" ;
                 }
                 else{
-                    window.location.href="http://yc.wsyu.edu.cn/login" ;
+                    window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
                 }
             }
             else if(myip.indexOf("119.97.222.")==0){
@@ -195,14 +196,15 @@ function getip () {
                     // window.location.href="http://ir.wsyu.edu.cn/" ;
                 }
                 else{
-                    window.location.href="http://yc.wsyu.edu.cn/login" ;
+                    window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
                 }
             }else{
-                window.location.href="http://yc.wsyu.edu.cn/login" ;
+                window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
             }
             
         }
  getip();
 </script>
+<!-- 访问脚本 end -->
     </body>
 </html>
