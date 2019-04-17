@@ -437,7 +437,7 @@ if (displayAll)
 }
 	PKUUtils.listBitstreams(pageContext, item);
 %>
-<div id="altmetrics"></div> 
+<div id="altmetrics" style="display:none;"></div>
 <%
 	if(ConfigurationManager.getBooleanProperty("webui.item.display.cited.interface")) {
 %>
