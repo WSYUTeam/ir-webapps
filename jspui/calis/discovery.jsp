@@ -496,8 +496,10 @@
 										out.print("会议论文");
 									} else if(item.getMetadata("dc.type").equals("Thesis")) { 
 										out.print("学位论文");
+										out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
 									} else if(item.getMetadata("dc.type").equals("kyxm")) { 
 										out.print("科研项目");
+										out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
 									}
 									//out.print(item.getMetadata("dc.type"));
 								}

@@ -332,6 +332,13 @@
         $.ajax({
             url: "<%=request.getContextPath()%>/"+filterquery+"&cgfl=1",
             success: function (data) {
+            	if(types == 'Thesis') {
+					//学位论文
+					filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=type&filterquery=Thesis&filtertype=equals";
+				} else if(types == 'kyxm') {
+					//科研项目
+					filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=type&filterquery=kyxm&filtertype=equals";
+				} 
             	document.getElementById("cgfl_more").href = filterquery;
                 $("#article_list").html(data);
                 $(obj).siblings().removeClass("current_sl");
