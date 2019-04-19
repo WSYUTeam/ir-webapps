@@ -213,8 +213,9 @@
 
             </ul>
           </li>
-          <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li>
+          <!-- <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li> -->
           <li class="<%= currentPage.endsWith("/search")? "active" : "" %>"><a href="<%= request.getContextPath() %>/simple-search"><fmt:message key="nsfc.layout.navbar-default.search"/></a></li>
+          <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li>
           <li>         	
        <div class="row">
 			<%-- Search Box --%>
