@@ -128,7 +128,13 @@
 			$("#query").val($(this).attr('data-spell'));
 			$("#main-query-submit").click();
 		});
-		
+		/**搜索字体高亮显示  start**/
+		var otext = $("#query").val();
+	    $('.discovery-result-results').GL({
+	        ocolor:'red',   //设置关键词高亮颜色
+	        oshuru:otext   //设置要显示的关键词
+	    });
+	    /**搜索字体高亮显示  end**/
 		$( "#filterquery" )
 			.autocomplete({
 				source: function( request, response ) {
@@ -490,19 +496,19 @@
 								} else {
 									if(item.getMetadata("dc.type").equals("Book")) { 
 										out.print("教师著作");
-										out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
+										//out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
 									} else if(item.getMetadata("dc.type").equals("Journal")) { 
 										out.print("期刊论文");
-										out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
+										//out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
 									} else if(item.getMetadata("dc.type").equals("Conference")) { 
 										out.print("会议论文");
-										out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
+										//out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
 									} else if(item.getMetadata("dc.type").equals("Thesis")) { 
 										out.print("学位论文");
-										out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
+										//out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
 									} else if(item.getMetadata("dc.type").equals("kyxm")) { 
 										out.print("科研项目");
-										out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
+										//out.print("<link rel=\"stylesheet\" href=\"/calis/css/styles_kyxm.css\" type=\"text/css\">");
 									}
 									//out.print(item.getMetadata("dc.type"));
 								}

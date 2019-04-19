@@ -90,7 +90,7 @@
 %>
     <%--weicf --%>
     <link rel="stylesheet" href="<%= request.getContextPath() %>/calis/css/jquery.selectBox.css" type="text/css" />
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/calis/css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/calis/css/styles_kyxm.css" type="text/css" />
     <%--weicf --%>
         
 	<script type='text/javascript' src="<%= request.getContextPath() %>/static/js/jquery/jquery-1.10.2.min.js"></script>
@@ -101,7 +101,7 @@
     <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
     
     <script type="text/javascript" src="<%=request.getContextPath()%>/calis/js/jquery.selectBox.js"></script>
-
+    <script type="text/javascript" src="<%=request.getContextPath()%>/calis/js/gaoliang.js"></script>
     <%--Gooogle Analytics recording.--%>
     <%
     if (analyticsKey != null && analyticsKey.length() > 0)
