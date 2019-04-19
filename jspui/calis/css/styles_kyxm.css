@@ -1281,11 +1281,12 @@ white-space: nowrap;/*æ–‡æœ¬ä¸è¿›è¡Œæ¢è¡Œ*/
     content:"▪";
     font-size:16px;
     color: #65A3E8;
+    font-family: 微软雅黑, verdana, Arial, Helvetica, sans-serif;
 }
 .doc-display-title a {
     color: black;
     font-size: 14px;
-    font-family: "黑体","verdana","Arial","Helvetica",sans-serif;
+    font-family: "微软雅黑","verdana","Arial","Helvetica",sans-serif;
     text-decoration: none;
     font-weight: normal;
 }
