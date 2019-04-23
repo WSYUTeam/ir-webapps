@@ -989,7 +989,7 @@
 						%>
 					</form>
 				</div>
-				<div class="ds-static-div col-md-3">
+				<div class="ds-static-div col-md-3" style="display:none">
 					<a class="hide-advanced-filters" href="#"><fmt:message key="jsp.general.search.filters.hide" /></a>
 					<a class="show-advanced-filters hidden" href="#"><fmt:message key="jsp.general.search.filters.show" /></a>
 				</div>
