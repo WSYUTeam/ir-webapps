@@ -521,7 +521,7 @@ if(!doi.equals("")) {
         else
         {
 %>
-    <a class="btn btn-default" href="<%=locationLink %>?mode=simple">
+    <a class="btn btn-default" href="<%=locationLink %>?mode=simple" style="display: none;">
         <fmt:message key="jsp.display-item.text1"/>
     </a>
 <%
@@ -545,7 +545,7 @@ if(!doi.equals("")) {
         else
         {
 %>
-    <a class="btn btn-default" href="<%=locationLink %>?mode=full">
+    <a class="btn btn-default" href="<%=locationLink %>?mode=full" style="display: none;">
         <fmt:message key="jsp.display-item.text2"/>
     </a>
 <%
@@ -567,7 +567,7 @@ if(!doi.equals("")) {
 		if (suggestLink)
         {
 %>
-    <a class="btn btn-success" href="<%= request.getContextPath() %>/suggest?handle=<%= handle %>" target="new_window">
+    <a class="btn btn-success" href="<%= request.getContextPath() %>/suggest?handle=<%= handle %>" target="new_window" style="display: none;">
        <fmt:message key="jsp.display-item.suggest"/></a>
 <%
         }
@@ -585,7 +585,7 @@ if(!doi.equals("")) {
             sfximage = request.getContextPath() + "/image/sfx-link.gif";
         }
 %>
-        <a class="btn btn-default" href="<dspace:sfxlink item="<%= item %>"/>" /><img src="<%= sfximage %>" border="0" alt="SFX Query" /></a>
+        <a style="display: none;" class="btn btn-default" href="<dspace:sfxlink item="<%= item %>"/>" /><img src="<%= sfximage %>" border="0" alt="SFX Query" /></a>
 <%
     }
     }
