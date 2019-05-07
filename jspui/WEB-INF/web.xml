@@ -163,18 +163,6 @@
 		<filter-name>registered-only</filter-name>
 		<url-pattern>/product</url-pattern>
 	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>registered-only</filter-name>
-		<url-pattern>/feedback</url-pattern>
-	</filter-mapping>
-
-	<filter-mapping>
-		<filter-name>registered-only</filter-name>
-		<url-pattern>/solr</url-pattern>
-	</filter-mapping>
-
-
 
 	<!-- 
 	<filter-mapping>
@@ -969,6 +957,54 @@
 		<url-pattern>/product</url-pattern>
 	</servlet-mapping>
 	<!-- add by weicf -->
+
+
+
+<!-- add by zdk 2019.04.28 --> 
+    <servlet>
+        <servlet-name>LeaderList</servlet-name>
+        <servlet-class>server.LeaderList</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>LeaderList</servlet-name>
+        <url-pattern>/researcher-leader-list-json</url-pattern>
+    </servlet-mapping>
+
+<servlet>
+	<servlet-name>MasterLists</servlet-name>
+	<servlet-class>server.MasterList</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>MasterLists</servlet-name>
+<url-pattern>/researcher-master-list-json</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+<servlet-name>CultivationLists</servlet-name>
+<servlet-class>server.CultivationList</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>CultivationLists</servlet-name>
+<url-pattern>/researcher-cultivation-list-json</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+<servlet-name>CadreLists</servlet-name>
+<servlet-class>server.CadreList</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>CadreLists</servlet-name>
+<url-pattern>/researcher-cadre-list-json</url-pattern>
+</servlet-mapping>
+
+<!-- add by zdk 2019.04.28 -->
+
+
+
+
 	
 	<!-- add by weicf 2012.11.13 -->
 	<servlet>
@@ -1297,6 +1333,46 @@
 		<url-pattern>/like</url-pattern>
 	</servlet-mapping>
 	<!-- add by weicf -->	
+
+	<servlet>
+        	<servlet-name>researcher-master-list</servlet-name>
+        	<jsp-file>/calis/researcher-master-list.jsp</jsp-file>
+    </servlet>
+    
+	<servlet-mapping>
+        	<servlet-name>researcher-master-list</servlet-name>
+	        <url-pattern>/researcher-master-list</url-pattern>
+    </servlet-mapping>
+    
+	<servlet>
+        	<servlet-name>researcher-leader-list</servlet-name>
+        	<jsp-file>/calis/researcher-leader-list.jsp</jsp-file>
+    </servlet>
+    
+	<servlet-mapping>
+        	<servlet-name>researcher-leader-list</servlet-name>
+	        <url-pattern>/researcher-leader-list</url-pattern>
+    </servlet-mapping>
+    
+	<servlet>
+        	<servlet-name>researcher-cadre-list</servlet-name>
+        	<jsp-file>/calis/researcher-cadre-list.jsp</jsp-file>
+    </servlet>
+    
+	<servlet-mapping>
+        	<servlet-name>researcher-cadre-list</servlet-name>
+	        <url-pattern>/researcher-cadre-list</url-pattern>
+    </servlet-mapping>    
+    
+	<servlet>
+        	<servlet-name>researcher-cultivation-list</servlet-name>
+        	<jsp-file>/calis/researcher-cultivation-list.jsp</jsp-file>
+    </servlet>
+    
+	<servlet-mapping>
+        	<servlet-name>researcher-cultivation-list</servlet-name>
+	        <url-pattern>/researcher-cultivation-list</url-pattern>
+    </servlet-mapping>   
   
   <!-- Icon MIME type -->
   <mime-mapping>
