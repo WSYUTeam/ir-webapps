@@ -164,6 +164,16 @@
 		<url-pattern>/product</url-pattern>
 	</filter-mapping>
 
+	<filter-mapping>	
+		<filter-name>registered-only</filter-name>	
+		<url-pattern>/feedback</url-pattern>	
+	</filter-mapping>	
+
+ 	<filter-mapping>	
+		<filter-name>registered-only</filter-name>	
+		<url-pattern>/solr</url-pattern>	
+	</filter-mapping>
+	
 	<!-- 
 	<filter-mapping>
 		<filter-name>PageEhCacheFilter</filter-name>
