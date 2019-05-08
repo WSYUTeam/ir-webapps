@@ -294,10 +294,10 @@
 	} else {
 		getResearcher("", "", "", 12, 0);
 	}
-	$("#panel").slideToggle("slow");
+	// $("#panel").slideToggle("slow");
 	$(".btn-slide").toggleClass("active");
 	setTimeout(function(){
-		$("#panel").slideToggle("slow");
+		// $("#panel").slideToggle("slow");
 		$(".btn-slide").toggleClass("active");
 	},1500);
 	</script>

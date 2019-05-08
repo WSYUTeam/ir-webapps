@@ -213,17 +213,17 @@
 
             </ul>
           </li>
-          <!-- <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li> -->
           <li class="<%= currentPage.endsWith("/search")? "active" : "" %>"><a href="<%= request.getContextPath() %>/simple-search"><fmt:message key="nsfc.layout.navbar-default.search"/></a></li>
           <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li>
+          
           <li>         	
        <div class="row">
 			<%-- Search Box --%>
-			<div class="simple-search-form" style="visibility:hidden;">
+			<div class="simple-search-form">
       		<form method="get" action="<%= request.getContextPath() %>/simple-search" style="width:300px;">
 			<input class="form-control search-query-box" type="text" size="18" style="float:left;width:230px;"
 							id="tquery" name="query"
-							placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" /><input type="submit" id="main-query-submit" class="btn btn-primary" style="width:60px;float:right;color: #fff;background-color:#003C80;"  
+							placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" /><input type="submit" id="main-query-submit" class="btn btn-primary" style="width:60px;float:right;color: #fff;text-indent: -8px;background-color:#003C80;"  
 							value="<fmt:message key="jsp.general.go"/>" />
 			</form>
 			</div>
