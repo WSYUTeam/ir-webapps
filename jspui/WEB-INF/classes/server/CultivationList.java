@@ -117,6 +117,15 @@ public class CultivationList extends HttpServlet {
 		uidlist.put("彭文艺", "b4fbba83001851d7e2ee16be8c70a416");
 		uidlist.put("孙瑜", "35d1b91dc3bf6cb217bd436f54eb49d4");
 		uidlist.put("班蕾", "8526af4e4767e6ee4f69b12eb934b2b1");
+		uidlist.put("定会","35d1b91dc3bf6cb2b6f8c139a124753c");
+		uidlist.put("郭磊","5b528bae0a46facb");
+		uidlist.put("李秀娟","e575843d6273dec1");
+		uidlist.put("任兰兰","301a698299c6e067");
+		uidlist.put("刘娟","9840e999b57583cc");
+		uidlist.put("张萍","13106034bb64e10d");
+		uidlist.put("张丹","35d1b91dc3bf6cb232479287d05a417e");
+		uidlist.put("肖艳芬", "56dc6267fe0117ad2498fbad6534ecd3");
+
 
 		try {
 			pStatement = connection.prepareStatement(sqls);
