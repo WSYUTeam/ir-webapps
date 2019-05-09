@@ -125,11 +125,17 @@ public class CadreList extends HttpServlet {
 		uidlist.put("姜娜", "55c3311c8c0457b796434cf36fc323c2");
 		uidlist.put("余芳", "35d1b91dc3bf6cb277f41ffe2fcbf2f0");
 		uidlist.put("朱祥和", "88902e85afe1ea310caa503f247c1291");
-		uidlist.put("肖艳芬", "56dc6267fe0117ad2498fbad6534ecd3");
 		uidlist.put("张瑾", "55c3311c8c0457b72873f3462ff3de83");
 		uidlist.put("余婵娟", "bed2d71ce80b4851f39efb6960c00103");
 		uidlist.put("杨娟", "09cab95069277bc4ee023f0ae52b240e");
 		uidlist.put("杨旗", "361b27622fbc9ccb9d80b8301100f341");
+		uidlist.put("庄静","35d1b91dc3bf6cb2d073502f4efc509e");
+		uidlist.put("庞迎庆","3a05a8fc91145d21");
+		uidlist.put("朱忠敏","bed2d71ce80b4851f5ac29bf19fe015d");
+		uidlist.put("李春桃","538147c84ba53a6e");
+		uidlist.put("郑传洋","792a87420dd326f7186e0cf57163357c");
+		uidlist.put("朱永亮","35d1b91dc3bf6cb20c1e4bccbe5a3d22");
+		
 
 		try {
 			pStatement = connection.prepareStatement(sqls);
