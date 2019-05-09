@@ -57,7 +57,7 @@ public class CadreList extends HttpServlet {
 			// TODO: handle exception
 		}
 
-		String url = "jdbc:postgresql://218.199.144.228:5432/calisir";
+		String url = "jdbc:postgresql://218.199.144.229:5432/calisir";
 		String username = "dspace";
 		String password = "dspace";
 		Connection connection = null;
