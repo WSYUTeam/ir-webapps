@@ -439,6 +439,18 @@
 	<!-- 轮播图 end -->
 	<!-- 热门成功能 start -->
 	<div class="container row popular" >
+		<div id="" class="col-md-12">
+			<div class="row-title-zh"><img src="calis\images\x.png"> &nbsp; <!-- 最近收录 -->本库简介
+			</div>
+			<!-- <div id="hot_view">
+				
+			</div> -->
+			<!-- 最近收录  start -->
+            <div id="Introduction">&nbsp;&nbsp;&nbsp;&nbsp;
+    	&nbsp;&nbsp;学校机构知识库为收集、展示我校历年知识成果提供一个综合信息服务平台，该系统目前收录了我校十个机构的多种学术信息，涉及期刊论文、学位论文、图书专著、专利、科研项目等多种成果类型，是学校学术成果的集中展示。
+	</div>
+            <!-- 最近收录  end -->
+		</div>
 		<div id="feature_list" class="col-md-12" >
 			<div class="row-title-zh" ><img src="calis\images\x.png"> &nbsp; <!-- 最近收录 --><fmt:message
 							key="jsp.home.latest.results" />
@@ -461,7 +473,20 @@
 	<div class="container banner-home" style="height:520px;overflow: hidden;">
 		<div class="row-title-zh xztj"><img src="calis\images\c.png"> &nbsp; <!-- 学者推荐 --><fmt:message
 							key="jsp.home.scholars" />
-			<span style="font-size:12px;line-height:41px;float:right;font-family;padding-right:45px">
+		 &nbsp; <span class="master">
+                         <a class="btn-slide-style" href="/researcher-master-list">学者大师</a>
+                 </span><span class="leader">
+                         <a class="btn-slide-style" href="/researcher-leader-list">学科带头人</a>
+                 </span>
+                 <!-- <span class="cadre">
+                         <a class="btn-slide-style" href="/researcher-cadre-list">骨干教师
+                 </a>
+                 </span>
+                 <span class="cultivation">
+                         <a class="btn-slide-style" href="/researcher-cultivation-list">骨干教师培养对象
+                 </a>
+                 </span> -->
+			<span style="font-size:12px;line-height:41px;font-family;padding-left:250px;">
 				<a href="/researcher-list" target="_blank" class="more"><!-- 更多 --><fmt:message
 							key="jsp.home.more" />&gt;&gt;</a>
 			</span>

@@ -76,6 +76,8 @@
 %>
 
 	   <div id="new_top">
+	   	<a href="http://irt.wsyu.edu.cn/" style="color: white;">本库首页</a> &nbsp; &nbsp; 
+	   	<a href="http://www.wsyu.edu.cn/" style="color: white;">学校主页</a>
 	   	<!-- 登录-->
 	   	<div class="nav navbar-nav navbar-right">
 			<ul class="nav navbar-nav navbar-right">
