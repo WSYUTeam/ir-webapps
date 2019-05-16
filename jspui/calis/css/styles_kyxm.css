@@ -1170,14 +1170,14 @@ white-space: nowrap;/*æ–‡æœ¬ä¸è¿›è¡Œæ¢è¡Œ*/
     margin: 0;
     padding: 0px;
     padding-right:865px;
-    padding-right:488px; 
+    
 }
 #unit .leader{
     height: 0px;
     margin: 0;
     padding: 0px;
     padding-right:685px; 
-    padding-right:298px;
+    
 }
 #unit .cadre{
     height: 0px;
@@ -1211,6 +1211,7 @@ white-space: nowrap;/*æ–‡æœ¬ä¸è¿›è¡Œæ¢è¡Œ*/
  background: url("../images/btn-slide.gif") no-repeat scroll center top transparent;
  width: 131px;
 }
+
 #unit .search-form {
     margin-right: -435px;
     margin-top: -40px;

@@ -226,14 +226,8 @@
 		$.featureList($("#tabs li a"), $("#output li"), {
 			start_item : random
 		});
-
-		/*
-		// Alternative
-		$('#tabs li a').featureList({
-			output			:	'#output li',
-			start_item		:	1
-		});
-		 */
+        
+		
 	});
 
 	if ($.browser.webkit) {
@@ -301,6 +295,7 @@
             success: function (data) {
             	document.getElementById("cgfl_more_zjsl").href = filterquery_zjsl;
                 $("#article_list_zjsl").html(data);
+				$("#article_list_zjsl .table td a").attr("target","_blank");
             }
         });
     }
@@ -478,15 +473,15 @@
                  </span><span class="leader">
                          <a class="btn-slide-style" href="/researcher-leader-list">学科带头人</a>
                  </span>
-                 <!-- <span class="cadre">
+                 <span class="cadre">
                          <a class="btn-slide-style" href="/researcher-cadre-list">骨干教师
                  </a>
                  </span>
                  <span class="cultivation">
                          <a class="btn-slide-style" href="/researcher-cultivation-list">骨干教师培养对象
                  </a>
-                 </span> -->
-			<span style="font-size:12px;line-height:41px;font-family;padding-left:250px;">
+                 </span>
+			<span style="font-size:12px;line-height:41px;font-family;padding-left:0px;">
 				<a href="/researcher-list" target="_blank" class="more"><!-- 更多 --><fmt:message
 							key="jsp.home.more" />&gt;&gt;</a>
 			</span>
