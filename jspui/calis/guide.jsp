@@ -92,7 +92,7 @@
 			</div>-->
 			<ul>
 				<li><a
-					href="<%=request.getContextPath()%>/help/WSYU_IR_withdraw.pdf"
+					href="<%=request.getContextPath()%>/help/WSYU_scholar_information_registration_sheet.xlsx"
 					target="_blank"><fmt:message
 							key="jsp.help.guide.process.withdraw" /> </a></li>
 			</ul>
@@ -101,7 +101,7 @@
 			</div>
 			<ul>
 				<li><a
-					href="<%=request.getContextPath()%>/help/WSYU_application_form.xlsx"
+					href="<%=request.getContextPath()%>/help/WSYU_academic_achievements_registration_sheet.xlsx"
 					target="_blank"><fmt:message
 							key="jsp.help.guide.process.add.modify.withdraw.application.form" /> </a></li>
 			</ul>
