@@ -289,11 +289,11 @@
 	}
 	//获取最近收录
     function getArticles_zjsl() {
-		filterquery_zjsl = "browse?type=dateissued&sort_by=3&order=DESC&rpp=10";
+		filterquery_zjsl = "browse?type=dateissued&sort_by=3&order=DESC&rpp=4";
         $.ajax({
             url: "<%=request.getContextPath()%>/"+filterquery_zjsl+"&zjsl=1",
             success: function (data) {
-            	document.getElementById("cgfl_more_zjsl").href = filterquery_zjsl;
+            	document.getElementById("cgfl_more_zjsl").href = "browse?type=dateissued&sort_by=3&order=DESC&rpp=10";
                 $("#article_list_zjsl").html(data);
 				$("#article_list_zjsl .table td a").attr("target","_blank");
             }
