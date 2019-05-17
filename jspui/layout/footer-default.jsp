@@ -89,7 +89,7 @@
             </ul>
           </li>
           <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li>
-          <li class=""><a href="mailto: dspace-help@wsyu.edu.cn"><fmt:message key="nsfc.layout.navbar-default.contact"/></a></li>
+          <li class=""><a href="mailto:ir@wsyu.edu.cn"><fmt:message key="nsfc.layout.navbar-default.contact"/></a></li>
        </ul>
 		</div>
     
