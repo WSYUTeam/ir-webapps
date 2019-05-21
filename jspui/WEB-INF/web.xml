@@ -1002,6 +1002,16 @@
 
 <!-- add by zdk 2019.04.28 -->
 
+<!-- add by zdk 2019.5.22 -->
+<servlet>
+<servlet-name>OrderLists</servlet-name>
+<servlet-class>server.OrderList</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>OrderLists</servlet-name>
+<url-pattern>/researcher-orderlist</url-pattern>
+</servlet-mapping>
+<!-- add by zdk 2019.5.22 -->
 
 
 
