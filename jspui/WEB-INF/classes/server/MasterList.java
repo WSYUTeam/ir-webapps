@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import tool.PKUUtils;
 
 @WebServlet("/master")
 public class MasterList extends HttpServlet {
@@ -103,29 +104,18 @@ public class MasterList extends HttpServlet {
 					+ "and researcher.academic_name like '%学者%'" + "and researcher.name like '%" + name + "%';";
 		}
 
-		Map<String, String> uidlist = new HashMap<String, String>();
-		uidlist.put("黄瑞光", "5f0c047e040303200dd893323570c85f");
-		uidlist.put("石长顺", "3e0ce1b0fd7e282554b61fc48655942c");
-		uidlist.put("冯仲仁", "3de5dc9c3d0ddcf5a25e4a55d1e9674e");
-		uidlist.put("邓明然", "2e34831826d39909d2a818c6c8428d04");
-		uidlist.put("齐欢", "c9ff2b24385ec2780db66bf1a5463157");
-		uidlist.put("徐秋梅", "13cae1812f238bd53ae829d0c04444a2");
-		uidlist.put("胡雨霞", "493d0996aa48d73a72adaeeb199b00a3");
-		uidlist.put("吴昌林", "116d2a7bfd6bc7dc0f90226d7a413fee");
-		uidlist.put("冯向东", "35d1b91dc3bf6cb2ad0d19c7d666ce54");
-
 		try {
 			pStatement = connection.prepareStatement(sqls);
 			rs = pStatement.executeQuery();
 			mylist = new ArrayList();
 			while (rs.next()) {
 				// 拼接image图片
-				String code = null;
+				String code = rs.getString("uid");
 				String image = rs.getString("image");
 				String uname = rs.getString("name").toString();
 
 				try {
-					code = uidlist.get(uname);
+					code = PKUUtils.encrypt(code, "PkuLibIR");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

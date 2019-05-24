@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import tool.PKUUtils;
 
 @WebServlet("/cultivation")
 public class CultivationList extends HttpServlet {
@@ -104,41 +105,18 @@ public class CultivationList extends HttpServlet {
 					+ "and researcher.academic_name like '%骨干教师培养对象'" + "and researcher.name like '%" + name + "%';";
 		}
 
-		Map<String, String> uidlist = new HashMap<String, String>();
-		uidlist.put("李静", "acadb7499c591ea9613081981923df28");
-		uidlist.put("管俊", "42b0d9c82e7f17b941ea8fbfc8972f6d");
-		uidlist.put("方奕乐", "35d1b91dc3bf6cb294c996db42a87128");
-		uidlist.put("苏莹", "35d1b91dc3bf6cb239510f18d26e836d");
-		uidlist.put("王姣", "c9ff2b24385ec2786f26ba275d4781f6");
-		uidlist.put("汪广磊", "35d1b91dc3bf6cb2e763414997ec5748");
-		uidlist.put("孙玉凤", "4fe9a00f6e88491bcda13e382e9e754e");
-		uidlist.put("左娟", "35d1b91dc3bf6cb222ffb499e634f1b0");
-		uidlist.put("张琦", "4fd30bf49ebf40bcd9a9dc38f3019fe0");
-		uidlist.put("彭文艺", "b4fbba83001851d7e2ee16be8c70a416");
-		uidlist.put("孙瑜", "35d1b91dc3bf6cb217bd436f54eb49d4");
-		uidlist.put("班蕾", "8526af4e4767e6ee4f69b12eb934b2b1");
-		uidlist.put("定会","35d1b91dc3bf6cb2b6f8c139a124753c");
-		uidlist.put("郭磊","5b528bae0a46facb");
-		uidlist.put("李秀娟","e575843d6273dec1");
-		uidlist.put("任兰兰","301a698299c6e067");
-		uidlist.put("刘娟","9840e999b57583cc");
-		uidlist.put("张萍","13106034bb64e10d");
-		uidlist.put("张丹","35d1b91dc3bf6cb232479287d05a417e");
-		uidlist.put("肖艳芬", "56dc6267fe0117ad2498fbad6534ecd3");
-
-
 		try {
 			pStatement = connection.prepareStatement(sqls);
 			rs = pStatement.executeQuery();
 			mylist = new ArrayList();
 			while (rs.next()) {
 				// 拼接image图片
-				String code = null;
+				String code = rs.getString("uid");
 				String image = rs.getString("image");
 				String uname = rs.getString("name").toString();
 
 				try {
-					code = uidlist.get(uname);
+					code = PKUUtils.encrypt(code, "PkuLibIR");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
