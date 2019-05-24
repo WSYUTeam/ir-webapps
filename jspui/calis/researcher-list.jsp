@@ -257,13 +257,16 @@
 
 	<div id="unit">
 		<div id="panel"></div>
-<p class="master">
+				<p class="master">
                          <a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-master-list">学者大师</a>
-                 </p><p class="leader">
+                 </p>
+                 <p class="leader">
                          <a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-leader-list">学科带头人</a>
-                 </p><p class="cadre">
+                 </p>
+                <p class="cadre">
                          <a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-cadre-list">骨干教师</a>
-                 </p><p class="cultivation">
+                 </p>
+                 <p class="cultivation">
                          <a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-cultivation-list">骨干教师培养对象</a>
                  </p>
 		<p class="slide">
@@ -294,10 +297,10 @@
 	} else {
 		getResearcher("", "", "", 12, 0);
 	}
-	$("#panel").slideToggle("slow");
+	// $("#panel").slideToggle("slow");
 	$(".btn-slide").toggleClass("active");
 	setTimeout(function(){
-		$("#panel").slideToggle("slow");
+		// $("#panel").slideToggle("slow");
 		$(".btn-slide").toggleClass("active");
 	},1500);
 	</script>

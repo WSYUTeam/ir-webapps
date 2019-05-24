@@ -54,7 +54,7 @@
 			<div style="margin-left: 40px;">
 				<fmt:message key="jsp.help.guide.open.policy.txt" />
 			</div> -->
-			<ul>
+			<!--<ul>
 				<li><a
 					href="<%=request.getContextPath()%>/help/WSYU_IR_license_agreement.pdf"
 					target="_blank"><fmt:message key="jsp.help.guide.license" /> </a>
@@ -62,8 +62,8 @@
 			</ul>
 			<div style="margin-left: 40px;">
 				<fmt:message key="jsp.help.guide.license.txt" />
-			</div>
-			<ul>
+			</div>-->
+			<!--<ul>
 				<li><a
 					href="<%=request.getContextPath()%>/help/WSYU_IR_power_attorney.pdf"
 					target="_blank"><fmt:message key="jsp.help.guide.attorney" />
@@ -71,7 +71,7 @@
 			</ul>
 			<div style="margin-left: 40px;">
 				<fmt:message key="jsp.help.guide.attorney.txt" />
-			</div>
+			</div>-->
 			<!-- <ul>
 				<li><a
 					href="<%=request.getContextPath()%>/help/WSYU_IR_submission.pdf"
@@ -81,7 +81,7 @@
 			<div style="margin-left: 40px;">
 				<fmt:message key="jsp.help.guide.process.submission.txt" />
 			</div> -->
-			<ul>
+			<!-- <ul>
 				<li><a
 					href="<%=request.getContextPath()%>/help/WSYU_IR_format_recommended.pdf"
 					target="_blank"><fmt:message
@@ -89,10 +89,10 @@
 			</ul>
 			<div style="margin-left: 40px;">
 				<fmt:message key="jsp.help.guide.format.recommended.txt" />
-			</div>
+			</div>-->
 			<ul>
 				<li><a
-					href="<%=request.getContextPath()%>/help/WSYU_IR_withdraw.pdf"
+					href="<%=request.getContextPath()%>/help/WSYU_scholar_information_registration_sheet.xlsx"
 					target="_blank"><fmt:message
 							key="jsp.help.guide.process.withdraw" /> </a></li>
 			</ul>
@@ -101,7 +101,7 @@
 			</div>
 			<ul>
 				<li><a
-					href="<%=request.getContextPath()%>/help/WSYU_application_form.xlsx"
+					href="<%=request.getContextPath()%>/help/WSYU_academic_achievements_registration_sheet.xlsx"
 					target="_blank"><fmt:message
 							key="jsp.help.guide.process.add.modify.withdraw.application.form" /> </a></li>
 			</ul>

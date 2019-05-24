@@ -23,20 +23,20 @@
 
 <%
 
-    BrowseIndex[] bis = BrowseIndex.getBrowseIndices();
-    BrowseInfo binfo = (BrowseInfo) request.getAttribute("browse.info");
-    String browseCurrent = "";
-    if (binfo != null)
-    {
-        BrowseIndex bix = binfo.getBrowseIndex();
-        // Only highlight the current browse, only if it is a metadata index,
-        // or the selected sort option is the default for the index
-        if (bix.isMetadataIndex() || bix.getSortOption() == binfo.getSortOption())
-        {
-            if (bix.getName() != null)
-                browseCurrent = bix.getName();
-        }
-    }
+	BrowseIndex[] bis = BrowseIndex.getBrowseIndices();
+	BrowseInfo binfo = (BrowseInfo) request.getAttribute("browse.info");
+	String browseCurrent = "";
+	if (binfo != null)
+	{
+	    BrowseIndex bix = binfo.getBrowseIndex();
+	    // Only highlight the current browse, only if it is a metadata index,
+	    // or the selected sort option is the default for the index
+	    if (bix.isMetadataIndex() || bix.getSortOption() == binfo.getSortOption())
+	    {
+	        if (bix.getName() != null)
+				browseCurrent = bix.getName();
+	    }
+	}
 
     String sidebar = (String) request.getAttribute("dspace.layout.sidebar");
 %>
@@ -46,8 +46,8 @@
     if (sidebar != null)
     {
 %>
-    </div>
-    <div class="col-md-3">
+	</div>
+	<div class="col-md-3">
                     <%= sidebar %>
     </div>
     </div>       
@@ -57,55 +57,55 @@
 </div>
 </main>
             <%-- Page footer --%>
-    <footer class="navbar navbar-inverse navbar-bottom">
+	<footer class="navbar navbar-inverse navbar-bottom">
     <div id="footerPan" class="container">
-        
-        <div class="col-md-12 nav-footer">
-        <ul class="nav navbar-nav">
-           <li class=""><a href="<%= request.getContextPath() %>/"><fmt:message key="jsp.layout.navbar-default.home"/></a></li>
+		
+		<div class="col-md-12 nav-footer">
+		<ul class="nav navbar-nav">
+		   <li class=""><a href="<%= request.getContextPath() %>/"><fmt:message key="jsp.layout.navbar-default.home"/></a></li>
            <li class=""><a href="<%= request.getContextPath() %>/simple-search"><fmt:message key="nsfc.layout.navbar-default.search"/></a></li>
            <li><a class="" href="<%= request.getContextPath() %>/researcher-list"><fmt:message key="jsp.layout.navbar-default.researchers" /></a></li>     
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="jsp.layout.navbar-default.browse"/> <b class="caret"></b></a>
              <ul class="dropdown-menu dropup-menu">
                <li><a href="<%= request.getContextPath() %>/community-list"><fmt:message key="jsp.layout.navbar-default.communities-collections"/></a></li>
-                <li class="divider"></li>
+				<li class="divider"></li>
         <li class="dropdown-header"><fmt:message key="jsp.layout.navbar-default.browseitemsby"/></li>
-                <%-- Insert the dynamic browse indices here --%>
-                
-                <%
-                    for (int i = 0; i < bis.length; i++)
-                    {
-                        BrowseIndex bix = bis[i];
-                        String key = "browse.menu." + bix.getName();
-                    %>
-                                <li><a href="<%= request.getContextPath() %>/browse?type=<%= bix.getName() %>"><fmt:message key="<%= key %>"/></a></li>
-                    <%  
-                    }
-                %>
-                    
-                <%-- End of dynamic browse indices --%>
+				<%-- Insert the dynamic browse indices here --%>
+				
+				<%
+					for (int i = 0; i < bis.length; i++)
+					{
+						BrowseIndex bix = bis[i];
+						String key = "browse.menu." + bix.getName();
+					%>
+				      			<li><a href="<%= request.getContextPath() %>/browse?type=<%= bix.getName() %>"><fmt:message key="<%= key %>"/></a></li>
+					<%	
+					}
+				%>
+				    
+				<%-- End of dynamic browse indices --%>
 
             </ul>
           </li>
           <li class=""><a href="<%=request.getContextPath()%>/guide"><fmt:message key="jsp.layout.navbar-default.help" /></a></li>
-          <li class=""><a href="mailto: dspace-help@wsyu.edu.cn"><fmt:message key="nsfc.layout.navbar-default.contact"/></a></li>
+          <li class=""><a href="mailto:ir@wsyu.edu.cn"><fmt:message key="nsfc.layout.navbar-default.contact"/></a></li>
        </ul>
-        </div>
+		</div>
     
-        <div style="clear: both;"></div>
+    	<div style="clear: both;"></div>
     
-        <div class="col-md-12 copyright">
-            <fmt:message key="jsp.layout.footer-default.text" >
-                <fmt:param>
-                <%
-                    Calendar cal = Calendar.getInstance();
-                    int year = cal.get(Calendar.YEAR);
-                    out.print(year);
-                %>
-                 </fmt:param>
-            </fmt:message> 
-            | <a  href="<%= request.getContextPath() %>/feedback" ><fmt:message key="jsp.layout.footer-default.feedback"/></a>
+		<div class="col-md-12 copyright">
+			<fmt:message key="jsp.layout.footer-default.text" >
+				<fmt:param>
+				<%
+					Calendar cal = Calendar.getInstance();
+					int year = cal.get(Calendar.YEAR);
+					out.print(year);
+				%>
+				 </fmt:param>
+			</fmt:message> 
+			| <a  href="<%= request.getContextPath() %>/feedback" ><fmt:message key="jsp.layout.footer-default.feedback"/></a>
                                 <a href="<%= request.getContextPath() %>/htmlmap"></a>
                                 <!-- Matomo -->
             <script type="text/javascript">
@@ -122,8 +122,8 @@
               })();
             </script>
             <!-- End Matomo Code -->
-        </div>
-    </div>
+		</div>
+	</div>
     </footer>
 <!-- 访问脚本 start -->    
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
@@ -131,6 +131,8 @@
 function getip () {
             var myip=returnCitySN.cip;
             var arr_myip=myip.split(".");
+            //var stop_href = "http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;//外网认证中心
+            var stop_href = "http://ir.wsyu.edu.cn/login/logged-out.html";
             if(myip.indexOf("218.199.")==0){
                 var st="218.199.144.0";//获取开始IP
                 var en="218.199.159.254";//获取结束IP
@@ -140,7 +142,7 @@ function getip () {
                     // window.location.href="http://ir.wsyu.edu.cn/" ;
                 }
                 else{
-                    window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
+                    window.location.href=stop_href;
                 }
             }
             else if(myip.indexOf("219.140.64.")==0){
@@ -152,7 +154,7 @@ function getip () {
                     // window.location.href="http://ir.wsyu.edu.cn/" ;
                 }
                 else{
-                    window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
+                    window.location.href=stop_href;
                 }
             }
             else if(myip.indexOf("59.68.")==0){
@@ -164,7 +166,7 @@ function getip () {
                     // window.location.href="http://ir.wsyu.edu.cn/" ;
                 }
                 else{
-                    window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
+                    window.location.href=stop_href ;
                 }
             }
             else if(myip.indexOf("115.156.")==0){
@@ -176,7 +178,7 @@ function getip () {
                     // window.location.href="http://ir.wsyu.edu.cn/" ;
                 }
                 else{
-                    window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
+                    window.location.href=stop_href ;
                 }
             }
             else if(myip.indexOf("119.97.222.")==0){
@@ -196,10 +198,10 @@ function getip () {
                     // window.location.href="http://ir.wsyu.edu.cn/" ;
                 }
                 else{
-                    window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
+                    window.location.href=stop_href ;
                 }
             }else{
-                window.location.href="http://yc.wsyu.edu.cn/rwt/CHAIR/http/NF3C675UQF4T63LEPVYGG5C/" ;
+                window.location.href=stop_href ;
             }
             
         }

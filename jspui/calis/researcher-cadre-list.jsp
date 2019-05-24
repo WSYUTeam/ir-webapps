@@ -261,22 +261,25 @@
 
 	<div id="unit">
 		<div id="panel"></div>
-		  <p class="master">
-                         <a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-master-list">学者大师</a>
-                 </p><p class="leader">
-                         <a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-leader-list">学科带头人</a>
-                 </p><p class="cadre">
-                         <a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-cadre-list">骨干教师</a>
-                 </p><p class="cultivation">
-                         <a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-cultivation-list">骨干教师培养对象</a>
-                 </p>
+		<p class="master">
+			<a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-master-list">学者大师</a>
+		</p>
+		<p class="leader">
+			<a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-leader-list">学科带头人</a>
+		</p>
+		<p class="cadre">
+                 <a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-cadre-list">骨干教师</a>
+         </p>
+         <p class="cultivation">
+                 <a class="btn-slide-style" href="<%=request.getContextPath()%>/researcher-cultivation-list">骨干教师培养对象</a>
+         </p>
 	
 
 	<p class="slide">
 			<a class="btn-slide" href="javascript:void(0);"><fmt:message
 					key="jsp.home.researcher.browse.unit" /></a>
 		</p>
-		<div id="unit_name_select"></div>
+		<div id="unit_name_select" class="unit_name_select_style"></div>
 		<div class="search-form">
 			<input type="text" class="form-control researcher-query-box" placeholder='<fmt:message key="jsp.home.researcher.browse.search.input"/>' id="researcher_name" onkeypress="if(event.keyCode==13) {findResearcherByName();return false;}" /> 
 			<input type="button" class="btn btn-primary btn-resarcher-search" onclick="findResearcherByName()" value='<fmt:message key="jsp.home.researcher.browse.search.button"/>' /> 
@@ -300,10 +303,10 @@
 	} else {
 		getResearcher("", "", "", 12, 0);
 	}
-	$("#panel").slideToggle("slow");
+	// $("#panel").slideToggle("slow");
 	$(".btn-slide").toggleClass("active");
 	setTimeout(function(){
-		$("#panel").slideToggle("slow");
+		// $("#panel").slideToggle("slow");
 		$(".btn-slide").toggleClass("active");
 	},1500);
 	</script>
