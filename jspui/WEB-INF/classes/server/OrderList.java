@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import tool.PKUUtils;
 
 @WebServlet("/order")
 public class OrderList extends HttpServlet {
@@ -56,28 +57,12 @@ public class OrderList extends HttpServlet {
 		ResultSet rs = null;
 		ArrayList mylist = null;
 
-		String sqls = "select text_value,count(*) as cnums from worksresource group by text_value order by cnums desc;";
-
-		try {
-			pStatement = connection.prepareStatement(sqls);
-			rs = pStatement.executeQuery();
-			mylist = new ArrayList();
-			while (rs.next()) {
-				String uname = rs.getString("text_value").toString();
-				
-				
-				Map<String, Object> parlist = new HashMap<String, Object>();
-				
-				parlist.put("name", uname);
-
-				JSONObject jsont = JSONObject.fromObject(parlist);
-				mylist.add(jsont);
-			}
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		// 构造unitMap数据
+		String sqls = "select researcher.researcher_id,researcher.uid, researcher.name,researcher.image,researcher.special,researcher.sex,researcher.unit_id,count(*) works from researcher  ,metadatavalue " + 
+        		" where researcher.name=metadatavalue.text_value  and  metadata_field_id=3 " + 
+        		" group by researcher.name,researcher.uid,researcher.image,researcher.unit_id,researcher.special,researcher.sex,researcher.researcher_id " + 
+        		" order by works desc limit 10;";
+		
+		//院系关系
 		Map<String, Object> unitMap = new HashMap<String, Object>();
 		unitMap.put("6", "经济管理学院");
 		unitMap.put("12", "思想政治理论课部");
@@ -89,23 +74,72 @@ public class OrderList extends HttpServlet {
 		unitMap.put("13", "直属、附属单位");
 		unitMap.put("5", "城市建设学院");
 		unitMap.put("9", "艺术设计学院");
+		try {
+			pStatement = connection.prepareStatement(sqls);
+			rs = pStatement.executeQuery();
+			mylist = new ArrayList();
+			while (rs.next()) {
+				// 拼接image图片
+				String code = rs.getString("uid");
+				String image = rs.getString("image");
+				String uname = rs.getString("name").toString();
+				String unit_name = null;
 
-		JSONObject unitMapjson = JSONObject.fromObject(unitMap);
+				try {
+					code = PKUUtils.encrypt(code, "PkuLibIR");
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+				if (rs.getInt("special") != 0) {
+					if (image.equals("calis-self")) {
+						image = request.getContextPath() + "/imageshow?spec=" + code;
+					}
+				} else if (rs.getBoolean("sex")) {
+					image =request.getContextPath() + "/calis/images/man.png";
+				} else {
+					image =request.getContextPath() + "/calis/images/woman.png'";
+				}
+
+				Map<String, Object> parlist = new HashMap<String, Object>();
+				
+				try {
+					String unid_id = Integer.toString(rs.getInt("unit_id"));
+					unit_name = (String) unitMap.get(unid_id);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+				parlist.put("image", image);
+				parlist.put("name", uname);
+				parlist.put("researcherId", rs.getInt("researcher_id"));
+				parlist.put("uid", code);
+				parlist.put("unitId", unit_name);
+
+				JSONObject jsont = JSONObject.fromObject(parlist);
+				mylist.add(jsont);
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// 构造unitMap数据
+
+
+
 
 
 		JSONArray json = JSONArray.fromObject(mylist);
 		// 构造json数据
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("total", mylist.size());
-		params.put("unitMap", unitMapjson);
 		params.put("researcherList", json);
 
 		// java对象变成json对象
 		JSONObject jsonObject = JSONObject.fromObject(params);
 
 		// json对象转换成json字符串
-		String jsonStr = jsonObject.toString();
-		response.getWriter().print(jsonStr); // 将数据返回前台ajax
+//		String jsonStr = jsonObject.toString();
+		response.getWriter().print(jsonObject); // 将数据返回前台ajax
 	}
 
 }
