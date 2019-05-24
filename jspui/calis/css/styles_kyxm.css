@@ -1,4 +1,4 @@
-body {
+﻿body {
     font-family: "微软雅黑", "verdana", "Arial", "Helvetica", sans-serif;
 }
 
@@ -1278,7 +1278,7 @@ white-space: nowrap;/*æ–‡æœ¬ä¸è¿›è¡Œæ¢è¡Œ*/
     cursor: pointer;
     display: none;
     margin-left: 100px;
-    margin-top: -40px;
+    /*margin-top: -40px;*/
     padding: 5px;
     position: absolute;
     text-shadow: none;

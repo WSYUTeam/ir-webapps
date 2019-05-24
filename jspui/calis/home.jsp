@@ -186,7 +186,7 @@
 <SCRIPT type="text/javascript"
 	src="<%=request.getContextPath()%>/calis/js/glance.js"></SCRIPT>
 <script type="text/javascript" src="<%=request.getContextPath()%>/calis/js/jquery.ae.image.resize.js"></script>
-
+<script type="text/javascript" src="<%=request.getContextPath()%>/calis/js/index_add.js"></script>
 <SCRIPT type="text/javascript">
 	var context = "<%=request.getContextPath() %>";
 	var hot_views = '';//<fmt:message key="jsp.home.hotview.views"/>
@@ -300,88 +300,8 @@
         });
     }
     getArticles_zjsl();
-	//获取各类型成果
-    function getArticles(obj, types) {
-        filterquery = "";
-        filterquery_list = "";
-        if(types == 'Conference') {
-        	//会议论文
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Conference&filtertype=equals";
-			filterquery_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=type&filterquery=Conference&filtertype=equals";
-		} else if(types == 'Book') {
-			//专著 
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Book&filtertype=equals";
-			filterquery_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=type&filterquery=Book&filtertype=equals";
-		} else if(types == 'Journal') {
-			//期刊论文
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Journal&filtertype=equals";
-			filterquery_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=type&filterquery=Journal&filtertype=equals";
-		} else if(types == 'Thesis') {
-			//学位论文
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Thesis&filtertype=equals";
-			filterquery_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=type&filterquery=Thesis&filtertype=equals";
-		} else if(types == 'kyxm') {
-			//科研项目
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=kyxm&filtertype=equals";
-			filterquery_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=type&filterquery=kyxm&filtertype=equals";
-		} 
-		else if(types == 'Patent X') {
-			//专利
-			filterquery = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=type&filterquery=Patent X&filtertype=equals";
-			filterquery_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=type&filterquery=Patent X&filtertype=equals";
-		}
-
-        $.ajax({
-            url: "<%=request.getContextPath()%>/"+filterquery+"&cgfl=1",
-            success: function (data) {
-            	document.getElementById("cgfl_more").href = filterquery_list;
-                $("#article_list").html(data);
-                $(obj).siblings().removeClass("current_sl");
-                $(obj).addClass("current_sl");
-            }
-        });
-    }
+	get_xztj();//学者推荐
     getArticles('','Book');
-    //获取被收录情况
-    function getArticles_sl(obj, types) {
-        filterquery_sl = "";
-        filterquery_sl_list = "";
-        if(types == 'SCI-E') {
-        	//会议论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=SCI-E&filtertype=equals";
-			filterquery_sl_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=indexed&filterquery=SCI-E&filtertype=equals";
-		} else if(types == 'SCI') {
-			//专著 
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=SCI&filtertype=equals";
-			filterquery_sl_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=indexed&filterquery=SCI&filtertype=equals";
-		} else if(types == 'EI') {
-			//期刊论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=EI&filtertype=equals";	
-			filterquery_sl_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=indexed&filterquery=EI&filtertype=equals";
-		} else if(types == 'CPCI-S') {
-			//期刊论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CPCI-S&filtertype=equals";
-			filterquery_sl_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=indexed&filterquery=CPCI-S&filtertype=equals";
-		} else if(types == 'CPCI-SSH') {
-			//期刊论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CPCI-SSH&filtertype=equals";
-			filterquery_sl_list = "simple-search?query=&sort_by=score&order=desc&rpp=20&etal=0&filtername=indexed&filterquery=CPCI-SSH&filtertype=equals";	
-		} else if(types == 'CSCD') {
-			//学位论文
-			filterquery_sl = "simple-search?query=&sort_by=score&order=desc&rpp=10&etal=0&filtername=indexed&filterquery=CSCD&filtertype=equals";
-			//此处改为20后报错   rpp=10
-			filterquery_sl_list = filterquery_sl;
-		}
-        $.ajax({
-            url: "<%=request.getContextPath()%>/"+filterquery_sl+"&cgfl=1",
-            success: function (data) {
-            	document.getElementById("cgfl_more_sl").href = filterquery_sl_list;
-                $("#article_list_sl").html(data);
-                $(obj).siblings().removeClass("current_sl");
-                $(obj).addClass("current_sl");
-            }
-        });
-    }
     getArticles_sl('','CPCI-S');
 </SCRIPT>
 
@@ -493,7 +413,7 @@
 							key="jsp.home.more" />&gt;&gt;</a>
 			</span></div>
 		<div style="clear: both"></div>
-	<div class="col-md-6" style="width:775px">
+	<div class="col-md-6" style="width:775px" id="xztj_block">
 	<%
 		if(rList.size() >= 9) {
 	%>
@@ -873,7 +793,7 @@
 							key="jsp.home.journal.papers" /></a>
                 <a class="" href="javascript:void(0)" onclick="getArticles(this,'Conference')"><!-- 会议论文 --><fmt:message
 							key="jsp.home.conference.papers" /></a>
-				<a class="" href="javascript:void(0)" onclick="getArticles(this,'Patent X')">专利</a>
+				<a class="" href="javascript:void(0)" onclick="getArticles(this,'Patent')">专利</a>
             </div>
             <div style="clear: both"></div>
             <!-- 成果分类  start -->
