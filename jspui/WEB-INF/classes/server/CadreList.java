@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import tool.PKUUtils;
 
 @WebServlet("/cadre")
 public class CadreList extends HttpServlet {
@@ -103,52 +104,18 @@ public class CadreList extends HttpServlet {
 					+ "and researcher.academic_name like '%骨干教师'" + "and researcher.name like '%" + name + "%';";
 		}
 
-		Map<String, String> uidlist = new HashMap<String, String>();
-		uidlist.put("蔡红娟", "35d1b91dc3bf6cb2c6cd10e5aa6d9c46");
-		uidlist.put("雷丹", "35d1b91dc3bf6cb283f5bce0177f95bc");
-		uidlist.put("段丽娜", "35d1b91dc3bf6cb2dface763d1167aa3");
-		uidlist.put("李硕", "f7f87c7cb3eac10eab09f9b6801ae69e");
-		uidlist.put("石从继", "35d1b91dc3bf6cb29bd2ce2764ba1940");
-		uidlist.put("张小菊", "bed2d71ce80b4851ca3adc267e76086a");
-		uidlist.put("莫文婷", "4dcc32fc34b670c21123f6ca6d01d1ca");
-		uidlist.put("凌平平", "bed2d71ce80b4851f603169b54523c68");
-		uidlist.put("郑莹", "bed2d71ce80b485152967fa6730a1832");
-		uidlist.put("黄颖", "35d1b91dc3bf6cb24849d3841183fe4e");
-		uidlist.put("李林", "8ead5ac3f5d9f5528a12f204b5f94af2");
-		uidlist.put("焦雨生", "3ee8f69f3cb31bdefe5dace95ca43732");
-		uidlist.put("陈永蓉", "35d1b91dc3bf6cb223d6821cfd7771e8");
-		uidlist.put("余林", "35d1b91dc3bf6cb2428804ed0627b4a6");
-		uidlist.put("宋华", "35d1b91dc3bf6cb27258d33f48d5305e");
-		uidlist.put("游娟", "35d1b91dc3bf6cb2302052cf7e285348");
-		uidlist.put("肖巍", "35d1b91dc3bf6cb2769b138432617676");
-		uidlist.put("李洁", "35d1b91dc3bf6cb2c5b2d01d549e8458");
-		uidlist.put("姜娜", "55c3311c8c0457b796434cf36fc323c2");
-		uidlist.put("余芳", "35d1b91dc3bf6cb277f41ffe2fcbf2f0");
-		uidlist.put("朱祥和", "88902e85afe1ea310caa503f247c1291");
-		uidlist.put("张瑾", "55c3311c8c0457b72873f3462ff3de83");
-		uidlist.put("余婵娟", "bed2d71ce80b4851f39efb6960c00103");
-		uidlist.put("杨娟", "09cab95069277bc4ee023f0ae52b240e");
-		uidlist.put("杨旗", "361b27622fbc9ccb9d80b8301100f341");
-		uidlist.put("庄静","35d1b91dc3bf6cb2d073502f4efc509e");
-		uidlist.put("庞迎庆","3a05a8fc91145d21");
-		uidlist.put("朱忠敏","bed2d71ce80b4851f5ac29bf19fe015d");
-		uidlist.put("李春桃","538147c84ba53a6e");
-		uidlist.put("郑传洋","792a87420dd326f7186e0cf57163357c");
-		uidlist.put("朱永亮","35d1b91dc3bf6cb20c1e4bccbe5a3d22");
-		
-
 		try {
 			pStatement = connection.prepareStatement(sqls);
 			rs = pStatement.executeQuery();
 			mylist = new ArrayList();
 			while (rs.next()) {
 				// 拼接image图片
-				String code = null;
+				String code = rs.getString("uid");
 				String image = rs.getString("image");
 				String uname = rs.getString("name").toString();
 
 				try {
-					code = uidlist.get(uname);
+					code = PKUUtils.encrypt(code, "PkuLibIR");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
