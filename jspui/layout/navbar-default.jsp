@@ -223,10 +223,16 @@
 			<%-- Search Box --%>
 			<div class="simple-search-form">
       		<form method="get" action="<%= request.getContextPath() %>/simple-search" style="width:300px;">
+      		<%
+			if(request.getServerName().equals("irt.wsyu.edu.cn")) {
+			%>	
 			<input class="form-control search-query-box" type="text" size="18" style="float:left;width:230px;"
 							id="tquery" name="query"
 							placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" /><input type="submit" id="main-query-submit" class="btn btn-primary" style="width:60px;float:right;color: #fff;text-indent: -8px;background-color:#003C80;"  
 							value="<fmt:message key="jsp.general.go"/>" />
+			<%
+			}
+			%>
 			</form>
 			</div>
 		</div>
