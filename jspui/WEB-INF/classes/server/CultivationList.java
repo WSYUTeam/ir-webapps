@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.dspace.core.ConfigurationManager;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import tool.PKUUtils;
@@ -58,13 +60,17 @@ public class CultivationList extends HttpServlet {
 			// TODO: handle exception
 		}
 
-		String url = "jdbc:postgresql://218.199.144.229:5432/calisir";
-		String username = "dspace";
-		String password = "dspace";
+//		数据库配置参数获取
+		String driverClassName = ConfigurationManager.getProperty("db.driver");
+		String url = ConfigurationManager.getProperty("db.url");
+		String username = ConfigurationManager.getProperty("db.username");
+		String password = ConfigurationManager.getProperty("db.password");
 		Connection connection = null;
+		
+		
 
 		try {
-			Class.forName("org.postgresql.Driver").newInstance();
+			Class.forName(driverClassName).newInstance();
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
