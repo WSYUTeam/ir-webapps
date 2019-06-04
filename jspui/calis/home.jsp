@@ -793,7 +793,7 @@
 							key="jsp.home.journal.papers" /></a>
                 <a class="" href="javascript:void(0)" onclick="getArticles(this,'Conference')"><!-- 会议论文 --><fmt:message
 							key="jsp.home.conference.papers" /></a>
-				<a class="" href="javascript:void(0)" onclick="getArticles(this,'Patent')">专利</a>
+				<!-- <a class="" href="javascript:void(0)" onclick="getArticles(this,'Patent')">专利</a> -->
             </div>
             <div style="clear: both"></div>
             <!-- 成果分类  start -->
